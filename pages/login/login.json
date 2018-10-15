@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+  "i-button": "../../plugins/iview/button/index",
+  "i-input": "../../plugins/iview/input/index"
+  }
+
+}
