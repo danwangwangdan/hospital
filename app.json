@@ -1,27 +1,35 @@
 {
-  "pages":[
+  "pages": [
+    "pages/detail/detail",
+    "pages/me/suggestion/suggest_suc/suggest_suc",
+    "pages/me/suggestion/suggestion",
+    "pages/me/all/all",
+    "pages/me/confirmed/confirmed",
+    "pages/me/solved/solved",
+    "pages/me/submited/submited",
     "pages/login/login",
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/home/submit_suc/submit_suc",
+    "pages/home/home",
+    "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
-  "tabBar":{
-    "color":"#9CC9BF",
-    "selectedColor":"#ED7F00",
-    "backgroundColor":"#FFFFFF",
-    "list":[
+  "tabBar": {
+    "color": "#9CC9BF",
+    "selectedColor": "#ED7F00",
+    "backgroundColor": "#FFFFFF",
+    "list": [
       {
-        "pagePath":"pages/index/index",
-        "text":"新建",
-        "iconPath":"pics/tab_new.png",
+        "pagePath": "pages/home/home",
+        "text": "新建",
+        "iconPath": "pics/tab_new.png",
         "selectedIconPath": "pics/tab_new_fill.png"
-        },
+      },
       {
         "pagePath": "pages/me/me",
         "text": "我的",
@@ -29,6 +37,5 @@
         "selectedIconPath": "pics/tab_people_fill.png"
       }
     ]
-
   }
 }

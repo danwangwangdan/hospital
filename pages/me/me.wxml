@@ -1,2 +1,27 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view class="centerView">
+  <i-row>
+    <i-col span="6" i-class="col-class">
+      <image class="photo" src="../../pics/me_photo.png"></image>
+    </i-col>
+    <i-col span="18" i-class="col-class">
+      <view style='margin-top:15px'>
+        <text style="margin-left:-40%;font-size:20px">黄士明\n</text>
+        <text style="margin-left:10px;font-size:15px">网络中心 15974040709</text>
+      </view>
+    </i-col>
+  </i-row>
+  <view class="divLine"></view>
+  <text style="margin-left:-70%;font-size:20px">全部故障</text>
+  <view class="divLine"></view>
+   <text style="margin-left:-57%;font-size:20px">待确认故障</text>
+  <view class="divLine"></view>
+   <text style="margin-left:-57%;font-size:20px">已确认故障</text>
+  <view class="divLine"></view>
+   <text style="margin-left:-57%;font-size:20px">已解决故障</text>
+  <view class="divLine"></view>
+  <text style="margin-left:-70%;font-size:20px">意见反馈</text>
+  <view class="divLine"></view>
+
+   <button style='margin-top:50px;width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">退出登录</button>
+</view>

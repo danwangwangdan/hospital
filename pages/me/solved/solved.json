@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "i-cell-group": "../../../plugins/iview/cell-group/index",
+    "i-cell": "../../../plugins/iview/cell/index",
+    "i-icon": "../../../plugins/iview/icon/index"
+  },
+  "window": {
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "navigationBarTitleText": "已解决故障"
+}

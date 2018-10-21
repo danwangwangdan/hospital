@@ -1,4 +1,4 @@
-// pages/logs/logs.js
+// pages/me/me.js
 Page({
 
     /**
@@ -25,7 +25,7 @@ Page({
      */
     onShow: function () {
 
-  },
+    },
 
     /**
      * 生命周期函数--监听页面隐藏
@@ -60,5 +60,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-  }
+    }
 })

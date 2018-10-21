@@ -1,0 +1,38 @@
+<page>
+  <view class="container">
+    <form bindsubmit="submitTrouble" bindreset="formReset">
+      <view class="inputViewHead">
+        <label>处理情况</label>
+        <text>已确认</text>
+      </view>
+      <view class="inputViewMiddle">
+        <label>处理时间</label>
+        <text>2018.10.12 12:40</text>
+      </view>
+      <view class="inputViewMiddle">
+        <label>故障类型</label>
+        <picker class="picker" bindchange="bindChange" range="{{troubleType}}" value="{{index}}">
+          <view>
+            当前：{{troubleType[index]}}
+          </view>
+        </picker>
+      </view>
+      <view class="inputViewMiddle">
+        <label>详细描述</label>
+        <text>
+        我的打印机卡纸了，快来帮我看一下
+        </text>
+      </view>
+      <!-- <view class="inputViewMiddle">
+        <label style="">故障截图</label>
+      </view>
+      <view class="inputViewMiddle">
+        <image src="../../pics/me_photo.png" mode="aspectFit">
+        </image>
+      </view> -->
+      <view style='margin-top:200px'>
+        <button style='width: 40%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">确定</button>
+      </view>
+    </form>
+  </view>
+</page>

@@ -6,13 +6,15 @@ Page({
   data: {
     motto: 'Hello World',
   },
-  //事件处理函数
-  bindViewTap: function () {
-   
-  },
   onLoad: function () {
-   
+
   },
+    //事件处理函数
+    login: function () {
+        wx.switchTab({
+            url: '/pages/home/home'
+        })
+    },
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

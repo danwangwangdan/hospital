@@ -1,0 +1,32 @@
+.centerView{ 
+    border-radius: 20px;
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.line { 
+ width: 100%; 
+ height: 1px; 
+ background-color: #cccccc; 
+ margin-top: 1px; 
+} 
+.inputViewHead{
+  display:flex;
+}
+.inputViewMiddle{
+  margin-top: 10px;
+  display:flex;
+}
+.inputViewTail{
+  display:flex;
+}
+label {
+  float: left;
+  font-weight:bold;
+  text-align: right;
+  width: 200px;
+  margin-right: 15px
+}

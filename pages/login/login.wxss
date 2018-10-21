@@ -1,1 +1,15 @@
 /* pages/login/login.wxss */
+.page_login{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/*分割线样式*/
+.divLine{
+ background: #e9eaec;
+ width: 100%;
+ height: 5rpx;
+ margin-top:12px;
+}

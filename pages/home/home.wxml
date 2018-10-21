@@ -1,0 +1,37 @@
+<page>
+  <view class="container">
+    <form bindsubmit="submitTrouble" bindreset="formReset">
+      <view class="inputViewHead">
+        <label>科室</label>
+        <input placeholder="内一科" />
+      </view>
+      <view class="inputViewMiddle">
+        <label>故障人</label>
+        <input placeholder="黄士明" />
+      </view>
+      <view class="inputViewMiddle">
+        <label>故障类型</label>
+        <picker class="picker" bindchange="bindChange" range="{{troubleType}}" value="{{index}}" >
+          <view>
+            当前：{{troubleType[index]}}
+          </view>
+        </picker>
+      </view>
+      <view class="inputViewMiddle">
+        <label>详细描述</label>
+        <textarea auto-height placeholder="请输入问题详情">
+        </textarea>
+      </view>
+      <!-->
+      <view class="inputViewMiddle">
+        <label>故障截图 </label>
+        <image src="../../pics/login_welcome.png">
+        </image>
+      </view>
+      <-->
+        <view style='margin-top:200px'>
+          <button style='width: 40%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">提交</button>
+        </view>
+    </form>
+  </view>
+</page>
