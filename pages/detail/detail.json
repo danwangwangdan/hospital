@@ -1,1 +1,7 @@
-{}
+{
+  "usingComponents": {
+    "i-row": "../../plugins/iview/row/index",
+    "i-col": "../../plugins/iview/col/index"
+  },
+  "navigationBarTitleText": "故障详情"
+}

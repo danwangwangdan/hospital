@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/home/home",
     "pages/detail/detail",
     "pages/me/suggestion/suggest_suc/suggest_suc",
     "pages/me/suggestion/suggestion",
@@ -7,10 +9,8 @@
     "pages/me/confirmed/confirmed",
     "pages/me/solved/solved",
     "pages/me/submited/submited",
-    "pages/login/login",
     "pages/me/me",
     "pages/home/submit_suc/submit_suc",
-    "pages/home/home",
     "pages/logs/logs"
   ],
   "window": {

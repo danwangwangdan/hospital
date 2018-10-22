@@ -1,6 +1,7 @@
 {
+  "navigationBarTitleText": "医院帮帮",
   "usingComponents": {
-  "i-button": "../../plugins/iview/button/index",
-  "i-input": "../../plugins/iview/input/index"
+    "i-button": "../../plugins/iview/button/index",
+    "i-input": "../../plugins/iview/input/index"
   }
 }

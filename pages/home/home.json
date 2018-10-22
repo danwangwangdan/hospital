@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "新建故障",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "i-row": "../../plugins/iview/row/index",
+    "i-col": "../../plugins/iview/col/index"
+  }
 }
