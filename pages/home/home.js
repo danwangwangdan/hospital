@@ -2,7 +2,7 @@
 const app = getApp();
 Page({
     data: {
-        troubleType: ['电脑问题', '导航台软件使用问题', '打印机问题', '其他问题'],
+      troubleType: ['导航台问题', '电脑问题', '打印机问题', '其他问题'],
         index: 0,
     },
 

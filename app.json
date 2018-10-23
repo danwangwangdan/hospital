@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/login/login",
+        "pages/detail/detail",
     "pages/home/home",
-    "pages/detail/detail",
+    "pages/login/login",
+   
+
     "pages/me/suggestion/suggest_suc/suggest_suc",
     "pages/me/suggestion/suggestion",
     "pages/me/all/all",

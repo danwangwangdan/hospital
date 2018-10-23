@@ -1,21 +1,21 @@
 <page>
-  <view class="container">
-    <i-panel>
-      <view class="page_login">
-        <text style="font-size:30px;margin-top:-42px">欢迎登陆</text>
-      </view>
-      <view class="divLine"></view>
-    </i-panel>
-    <i-panel>
-      <image style='margin-top:20px' src="../../pics/login_welcome.png" mode="widthFix">
-      </image>
-    </i-panel>
-    <i-panel style='margin-top:40px'>
-      <i-input title="账号:" autofocus placeholder="请输入账号" />
-      <i-input title="密码:" type="password"placeholder="请输入密码" />
-    </i-panel>  
-  </view>
-   <view style='margin-top:-60px'>
-      <button style='width: 50%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">登录</button>
+  <view class="centerView">
+    <view class="login_welcome">
+      <text style="font-size:30px;margin-top:-42px">欢迎登陆</text>
     </view>
+    <view class="divView">
+      <view class="divLine"></view>
+    </view>
+    <view>
+      <image style='margin-top:15px;margin-left:-10px' src="../../pics/login_welcome.png" mode="widthFix">
+      </image>
+    </view>
+    <view style='margin-top:65px'>
+      <i-input title="账号:" autofocus placeholder="请输入账号" />
+      <i-input title="密码:" type="password" placeholder="请输入密码" />
+    </view>
+    <view style='margin-top:30px'>
+      <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">登录</button>
+    </view>
+  </view>
 </page>
