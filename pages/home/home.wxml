@@ -1,37 +1,70 @@
 <page>
-  <view class="container">
+  <view class="centerView">
     <form bindsubmit="submitTrouble" bindreset="formReset">
-      <view class="inputViewHead">
-        <label>科室</label>
-        <input placeholder="内一科" />
+      <view style='margin-bottom:6px'>
+        <i-row>
+          <i-col span="8" i-class="col-class">
+            <text>所属科室</text>
+          </i-col>
+          <i-col span="16" i-class="col-class">
+            <input placeholder="内一科" />
+          </i-col>
+        </i-row>
       </view>
-      <view class="inputViewMiddle">
-        <label>故障人</label>
-        <input placeholder="黄士明" />
+      <view style='margin-bottom:6px'>
+        <i-row>
+          <i-col span="8" i-class="col-class">
+            <text>故障人</text>
+          </i-col>
+          <i-col span="16" i-class="col-class">
+            <input placeholder="黄士明" />
+          </i-col>
+        </i-row>
       </view>
-      <view class="inputViewMiddle">
-        <label>故障类型</label>
-        <picker class="picker" bindchange="bindChange" range="{{troubleType}}" value="{{index}}" >
-          <view>
-            当前：{{troubleType[index]}}
-          </view>
-        </picker>
+      <view style='margin-bottom:6px'>
+        <i-row>
+          <i-col span="8" i-class="col-class">
+            <text>故障类型</text>
+          </i-col>
+          <i-col span="16" i-class="col-class">
+            <picker class="picker" bindchange="bindChange" range="{{troubleType}}" value="{{index}}">
+              <view>
+                当前：{{troubleType[index]}}
+              </view>
+            </picker>
+          </i-col>
+        </i-row>
       </view>
-      <view class="inputViewMiddle">
-        <label>详细描述</label>
-        <textarea auto-height placeholder="请输入问题详情">
-        </textarea>
+      <view style='margin-bottom:6px'>
+        <i-row>
+          <i-col span="8" i-class="col-class">
+            <text>详细描述</text>
+          </i-col>
+          <i-col span="16" i-class="col-class">
+            <textarea style='margin-top:2px' auto-height placeholder="请输入问题详情"></textarea>
+          </i-col>
+        </i-row>
       </view>
-      <!-->
-      <view class="inputViewMiddle">
-        <label>故障截图 </label>
-        <image src="../../pics/login_welcome.png">
-        </image>
+      <view style='margin-bottom:6px'>
+        <i-row>
+          <i-col span="8" i-class="col-class">
+            <text>故障截图</text>
+          </i-col>
+          <i-col span="16" i-class="col-class">
+
+          </i-col>
+        </i-row>
       </view>
-      <-->
-        <view style='margin-top:200px'>
-          <button style='width: 40%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">提交</button>
-        </view>
+      <view style='margin-bottom:6px;margin-left:10%'>
+        <i-row>
+          <i-col span="24" i-class="col-class">
+            <image style='margin-top:10px;margin-left:-10px' src="../../pics/me_photo.png" />
+          </i-col>
+        </i-row>
+      </view>
+      <view style='margin-top:150px;margin-left:-80px'>
+        <button style='width: 40%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">提交</button>
+      </view>
     </form>
   </view>
 </page>

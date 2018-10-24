@@ -1,32 +1,43 @@
-.centerView{ 
-    border-radius: 20px;
-    width: 300px;
-    height: 350px;
-    position: absolute;
-    left: 60%;
-    top: 40%;
-    transform: translate(-50%,-50%);
+.centerView {
+  border-radius: 20px;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 63%;
+  top: 60%;
+  transform: translate(-50%, -50%);
 }
-.line { 
- width: 100%; 
- height: 1px; 
- background-color: #cccccc; 
- margin-top: 1px; 
-} 
-.inputViewHead{
-  display:flex;
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 1px;
 }
-.inputViewMiddle{
+
+.inputViewHead {
+  display: flex;
+}
+
+.inputViewMiddle {
   margin-top: 10px;
-  display:flex;
+  display: flex;
 }
-.inputViewTail{
-  display:flex;
+
+.inputViewTail {
+  display: flex;
 }
-label {
+
+/* text {
   float: left;
   font-weight:bold;
   text-align: right;
   width: 200px;
   margin-right: 15px
+} */
+
+text {
+  float: right;
+  margin-right: 16px;
+  font-weight: bold;
 }
