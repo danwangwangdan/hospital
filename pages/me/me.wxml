@@ -12,16 +12,17 @@
     </i-col>
   </i-row>
   <view class="divLine"></view>
-  <text style="margin-left:-70%;font-size:20px">全部故障</text>
-  <view class="divLine"></view>
-   <text style="margin-left:-57%;font-size:20px">待确认故障</text>
-  <view class="divLine"></view>
-   <text style="margin-left:-57%;font-size:20px">已确认故障</text>
-  <view class="divLine"></view>
-   <text style="margin-left:-57%;font-size:20px">已解决故障</text>
-  <view class="divLine"></view>
-  <text style="margin-left:-70%;font-size:20px">意见反馈</text>
-  <view class="divLine"></view>
-
-   <button style='margin-top:50px;width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">退出登录</button>
+  <view>
+    <text style="margin-left:-70%;font-size:20px" bindtap="toLogout">全部故障</text>
+    <view class="divLine"></view>
+    <text style="margin-left:-64%;font-size:20px" bindtap="toLogout">待确认故障</text>
+    <view class="divLine"></view>
+    <text style="margin-left:-64%;font-size:20px" bindtap="toLogout">已确认故障</text>
+    <view class="divLine"></view>
+    <text style="margin-left:-64%;font-size:20px" bindtap="toLogout">已解决故障</text>
+    <view class="divLine"></view>
+    <text style="margin-left:-70%;font-size:20px" bindtap="toLogout">意见反馈</text>
+    <view class="divLine"></view>
+  </view>
+  <button style='margin-top:50px;width: 60%;background-color: #2d8cf0;' type="primary" bindtap="toLogout">退出登录</button>
 </view>

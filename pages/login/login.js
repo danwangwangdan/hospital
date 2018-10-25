@@ -10,7 +10,7 @@ Page({
 
   },
     //事件处理函数
-    login: function () {
+  toLogin: function () {
         wx.switchTab({
             url: '/pages/home/home'
         })

@@ -35,13 +35,13 @@
           </i-col>
         </i-row>
       </view>
-      <view style='margin-bottom:6px'>
+      <view style='margin-bottom:20px'>
         <i-row>
           <i-col span="8" i-class="col-class">
             <text>详细描述</text>
           </i-col>
           <i-col span="16" i-class="col-class">
-            <textarea style='margin-top:2px' auto-height placeholder="请输入问题详情"></textarea>
+            <textarea style='margin-top:2px;width:60%;height:100px' placeholder="请输入问题详细描述，注意附带病人住院号或床位号，打印机类型(A4/针式/条码)等关键信息..."></textarea>
           </i-col>
         </i-row>
       </view>
@@ -55,15 +55,15 @@
           </i-col>
         </i-row>
       </view>
-      <view style='margin-bottom:6px;margin-left:10%'>
+      <view style='margin-bottom:6px;margin-left:35%'>
         <i-row>
-          <i-col span="24" i-class="col-class">
-            <image style='margin-top:10px;margin-left:-10px' src="../../pics/me_photo.png" />
+          <i-col span="8" i-class="col-class">
+            <image style='margin-top:10px;margin-left:-10px;height:80px;width:60px' src="../../pics/me_photo.png" />
           </i-col>
         </i-row>
       </view>
-      <view style='margin-top:150px;margin-left:-80px'>
-        <button style='width: 40%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">提交</button>
+      <view style='margin-top:50px;margin-left:-100px'>
+        <button style='width: 40%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="submitSuc">提交</button>
       </view>
     </form>
   </view>

@@ -6,7 +6,7 @@
     <text style="font-size:20px;margin-top:20px">提交成功</text>
   </view>
   <view>
-    <button style='margin-top:20px;width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">去查看</button>
-    <button style='margin-top:20px;width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">返回首页</button>
+    <button style='margin-top:20px;width: 60%;background-color: #2d8cf0;' type="primary" bindtap="toView">去查看</button>
+    <button style='margin-top:20px;width: 60%;background-color: #2d8cf0;' type="primary" bindtap="toHome">返回首页</button>
   </view>
 </view>

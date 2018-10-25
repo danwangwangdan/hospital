@@ -7,8 +7,10 @@ Page({
     },
 
     //事件处理函数
-    bindViewTap: function () {
-
+    submitSuc: function () {
+      wx.navigateTo({
+        url: '/pages/home/submit_suc/submit_suc'
+      })
     },
     onLoad: function () {
 

@@ -7,15 +7,15 @@
       <view class="divLine"></view>
     </view>
     <view>
-      <image style='margin-top:15px;margin-left:-10px' src="../../pics/login_welcome.png" mode="widthFix">
+      <image style='margin-top:35px;margin-left:-10px' src="../../pics/login_welcome.png" mode="widthFix">
       </image>
     </view>
-    <view style='margin-top:65px'>
-      <i-input title="账号:" autofocus placeholder="请输入账号" />
+    <view style='margin-top:35px'>
+      <i-input title="账号:" placeholder="请输入账号" />
       <i-input title="密码:" type="password" placeholder="请输入密码" />
     </view>
-    <view style='margin-top:30px'>
-      <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">登录</button>
+    <view style='margin-top:35px'>
+      <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="toLogin">登录</button>
     </view>
   </view>
 </page>

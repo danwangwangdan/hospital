@@ -1,23 +1,33 @@
 /* pages/me/me.wxss */
-.photo{
-    height: 80px;
-    width: 80px;
-    border-radius: 40px;
+
+.photo {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
 }
-.centerView{
-    text-align: center;
-    border-radius: 20px;
-    width: 300px;
-    height: 350px;
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%,-50%);
+
+.centerView {
+  text-align: center;
+  border-radius: 20px;
+  width: 300px;
+  height: 350px;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
 }
+
 /*分割线样式*/
-.divLine{
- background:#e9eaec;
- height: 2rpx;
- margin-top:10px;
- margin-bottom:10px;
+
+.divLine {
+  background: #e9eaec;
+  height: 2rpx;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.div-left {
+  width: 300px;
+  height: 120px;
+  float: left;
 }
