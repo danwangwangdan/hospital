@@ -49,7 +49,7 @@
       <i-col span="2" i-class="col-class">
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
       </i-col>
-      
+
       <i-col span="22" i-class="col-class">
         <text style="font-weight:bold;">问题截图</text>
       </i-col>
@@ -59,8 +59,6 @@
         <image style='margin-top:10px;margin-left:-10px' src="../../pics/me_photo.png" />
       </i-col>
     </i-row>
-    <view style='margin-top:20px'>
-      <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="login">确定</button>
-    </view>
+
   </view>
 </page>

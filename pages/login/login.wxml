@@ -17,5 +17,9 @@
     <view style='margin-top:35px'>
       <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="toLogin">登录</button>
     </view>
+
+  </view>
+  <view class="footer">
+    <text style='font-size:13px; color:#80848f'>技术支持：新晃县人民医院网络中心</text>
   </view>
 </page>

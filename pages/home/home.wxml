@@ -1,32 +1,32 @@
 <page>
   <view class="centerView">
     <form bindsubmit="submitTrouble" bindreset="formReset">
-      <view style='margin-bottom:6px'>
+    <view style='margin-bottom:6px'>
         <i-row>
-          <i-col span="8" i-class="col-class">
-            <text>所属科室</text>
-          </i-col>
-          <i-col span="16" i-class="col-class">
-            <input placeholder="内一科" />
-          </i-col>
-        </i-row>
-      </view>
-      <view style='margin-bottom:6px'>
-        <i-row>
-          <i-col span="8" i-class="col-class">
+          <i-col span="10" i-class="col-class">
             <text>故障人</text>
           </i-col>
-          <i-col span="16" i-class="col-class">
+          <i-col span="14" i-class="col-class">
             <input placeholder="黄士明" />
           </i-col>
         </i-row>
       </view>
       <view style='margin-bottom:6px'>
         <i-row>
-          <i-col span="8" i-class="col-class">
+          <i-col span="10" i-class="col-class">
+            <text>所属科室</text>
+          </i-col>
+          <i-col span="14" i-class="col-class">
+            <input placeholder="内一科" />
+          </i-col>
+        </i-row>
+      </view>
+      <view style='margin-bottom:6px'>
+        <i-row>
+          <i-col span="10" i-class="col-class">
             <text>故障类型</text>
           </i-col>
-          <i-col span="16" i-class="col-class">
+          <i-col span="14" i-class="col-class">
             <picker class="picker" bindchange="bindChange" range="{{troubleType}}" value="{{index}}">
               <view>
                 当前：{{troubleType[index]}}
@@ -35,35 +35,35 @@
           </i-col>
         </i-row>
       </view>
-      <view style='margin-bottom:20px'>
+      <view style='margin-bottom:12px'>
         <i-row>
-          <i-col span="8" i-class="col-class">
+          <i-col span="10" i-class="col-class">
             <text>详细描述</text>
           </i-col>
-          <i-col span="16" i-class="col-class">
-            <textarea style='margin-top:2px;width:60%;height:100px' placeholder="请输入问题详细描述，注意附带病人住院号或床位号，打印机类型(A4/针式/条码)等关键信息..."></textarea>
+          <i-col span="14" i-class="col-class">
+            <textarea style='margin-top:0px;width:80%;height:120px' placeholder="请输入问题详细描述。注意附带病人住院号或床位号，打印机类型(A4/针式/条码)等关键信息..."></textarea>
           </i-col>
         </i-row>
       </view>
       <view style='margin-bottom:6px'>
         <i-row>
-          <i-col span="8" i-class="col-class">
+          <i-col span="10" i-class="col-class">
             <text>故障截图</text>
           </i-col>
-          <i-col span="16" i-class="col-class">
+          <i-col span="14" i-class="col-class">
 
           </i-col>
         </i-row>
       </view>
       <view style='margin-bottom:6px;margin-left:35%'>
         <i-row>
-          <i-col span="8" i-class="col-class">
-            <image style='margin-top:10px;margin-left:-10px;height:80px;width:60px' src="../../pics/me_photo.png" />
+          <i-col span="24" i-class="col-class">
+            <image style='margin-top:10px;margin-left:26px;height:80px;width:60px' src="../../pics/me_photo.png" />
           </i-col>
         </i-row>
       </view>
-      <view style='margin-top:50px;margin-left:-100px'>
-        <button style='width: 40%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="submitSuc">提交</button>
+      <view style='margin-top:50px;align:center'>
+        <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="submitSuc">提交</button>
       </view>
     </form>
   </view>

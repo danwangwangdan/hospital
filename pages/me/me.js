@@ -7,6 +7,36 @@ Page({
   data: {
 
   },
+  toAll: function () {
+    wx.navigateTo({
+      url: '/pages/me/all/all'
+    })
+  },
+  toSubmitted: function () {
+    wx.navigateTo({
+      url: '/pages/me/submited/submited'
+    })
+  },
+  toConfirmed: function () {
+    wx.navigateTo({
+      url: '/pages/me/confirmed/confirmed'
+    })
+  },
+  toSolved: function () {
+    wx.navigateTo({
+      url: '/pages/me/solved/solved'
+    })
+  },
+  toSuggest: function () {
+    wx.navigateTo({
+      url: '/pages/me/suggestion/suggestion'
+    })
+  },
+  toLogout: function () {
+    wx.navigateTo({
+      url: '/pages/login/login'
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

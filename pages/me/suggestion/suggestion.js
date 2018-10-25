@@ -5,6 +5,11 @@ Page({
      */
     data: {},
 
+  toSubmit: function () {
+    wx.navigateTo({
+      url: '/pages/me/suggestion/suggest_suc/suggest_suc'
+    })
+  },
     /**
      * 生命周期函数--监听页面加载
      */
