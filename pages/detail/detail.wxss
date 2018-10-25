@@ -25,7 +25,6 @@
 }
 label {
   float: left;
-  font-weight:bold;
   text-align: right;
   width: 200px;
   margin-right: 15px

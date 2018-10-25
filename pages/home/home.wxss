@@ -39,5 +39,45 @@
 text {
   float: right;
   margin-right: 16px;
-  font-weight: bold;
+}
+
+.arrow_right {
+  width: 12rpx;
+  height: 26rpx;
+  margin-left: 10rpx;
+}
+
+.add_pic {
+  padding: 0 40rpx;
+  background: #fff;
+}
+
+.image_box {
+  width: 100%;
+  background: #fff;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  padding: 10px 0 10rpx;
+}
+
+.picPre {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.picPre image {
+  width: 100%;
+  height: 180rpx;
+}
+
+.picPre view {
+  position: absolute;
+  right: 0px;
+  top: -20rpx;
+  width: 15px;
+  height: 15px;
+  background: url(http://bmob-cdn-14867.b0.upaiyun.com/2017/11/23/b93323e440f4c3998034dbb9011a1e1d.png) no-repeat;
+  background-size: cover;
 }

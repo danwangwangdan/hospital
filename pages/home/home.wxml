@@ -1,7 +1,7 @@
 <page>
   <view class="centerView">
     <form bindsubmit="submitTrouble" bindreset="formReset">
-    <view style='margin-bottom:6px'>
+      <view style='margin-bottom:6px'>
         <i-row>
           <i-col span="10" i-class="col-class">
             <text>故障人</text>
@@ -30,6 +30,7 @@
             <picker class="picker" bindchange="bindChange" range="{{troubleType}}" value="{{index}}">
               <view>
                 当前：{{troubleType[index]}}
+                <image class="arrow_right" src="/pics/arrow_right.png"></image>
               </view>
             </picker>
           </i-col>
@@ -51,17 +52,26 @@
             <text>故障截图</text>
           </i-col>
           <i-col span="14" i-class="col-class">
-
           </i-col>
         </i-row>
       </view>
-      <view style='margin-bottom:6px;margin-left:35%'>
+      <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
+        <text>添加图片（选填）
+        </text>
+        <view wx:if="{{isSrc}}" class="image_box">
+          <view class="picPre">
+            <image src="{{src}}" mode="aspectFit"></image>
+            <view bindtap="clearPic"></view>
+          </view>
+        </view>
+      </view>
+      <!-- <view style='margin-bottom:6px;margin-left:35%'>
         <i-row>
           <i-col span="24" i-class="col-class">
             <image style='margin-top:10px;margin-left:26px;height:80px;width:60px' src="../../pics/me_photo.png" />
           </i-col>
         </i-row>
-      </view>
+      </view> -->
       <view style='margin-top:50px;align:center'>
         <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="submitSuc">提交</button>
       </view>

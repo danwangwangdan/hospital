@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/submit/submit",
     "pages/home/home",
     "pages/login/login",   
     "pages/me/all/all",
@@ -25,7 +26,7 @@
     "backgroundColor": "#FFFFFF",
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/submit/submit",
         "text": "新建",
         "iconPath": "pics/tab_new.png",
         "selectedIconPath": "pics/tab_new_fill.png"

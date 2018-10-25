@@ -12,7 +12,7 @@ Page({
     //事件处理函数
   toLogin: function () {
         wx.switchTab({
-            url: '/pages/home/home'
+            url: '/pages/submit/submit'
         })
     },
   getUserInfo: function (e) {
