@@ -1,64 +1,77 @@
-<page>
-  <view class="centerView">
-    <i-row>
-      <i-col span="2" i-class="col-class">
-        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
-      </i-col>
-      <i-col span="8" i-class="col-class">
-        <text style="font-weight:bold;">处理情况</text>
-      </i-col>
-      <i-col span="14" i-class="col-class">
-        <text>待确认</text>
-      </i-col>
-    </i-row>
-    <i-row>
-      <i-col span="2" i-class="col-class">
-        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
-      </i-col>
-      <i-col span="8" i-class="col-class">
-        <text style="font-weight:bold;">处理时间</text>
-      </i-col>
-      <i-col span="14" i-class="col-class">
-        <text>2018.10.12 12:40</text>
-      </i-col>
-    </i-row>
-    <i-row>
-      <i-col span="2" i-class="col-class">
-        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
-      </i-col>
-      <i-col span="8" i-class="col-class">
-        <text style="font-weight:bold;">故障类型</text>
-      </i-col>
-      <i-col span="14" i-class="col-class">
-        <text>打印机故障</text>
-      </i-col>
-    </i-row>
-    <i-row>
-      <i-col span="2" i-class="col-class">
-        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
-      </i-col>
-      <i-col span="8" i-class="col-class">
-        <text style="font-weight:bold;">详细描述</text>
-      </i-col>
-      <i-col span="14" i-class="col-class">
-        <textarea style="height:80%;width:90%">我的打印机卡纸了，快来帮我看一下</textarea>
-      </i-col>
-    </i-row>
-
-    <i-row>
-      <i-col span="2" i-class="col-class">
-        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
-      </i-col>
-
-      <i-col span="22" i-class="col-class">
-        <text style="font-weight:bold;">问题截图</text>
-      </i-col>
-    </i-row>
-    <i-row>
-      <i-col span="24" i-class="col-class">
-        <image style='margin-top:10px;margin-left:-10px' src="../../pics/me_photo.png" />
-      </i-col>
-    </i-row>
-
+<!--pages/detail/detail.wxml-->
+<scroll-view scroll-y="true" class="all_scr" style="padding-bottom:112rpx;">
+  <view style='margin-top:20px'>
+    <i-steps>
+      <i-step status="" icon="createtask">
+        <view slot="title">
+          已提交
+        </view>
+      </i-step>
+      <i-step status="process" icon="flashlight">
+        <view slot="title">
+          已确认
+        </view>
+      </i-step>
+      <i-step icon="right">
+        <view slot="title">
+          已解决
+        </view>
+      </i-step>
+    </i-steps>
   </view>
-</page>
+  <view class="detail_con">
+    <!--发布者信息、发布时间、点赞量、评论量-->
+    <view class="des_txt detail_msg">
+      <view>
+        <text>故障人：黄士明</text>
+      </view>
+      <view>
+        <text style="margin-right:12px;"></text>
+        <text style="margin-right:12px;">2018.11.11 11:11</text>
+      </view>
+    </view>
+    <view class="detail_input" style="padding-bottom:15rpx;">
+      <text class="des_txt detail_txt">所属科室</text>
+      <view class="detail_row_right actAddress">
+        <!--活动地点-->
+        <view class="txt-overflow">网络中心</view>
+      </view>
+      <view class="detail_lineh"></view>
+      <view style="display:flex;justify-content:flex-end">
+        <!--分割线-->
+        <view class="detail_linev"></view>
+      </view>
+    </view>
+    <view class="detail_input" style="padding-bottom:15rpx;">
+      <text class="des_txt detail_txt">故障类型</text>
+      <view class="detail_row_right actAddress">
+        <!--活动地点-->
+        <view class="txt-overflow">打印机故障</view>
+      </view>
+      <view class="detail_lineh"></view>
+      <view style="display:flex;justify-content:flex-end">
+        <!--分割线-->
+        <view class="detail_linev"></view>
+      </view>
+    </view>
+
+    <!--活动时间item-->
+    <view class="detail_input">
+      <text class="des_txt detail_txt">详细描述</text>
+      <view class="detail_row_right">
+        <!--时间-->
+        <text class="note_item_text">我的打印机卡纸了，快来帮忙看一下。我的打印机卡纸了，快来帮忙看一下。我的打印机卡纸了，快来帮忙看一下。</text>
+      </view>
+      <view class="detail_lineh"></view>
+    </view>
+    <view>
+      <view class="detail_input">
+        <text class="des_txt detail_txt">故障截图</text>
+      </view>
+      <view style='text-align:center'>
+        <image class="photo" src="../../pics/me_photo.png"></image>
+      </view>
+      
+    </view>
+  </view>
+</scroll-view>

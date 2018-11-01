@@ -2,13 +2,13 @@
   <view style="margin-top:30px">
     <i-cell-group>
       <i-cell bindtap="toDetail" title="打印机问题" value="2018.10.8 10:00">
-        <i-icon type="time" size="20" slot="icon" />
+        <i-icon type="createtask" size="20" slot="icon" />
       </i-cell>
       <i-cell bindtap="toDetail" title="导航台问题" value="2018.10.8 09:00">
-        <i-icon type="time" size="20" slot="icon" />
+        <i-icon type="createtask" size="20" slot="icon" />
       </i-cell>
       <i-cell bindtap="toDetail" title="电脑问题" value="2018.10.5 18:00">
-        <i-icon type="time" size="20" slot="icon" />
+        <i-icon type="createtask" size="20" slot="icon" />
       </i-cell>
     </i-cell-group>
   </view>

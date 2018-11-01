@@ -9,9 +9,10 @@
         <input name="title" class="input" maxlength="100" placeholder="黄士明" value="{{title}}" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
-      <view class="mod t-address" bindtap="chooseLocation">
+      <view class="mod t-name">
         <text class="key">所属科室</text>
-        <text name="address" class="value" bindtap="addressChange" value="{{address}}">网络中心</text>
+        <input name="title" class="input" maxlength="100" placeholder="网络中心" value="{{title}}" />
+        <!-- <text name="address" class="value" bindtap="addressChange" placeholder="网络中心" value="{{address}}">网络中心</text> -->
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="mod t-sign-time">
@@ -30,7 +31,7 @@
       </view>
     </view>
     <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
-      <view>添加图片（选）</view>
+      <view>添加截图（可选）</view>
     </view>
     <view wx:if="{{isSrc}}" class="image_box">
       <view class="picPre">
@@ -39,7 +40,7 @@
       </view>
     </view>
     <view class="mod-a mt20"></view>
-    <view style='margin-top:15px;align:center'>
+    <view style='margin-top:25px;align:center'>
       <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="submitSuc">提交</button>
     </view>
   </form>

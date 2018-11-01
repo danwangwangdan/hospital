@@ -28,7 +28,7 @@ Page({
   },
   toHome: function() {
     wx.reLaunch({
-      url: '/pages/home/home' 
+        url: '/pages/submit/submit'
     })
   },
   onLoad: function() {

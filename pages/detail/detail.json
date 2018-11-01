@@ -1,7 +1,9 @@
 {
   "usingComponents": {
     "i-row": "../../plugins/iview/row/index",
-    "i-col": "../../plugins/iview/col/index"
+    "i-col": "../../plugins/iview/col/index",
+    "i-steps": "../../plugins/iview/steps/index",
+    "i-step": "../../plugins/iview/step/index"
   },
   "navigationBarTitleText": "故障详情"
 }
