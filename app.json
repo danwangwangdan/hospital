@@ -1,17 +1,17 @@
 {
   "pages": [
-    "pages/me/me",
     "pages/detail/detail",
+    "pages/login/login",
+    "pages/me/all/all",
+    "pages/home/submit_suc/submit_suc",
+    "pages/me/me",
     "pages/submit/submit",
     "pages/home/home",
-    "pages/login/login",   
-    "pages/me/all/all",
     "pages/me/suggestion/suggest_suc/suggest_suc",
     "pages/me/suggestion/suggestion",
     "pages/me/confirmed/confirmed",
     "pages/me/solved/solved",
     "pages/me/submited/submited",
-    "pages/home/submit_suc/submit_suc",
     "pages/logs/logs"
   ],
   "window": {

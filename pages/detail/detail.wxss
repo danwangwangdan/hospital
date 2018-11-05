@@ -108,8 +108,7 @@ label {
 }
 
 .detail_con {
-  margin-top:20px;
-
+  margin-top: 20px;
   padding: 0 31rpx;
 }
 
@@ -150,6 +149,7 @@ label {
   font-size: 28rpx;
   letter-spacing: 2rpx;
   color: #666;
+  
 }
 
 .detail_map {
@@ -158,7 +158,11 @@ label {
   margin-left: 39rpx;
   margin-right: 39rpx;
 }
+.detail_right {
 
+  font-size: 28rpx;
+  margin-left: 54rpx;
+}
 .detail_row_right {
   /*item右侧详情*/
   display: flex;
@@ -239,7 +243,6 @@ label {
 
 .all_scr {
   height: 100%;
-  
 }
 
 .textarea_foot {

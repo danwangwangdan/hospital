@@ -58,7 +58,7 @@
     <!--活动时间item-->
     <view class="detail_input">
       <text class="des_txt detail_txt">详细描述</text>
-      <view class="detail_row_right">
+      <view class="detail_right">
         <!--时间-->
         <text class="note_item_text">我的打印机卡纸了，快来帮忙看一下。我的打印机卡纸了，快来帮忙看一下。我的打印机卡纸了，快来帮忙看一下。</text>
       </view>

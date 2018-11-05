@@ -6,49 +6,49 @@
     </view>
     <view class="user-info flex-item">
       <text class="userinfo-nickname">黄士明</text>
-      <text class="edit">网络中心 15974040709</text>
+      <text class="edit">网络中心  15974040709</text>
     </view>
   </view>
 
   <view class="my">
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item" >
-        <image src="../../images/eye.png"></image>
+        <image src="../../pics/all.png" style="height:20px;weight:20px"></image>
       </view>
       <view class="myitem-name flex-item">
-        <text>全部故障</text>
+        <text bindtap="toAll">全部故障</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp" style="">
+      <view class="myitem-icon flex-item" >
+        <image src="../../pics/processing.png" style="height:30px;width:30px"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text bindtap="toSubmitted">待确认的故障</text>
       </view>
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item" >
-        <image src="../../images/star.png"></image>
+        <image src="../../pics/submitted.png" style="height:28px;width:28px"></image>
       </view>
       <view class="myitem-name flex-item">
-        <text>待确认的故障</text>
+        <text bindtap="toConfirmed">已确认的故障</text>
       </view>
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item" >
-        <image src="../../images/draft.png"></image>
+        <image src="../../pics/solved.png" style="height:30px;width:30px"></image>
       </view>
       <view class="myitem-name flex-item">
-        <text>已确认的故障</text>
+        <text bindtap="toSolved">已解决的故障</text>
       </view>
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item" >
-        <image src="../../images/recent.png"></image>
+        <image src="../../pics/advice.png" style="height:20px;weight:20px"></image>
       </view>
       <view class="myitem-name flex-item">
-        <text>已解决的故障</text>
-      </view>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/book.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>意见反馈</text>
+        <text bindtap="toSuggest">意见反馈</text>
       </view>
     </view>
   </view>

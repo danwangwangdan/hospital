@@ -1,7 +1,6 @@
-.centerView{
-   
+.centerView{ 
     border-radius: 20px;
-    width: 300px;
+    width: 350px;
     height: 350px;
     position: absolute;
     left: 50%;
