@@ -32,7 +32,7 @@ Page({
         content: "",
         noteNowLen: 0, //备注当前字数
         type: '其他问题',
-        types: ['导航台问题', '电脑问题', '打印机问题', '其他问题'],
+        types: ['电脑问题', '打印机问题', '其他问题', '导航台问题'],
         typeIndex: "0",
         showInput: false, //显示输入真实姓名,
     },

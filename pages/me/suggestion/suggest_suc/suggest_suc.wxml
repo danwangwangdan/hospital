@@ -1,11 +1,11 @@
 <view class="centerView">
   <view>
-    <image style="height:128px;width:128px" src="../../../../pics/oper_success.png" mode="center" />
+    <image style="height:128px;width:128px" src="../../../../pics/oper_success.png"/>
   </view>
   <view>
     <text style="font-size:20px;margin-top:20px">提交成功，感谢</text>
   </view>
   <view>
-    <button style='margin-top:20px;width: 60%;background-color: #2d8cf0;' type="primary" bindtap="toHome">返回首页</button>
+    <button style='margin-top:20px;width: 60%' type="primary" bindtap="toHome">返回首页</button>
   </view>
 </view>

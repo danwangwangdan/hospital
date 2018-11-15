@@ -1,7 +1,6 @@
 <!-- 新建故障 -->
 <view class="add-page">
   <form bindsubmit="submitForm">
-    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
 
     <view class="mod-a mt20">
       <view class="mod t-name">
@@ -15,7 +14,7 @@
         <!-- <text name="address" class="value" bindtap="addressChange" placeholder="网络中心" value="{{address}}">网络中心</text> -->
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
-      <view class="mod t-sign-time">
+      <view class="mod t-name">
         <text class="key">故障类型</text>
         <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}">
           <view class="value" name="types">{{type}}
