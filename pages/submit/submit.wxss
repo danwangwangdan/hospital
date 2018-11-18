@@ -7,6 +7,16 @@ min-height:2.58823529em;
 line-height:2.58823529em;
 color: #118fff;
 }
+.centerView {
+  text-align: center;
+  border-radius: 20px;
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: 150px;
+  transform: translate(-50%, -50%);
+}
 .line-css {
   height: 1px;
   background: #b2b2b2;

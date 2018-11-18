@@ -39,8 +39,8 @@
       </view>
     </view>
     <view class="mod-a mt20"></view>
-    <view style='margin-top:25px;align:center'>
-      <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="primary" bindtap="submitSuc">提交</button>
+    <view class="centerView">
+          <i-button bind:click="submitSuc" type="primary" shape="circle">提交</i-button>
     </view>
   </form>
 </view>

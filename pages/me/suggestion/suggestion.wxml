@@ -2,6 +2,6 @@
   <textarea placeholder="请输入遇到的问题或建议..." />
   <input placeholder="联系方式   选填" />
   <view style='margin-top:60px'>
-    <button style='width: 60%;background-color: #2d8cf0;' type="primary" bindtap="toSubmit">提交</button>
+      <i-button bind:click="toSubmit" type="primary" shape="circle">提交</i-button>
   </view>
 </view>

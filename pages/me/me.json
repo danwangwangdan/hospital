@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "i-button": "../../plugins/iview/button/index",
     "i-row": "../../plugins/iview/row/index",
     "i-col": "../../plugins/iview/col/index"
   },

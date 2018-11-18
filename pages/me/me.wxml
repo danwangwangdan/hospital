@@ -1,8 +1,7 @@
-
 <view class="container more">
   <view class="user flex-wrp">
     <view class="avatar flex-item">
-      <image class="userinfo-avatar"src="../../pics/me_photo.png" background-size="cover"></image>
+      <image class="userinfo-avatar" src="../../pics/me_photo.png" background-size="cover"></image>
     </view>
     <view class="user-info flex-item">
       <text class="userinfo-nickname">黄士明</text>
@@ -12,7 +11,7 @@
 
   <view class="my">
     <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
+      <view class="myitem-icon flex-item">
         <image src="../../pics/all.png" style="height:20px;weight:20px"></image>
       </view>
       <view class="myitem-name flex-item">
@@ -20,7 +19,7 @@
       </view>
     </view>
     <view class="my-item flex-wrp" style="">
-      <view class="myitem-icon flex-item" >
+      <view class="myitem-icon2 flex-item">
         <image src="../../pics/processing.png" style="height:30px;width:30px"></image>
       </view>
       <view class="myitem-name flex-item">
@@ -28,7 +27,7 @@
       </view>
     </view>
     <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
+      <view class="myitem-icon3 flex-item">
         <image src="../../pics/submitted.png" style="height:28px;width:28px"></image>
       </view>
       <view class="myitem-name flex-item">
@@ -36,7 +35,7 @@
       </view>
     </view>
     <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
+      <view class="myitem-icon4 flex-item">
         <image src="../../pics/solved.png" style="height:30px;width:30px"></image>
       </view>
       <view class="myitem-name flex-item">
@@ -44,12 +43,15 @@
       </view>
     </view>
     <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
+      <view class="myitem-icon flex-item">
         <image src="../../pics/advice.png" style="height:20px;weight:20px"></image>
       </view>
       <view class="myitem-name flex-item">
         <text bindtap="toSuggest">意见反馈</text>
       </view>
+    </view>
+    <view class="my-item flex-wrp">
+        <i-button style="display:block;margin:0 auto;width:60%" bind:click="toLogout" type="primary" shape="circle">退出登录</i-button>
     </view>
   </view>
 </view>
