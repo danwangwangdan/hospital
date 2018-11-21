@@ -38,9 +38,8 @@
         <view bindtap="clearPic"></view>
       </view>
     </view>
-    <view class="mod-a mt20"></view>
-    <view class="centerView">
-          <i-button bind:click="submitSuc" type="primary" shape="circle">提交</i-button>
+    <view>
+          <i-button style="display:block;margin:0 auto;width:60%;margin-top:30px" bind:click="submitSuc" type="primary" shape="circle">提交</i-button>
     </view>
   </form>
 </view>

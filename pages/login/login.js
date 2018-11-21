@@ -4,18 +4,31 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-  },
-  onLoad: function () {
-
+      username: '',
+      password: ''
   },
     //事件处理函数
-  toLogin: function () {
+    toLogin: function () {
+        wx.request({
+            url: app.globalData.localApiUrl + '/user/login',
+            data: {
+                "username": this.data.username,
+                "password": this.data.password
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            success(res) {
+                console.log(res.data);
         wx.switchTab({
             url: '/pages/submit/submit'
-        })
+        });
+
+            }
+        });
+
     },
-  getUserInfo: function (e) {
+    getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({

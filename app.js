@@ -1,5 +1,10 @@
 //app.js
 App({
+    globalData: {
+        userInfo: null,
+        localApiUrl: "http://192.168.1.123",
+        remoteApiUrl: "",
+    },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -32,8 +37,6 @@ App({
         }
       }
     })
-  },
-  globalData: {
-    userInfo: null
   }
+
 })

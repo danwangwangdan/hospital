@@ -1,7 +1,7 @@
 <page>
   <view class="centerView">
     <view class="login_welcome">
-      <text style="font-size:30px;margin-top:-42px">欢迎登陆</text>
+      <text style="font-size:30px;margin-top:-42px">欢迎登录</text>
     </view>
     <view class="divView">
       <view class="divLine"></view>
@@ -11,8 +11,8 @@
       </image>
     </view>
     <view style='margin-top:35px'>
-      <i-input title="账号:" placeholder="请输入账号" />
-      <i-input title="密码:" type="password" placeholder="请输入密码" />
+      <i-input title="账号:" placeholder="请输入账号" value="{{username}}"/>
+      <i-input title="密码:" type="password" placeholder="请输入密码" value="{{passwrod}}" />
     </view>
     <view style='margin-top:35px'>
       <i-button bind:click="toLogin" type="primary" shape="circle">登录</i-button>
