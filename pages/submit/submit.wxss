@@ -10,11 +10,11 @@ color: #118fff;
 .centerView {
   text-align: center;
   border-radius: 20px;
-  width: 300px;
+  width: 250px;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-top: 150px;
+  margin-top: 200px;
   transform: translate(-50%, -50%);
 }
 .line-css {
