@@ -12,7 +12,7 @@
     </view>
     <view style='margin-top:35px'>
       <i-input title="账号:" placeholder="请输入账号" value="{{username}}"/>
-      <i-input title="密码:" type="password" placeholder="请输入密码" value="{{passwrod}}" />
+      <i-input title="密码:" type="password" placeholder="请输入密码" value="{{password}}" />
     </view>
     <view style='margin-top:35px'>
       <i-button bind:click="toLogin" type="primary" shape="circle">登录</i-button>

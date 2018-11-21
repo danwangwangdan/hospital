@@ -1,0 +1,64 @@
+<page>
+  <view class="centerView">
+    <i-row>
+      <i-col span="2" i-class="col-class">
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+      </i-col>
+      <i-col span="8" i-class="col-class">
+        <text style="font-weight:bold;">处理情况</text>
+      </i-col>
+      <i-col span="14" i-class="col-class">
+        <text>待确认</text>
+      </i-col>
+    </i-row>
+    <i-row>
+      <i-col span="2" i-class="col-class">
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+      </i-col>
+      <i-col span="8" i-class="col-class">
+        <text style="font-weight:bold;">处理时间</text>
+      </i-col>
+      <i-col span="14" i-class="col-class">
+        <text>2018.10.12 12:40</text>
+      </i-col>
+    </i-row>
+    <i-row>
+      <i-col span="2" i-class="col-class">
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+      </i-col>
+      <i-col span="8" i-class="col-class">
+        <text style="font-weight:bold;">故障类型</text>
+      </i-col>
+      <i-col span="14" i-class="col-class">
+        <text>打印机故障</text>
+      </i-col>
+    </i-row>
+    <i-row>
+      <i-col span="2" i-class="col-class">
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+      </i-col>
+      <i-col span="8" i-class="col-class">
+        <text style="font-weight:bold;">详细描述</text>
+      </i-col>
+      <i-col span="14" i-class="col-class">
+        <textarea style="height:80%;width:90%">我的打印机卡纸了，快来帮我看一下</textarea>
+      </i-col>
+    </i-row>
+
+    <i-row>
+      <i-col span="2" i-class="col-class">
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+      </i-col>
+
+      <i-col span="22" i-class="col-class">
+        <text style="font-weight:bold;">问题截图</text>
+      </i-col>
+    </i-row>
+    <i-row>
+      <i-col span="24" i-class="col-class">
+        <image style='margin-top:10px;margin-left:-10px' src="../../pics/me_photo.png" />
+      </i-col>
+    </i-row>
+
+  </view>
+</page>
