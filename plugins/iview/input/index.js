@@ -37,15 +37,22 @@ Component({
             value: false
         },
         maxlength: {
-            type: Number
+            type: Number,
+            value: -1
         }
     },
 
     methods: {
         handleInputChange(event) {
-            const { detail = {} } = event;
-            const { value = '' } = detail;
-            this.setData({ value });
+            const {
+                detail = {}
+            } = event;
+            const {
+                value = ''
+            } = detail;
+            this.setData({
+                value
+            });
 
             this.triggerEvent('change', event);
         },
