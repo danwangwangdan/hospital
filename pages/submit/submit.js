@@ -17,40 +17,19 @@ Page({
      * 页面的初始数据
      */
     data: {
-        notice_status: false,
-        accounts: ["微信号", "QQ号", "手机号"],
-        accountIndex: 0,
-        peopleHide: false,
-        isAgree: false,
-        date: formate_data(myDate),
-        address: '点击选择位置',
-        longitude: 0, //经度
-        latitude: 0, //纬度
         showTopTips: false,
         TopTips: '',
+        username: app.globalData.nickName,
+        office: app.globalData.office,
+        imageUrl: "",
         noteMaxLen: 200, //备注最多字数
         content: "",
         noteNowLen: 0, //备注当前字数
-        type: '其他问题',
-        types: ['电脑问题', '打印机问题', '其他问题', '导航台问题'],
-        typeIndex: "0",
-        showInput: false, //显示输入真实姓名,
-    },
-
-    tapNotice: function (e) {
-        if (e.target.id == 'notice') {
-            this.hideNotice();
-        }
-    },
-    showNotice: function (e) {
-        this.setData({
-            'notice_status': true
-        });
-    },
-    hideNotice: function (e) {
-        this.setData({
-            'notice_status': false
-        });
+        firTypes: ['其他问题'],
+        firTypeIndex: 0,
+        secTypes: ['其他问题'],
+        secTypeDis: false,
+        secTypeIndex: 0,
     },
 
     submitSuc: function () {
@@ -76,6 +55,7 @@ Page({
      */
     onLoad: function (options) {
         that = this;
+
         that.setData({ //初始化数据
             src: "",
             isSrc: false,
@@ -98,20 +78,51 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        var myInterval = setInterval(getReturn, 500); ////半秒定时查询
-        function getReturn() {
-            wx.getStorage({
-                key: 'user_openid',
-                success: function (ress) {
-                    if (ress.data) {
-                        clearInterval(myInterval)
-                        that.setData({
-                            loading: true
-                        })
-                    }
+        //获取一级类型
+        wx.request({
+            url: app.globalData.localApiUrl + '/common/firTypes',
+            method: 'GET',
+            header: {
+                'content-type': 'application/json'
+            },
+            success(res) {
+                console.log(res.data);
+                if (res.data.code == 1) {
+                    that.setData({
+                        firTypes: res.data.data,
+                    })
                 }
-            })
-        }
+            }
+        });
+    },
+
+    //改变活动类别
+    firTypeChange: function (e) {
+        this.setData({
+            firTypeIndex: e.detail.value
+        });
+        //获取一级类型
+        wx.request({
+            url: app.globalData.localApiUrl + '/common/secTypes?firTypeId=' + this.data.firTypeIndex,
+            method: 'GET',
+            header: {
+                'content-type': 'application/json'
+            },
+            success(res) {
+                console.log(res.data);
+                if (res.data.code == 1) {
+                    that.setData({
+                        secTypes: res.data.data,
+                    })
+                }
+            }
+        });
+
+    },
+    secTypeChange: function (e) {
+        this.setData({
+            secTypeIndex: e.detail.value
+        })
     },
 
     //上传活动图片
@@ -131,101 +142,21 @@ Page({
         })
     },
 
+    //预览图片
+    previewImage: function () {
+        wx.previewImage({
+            current: this.data.src, // 当前显示图片的http链接
+            urls: this.data.src // 需要预览的图片http链接列表
+        })
+
+    },
+
     //删除图片
     clearPic: function () { //删除图片
         that.setData({
             isSrc: false,
             src: ""
         })
-    },
-
-    //上传活动群二维码
-    uploadCodePic: function () { //选择图标
-        wx.chooseImage({
-            count: 1, // 默认9
-            sizeType: ['compressed'], //压缩图
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                var tempFilePaths = res.tempFilePaths
-                that.setData({
-                    isCodeSrc: true,
-                    codeSrc: tempFilePaths
-                })
-            }
-        })
-    },
-
-    //删除活动群二维码
-    clearCodePic: function () {
-        that.setData({
-            isCodeSrc: false,
-            codeSrc: ""
-        })
-    },
-
-    //限制人数
-    switch1Change: function (e) {
-        if (e.detail.value == false) {
-            this.setData({
-                peopleHide: false
-            })
-        } else if (e.detail.value == true) {
-            this.setData({
-                peopleHide: true
-            })
-        }
-    },
-
-    //改变时间
-    bindDateChange: function (e) {
-        this.setData({
-            date: e.detail.value
-        })
-    },
-    //改变活动类别
-    bindTypeChange: function (e) {
-        this.setData({
-            typeIndex: e.detail.value
-        })
-    },
-    //选择地点
-    addressChange: function (e) {
-        this.addressChoose(e);
-    },
-    addressChoose: function (e) {
-        var that = this;
-        wx.chooseLocation({
-            success: function (res) {
-                that.setData({
-                    address: res.name,
-                    longitude: res.longitude, //经度
-                    latitude: res.latitude, //纬度
-                })
-                if (e.detail && e.detail.value) {
-                    this.data.address = e.detail.value;
-                }
-            },
-            fail: function (e) {
-            },
-            complete: function (e) {
-            }
-        })
-    },
-
-    //改变联系方式
-    bindAccountChange: function (e) {
-        this.setData({
-            accountIndex: e.detail.value
-        })
-    },
-
-    //同意相关条例
-    bindAgreeChange: function (e) {
-        this.setData({
-            isAgree: !!e.detail.value.length,
-            showInput: !this.data.showInput
-        });
     },
 
     //表单验证

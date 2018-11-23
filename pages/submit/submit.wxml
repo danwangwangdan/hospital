@@ -1,31 +1,30 @@
 <!-- 新建故障 -->
 <view class="add-page">
   <form bindsubmit="submitForm">
-
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
     <view class="mod-a mt20">
       <view class="mod t-name">
         <text class="key">故障人</text>
-        <input name="title" class="input" maxlength="100" placeholder="黄士明" value="{{title}}" />
+        <input name="user" class="input" maxlength="100"  value="{{username}}" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="mod t-name">
         <text class="key">所属科室</text>
-        <input name="title" class="input" maxlength="100" placeholder="网络中心" value="{{title}}" />
-        <!-- <text name="address" class="value" bindtap="addressChange" placeholder="网络中心" value="{{address}}">网络中心</text> -->
+        <input name="office" class="input" maxlength="100"  value="{{office}}" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="mod t-name">
         <text class="key">一级类型</text>
-        <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}">
-          <view class="value" name="types">{{type}}
+        <picker bindchange="firTypeChange" value="{{typeIndex}}" range="{{firTypes}}">
+          <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
             <image class="arrow-r" src="/pics/arrow_right.png"></image>
           </view>
         </picker>
       </view>
        <view class="mod t-name">
         <text class="key">二级类型</text>
-        <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}">
-          <view class="value" name="types">{{type}}
+        <picker bindchange="secTypeChange" disabled="{{secTypeDis}}" value="{{typeIndex}}" range="{{secTypes}}">
+          <view class="value" name="secTypes">{{secTypes[secTypeIndex]}}
             <image class="arrow-r" src="/pics/arrow_right.png"></image>
           </view>
         </picker>
@@ -40,9 +39,9 @@
     <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
       <view>添加截图（可选）</view>
     </view>
-    <view wx:if="{{isSrc}}" class="image_box">
+    <view wx:if="{{isSrc}}" class="image_box" >
       <view class="picPre">
-        <image src="{{src}}" mode="aspectFit"></image>
+        <image src="{{src}}" mode="aspectFit" bindtap="previewImage"></image>
         <view bindtap="clearPic"></view>
       </view>
     </view>

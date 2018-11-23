@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/submit/submit",
+    "pages/login/login",
     "pages/me/me",
     "pages/me/suggestion/suggest_suc/suggest_suc",
     "pages/home/submit_suc/submit_suc",
