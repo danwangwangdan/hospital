@@ -26,10 +26,19 @@ Page({
         content: "",
         noteNowLen: 0, //备注当前字数
         firTypes: ['其他问题'],
+        firTypeValue: '',
         firTypeIndex: 0,
         secTypes: ['其他问题'],
+        secTypeValue: '',
         secTypeDis: false,
         secTypeIndex: 0,
+        src: "",
+        isSrc: false,
+        ishide: "0",
+        autoFocus: true,
+        isLoading: false,
+        loading: true,
+        isdisabled: false
     },
 
     submitSuc: function () {
@@ -55,7 +64,6 @@ Page({
      */
     onLoad: function (options) {
         that = this;
-
         that.setData({ //初始化数据
             src: "",
             isSrc: false,
@@ -71,7 +79,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        wx.hideToast()
+
     },
 
     /**
@@ -88,8 +96,14 @@ Page({
             success(res) {
                 console.log(res.data);
                 if (res.data.code == 1) {
+                    var data = res.data.data;
+                    var firTypes = new Array();
+                    for (var i in data) {
+                        firTypes.push(data[i].typeName);
+                    }
+                    console.log(firTypes);
                     that.setData({
-                        firTypes: res.data.data,
+                        firTypes: firTypes,
                     })
                 }
             }
@@ -99,7 +113,8 @@ Page({
     //改变活动类别
     firTypeChange: function (e) {
         this.setData({
-            firTypeIndex: e.detail.value
+            firTypeIndex: e.detail.value,
+            firTypeValue: this.data.firTypes[e.detail.value]
         });
         //获取一级类型
         wx.request({
@@ -121,7 +136,8 @@ Page({
     },
     secTypeChange: function (e) {
         this.setData({
-            secTypeIndex: e.detail.value
+            secTypeIndex: e.detail.value,
+            secTypeValue: this.data.secTypes[e.detail.value]
         })
     },
 
@@ -137,11 +153,11 @@ Page({
                 that.setData({
                     isSrc: true,
                     src: tempFilePaths
-                })
-            }
+                });
+                upload(that, path);
+            },
         })
     },
-
     //预览图片
     previewImage: function () {
         wx.previewImage({
@@ -175,100 +191,49 @@ Page({
     //提交表单
     submitForm: function (e) {
         var that = this;
-
-        if (that.data.showInput == false) {
-            wx.showModal({
-                title: '提示',
-                content: '请先阅读《发起须知》'
-            })
-            return;
-        }
-        var title = e.detail.value.title;
-        var endtime = this.data.date;
-        var typeIndex = this.data.typeIndex;
-        var acttype = 1 + parseInt(typeIndex);
-        var acttypename = getTypeName(acttype); //获得类型名称
-        var address = this.data.address;
-        var longitude = this.data.longitude; //经度
-        var latitude = this.data.latitude; //纬度
-        var switchHide = e.detail.value.switchHide;
-        var peoplenum = e.detail.value.peoplenum;
-        console.log(peoplenum);
-        var content = e.detail.value.content;
-        //------发布者真实信息------
-        var realname = e.detail.value.realname;
-        var contactindex = this.data.accountIndex;
-        if (contactindex == 0) {
-            var contactWay = "微信号";
-        } else if (contactindex == 1) {
-            var contactWay = "QQ号";
-        } else if (contactindex == 2) {
-            var contactWay = "手机号";
-        }
-        var contactValue = e.detail.value.contactValue;
-        var wxReg = new RegExp("^[a-zA-Z]([-_a-zA-Z0-9]{5,19})+$");
-        var qqReg = new RegExp("[1-9][0-9]{4,}");
-        var phReg = /^1[34578]\d{9}$/;
-        var nameReg = new RegExp("^[\u4e00-\u9fa5]{2,4}$");
+        var troubleOwner = this.data.username;
+        var office = this.data.office;
+        var content = this.data.content;
+        var firType = this.data.firType;
+        var secType = this.data.secType;
+        // var imgSrc = this.data.src;
         //先进行表单非空验证
-        if (title == "") {
+        if (troubleOwner == "") {
             this.setData({
                 showTopTips: true,
-                TopTips: '请输入主题'
+                TopTips: '请输入故障人'
             });
-        } else if (address == '点击选择位置') {
+        } else if (office == '') {
             this.setData({
                 showTopTips: true,
-                TopTips: '请选择地点'
-            });
-        } else if (switchHide == true && peoplenum == "") {
-            this.setData({
-                showTopTips: true,
-                TopTips: '请输入人数'
-            });
-        } else if (content == "") {
-            this.setData({
-                showTopTips: true,
-                TopTips: '请输入活动内容'
-            });
-        } else if (realname == "") {
-            this.setData({
-                showTopTips: true,
-                TopTips: '请输入真实姓名'
-            });
-        } else if (realname != "" && !nameReg.test(realname)) {
-            this.setData({
-                showTopTips: true,
-                TopTips: '真实姓名一般为2-4位汉字'
-            });
-        } else if (contactValue == "") {
-            this.setData({
-                showTopTips: true,
-                TopTips: '请输入联系方式'
-            });
-        } else if (contactWay == "微信号" && !wxReg.test(contactValue)) {
-            this.setData({
-                showTopTips: true,
-                TopTips: '微信号格式不正确'
-            });
-        } else if (contactWay == "手机号" && !phReg.test(contactValue)) {
-            this.setData({
-                showTopTips: true,
-                TopTips: '手机号格式不正确'
-            });
-        } else if (contactWay == "QQ号" && !qqReg.test(contactValue)) {
-            this.setData({
-                showTopTips: true,
-                TopTips: 'QQ号格式不正确'
+                TopTips: '请输入所属科室'
             });
         } else {
-            console.log('校验完毕');
-            that.setData({
-                isLoading: true,
-                isdisabled: true
+            console.log("校验完毕");
+            wx.request({
+                url: app.globalData.localApiUrl + '/trouble/submit',
+                method: 'POST',
+                header: {
+                    'content-type': 'application/json'
+                },
+                success(res) {
+                    console.log(res.data);
+                    if (res.data.code == 1) {
+                        // 跳转到提交成功页面
+                        wx.navigateTo({
+                            url: '/pages/home/submit_suc/submit_suc'
+                        })
+                    } else {
+                        // 提交失败
+                        wx.showToast({
+                            title: '提交失败，请稍后重试',
+                            icon: 'none',
+                            duration: 2000
             })
+                    }
+                }
+            });
         }
-
         setTimeout(function () {
             that.setData({
                 showTopTips: false
@@ -312,17 +277,33 @@ Page({
     }
 })
 
-//根据活动类型获取活动类型名称
-function getTypeName(acttype) {
-    var acttypeName = "";
-    if (acttype == 1) acttypeName = "运动";
-    else if (acttype == 2) acttypeName = "游戏";
-    else if (acttype == 3) acttypeName = "交友";
-    else if (acttype == 4) acttypeName = "旅行";
-    else if (acttype == 5) acttypeName = "读书";
-    else if (acttype == 6) acttypeName = "竞赛";
-    else if (acttype == 7) acttypeName = "电影";
-    else if (acttype == 8) acttypeName = "音乐";
-    else if (acttype == 9) acttypeName = "其他";
-    return acttypeName;
+function upload(page, path) {
+    // 成功后直接上传
+    wx.uploadFile({
+        url: app.globalData.localApiUrl + '/common/uploadPic',
+        filePath: path[0],
+        name: 'file',
+        header: {
+            "Content-Type": "multipart/form-data"
+        },
+        // formData: {
+        //   //和服务器约定的token, 一般也可以放在header中
+        //   'session_token': wx.getStorageSync('session_token')
+        // },
+        success: function (res) {
+            console.log(res);
+            if (res.statusCode != 200) {
+                wx.showModal({
+                    title: '提示',
+                    content: '上传失败',
+                    showCancel: false
+                })
+                return;
+            }
+            // 设置待上传至后台的图片url
+            page.setData({
+                src: res.data.data[0].url
+            })
+        },
+    })
 }
