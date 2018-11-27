@@ -110,13 +110,14 @@ Page({
         });
     },
 
-    //改变活动类别
+    //改变故障类别
     firTypeChange: function (e) {
+        console.log(e.detail.value + "," + this.data.firTypes[e.detail.value]);
         this.setData({
             firTypeIndex: e.detail.value,
             firTypeValue: this.data.firTypes[e.detail.value]
         });
-        //获取一级类型
+        //获取二级类型
         wx.request({
             url: app.globalData.localApiUrl + '/common/secTypes?firTypeId=' + this.data.firTypeIndex,
             method: 'GET',
@@ -126,8 +127,14 @@ Page({
             success(res) {
                 console.log(res.data);
                 if (res.data.code == 1) {
+                    var data = res.data.data;
+                    var secTypes = new Array();
+                    for (var i in data) {
+                        secTypes.push(data[i].typeName);
+                    }
+                    console.log(secTypes);
                     that.setData({
-                        secTypes: res.data.data,
+                        secTypes: secTypes,
                     })
                 }
             }
@@ -154,7 +161,7 @@ Page({
                     isSrc: true,
                     src: tempFilePaths
                 });
-                upload(that, path);
+                upload(that, tempFilePaths);
             },
         })
     },
@@ -291,7 +298,10 @@ function upload(page, path) {
         //   'session_token': wx.getStorageSync('session_token')
         // },
         success: function (res) {
-            console.log(res);
+            console.log(res.data)
+            var imageList = JSON.parse(res.data);
+            console.log(imageList.data);
+            console.log(imageList.data[0].url);
             if (res.statusCode != 200) {
                 wx.showModal({
                     title: '提示',
@@ -302,7 +312,7 @@ function upload(page, path) {
             }
             // 设置待上传至后台的图片url
             page.setData({
-                src: res.data.data[0].url
+                src: imageList.data[0].url
             })
         },
     })
