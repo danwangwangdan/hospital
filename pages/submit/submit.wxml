@@ -5,12 +5,12 @@
     <view class="mod-a mt20">
       <view class="mod t-name">
         <text class="key">故障人</text>
-        <input name="user" class="input" maxlength="100"  value="{{username}}" />
+        <input name="user" class="input" maxlength="100" value="{{username}}" bindinput="bindUserChange"/>
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="mod t-name">
         <text class="key">所属科室</text>
-        <input name="office" class="input" maxlength="100"  value="{{office}}" />
+        <input name="office" class="input" maxlength="100" value="{{office}}" bindinput="bindOfficeChange"/>
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="mod t-name">
@@ -21,7 +21,7 @@
           </view>
         </picker>
       </view>
-       <view class="mod t-name">
+      <view class="mod t-name">
         <text class="key">二级类型</text>
         <picker bindchange="secTypeChange" disabled="{{secTypeDis}}" value="{{typeIndex}}" range="{{secTypes}}">
           <view class="value" name="secTypes">{{secTypes[secTypeIndex]}}
@@ -39,14 +39,14 @@
     <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
       <view>添加截图（可选）</view>
     </view>
-    <view wx:if="{{isSrc}}" class="image_box" >
+    <view wx:if="{{isSrc}}" class="image_box">
       <view class="picPre">
         <image src="{{src}}" mode="aspectFit" bindtap="previewImage"></image>
         <view bindtap="clearPic"></view>
       </view>
     </view>
     <view>
-          <i-button style="display:block;margin:0 auto;width:60%;margin-top:30px" bind:click="submitSuc" type="primary" shape="circle">提交</i-button>
+      <button style="display:block;margin:0 auto;width:60%;margin-top:30px" form-type="submit" type="primary" shape="circle">提交</button>
     </view>
   </form>
 </view>

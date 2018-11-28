@@ -2,28 +2,13 @@ const app = getApp()
 
 Page({
   data: {
-    troubleType: [{
-        id: 0,
-        name: '电脑问题'
-      },
-      {
-        id: 1,
-        name: '导航台软件使用问题'
-      },
-      {
-        id: 2,
-        name: '打印机问题'
-      },
-      {
-        id: 3,
-        name: '其他问题'
-      }
-    ],
+      troubleId: 0
   },
   //事件处理函数
   toView: function() {
+      var that = this;
     wx.navigateTo({
-      url: '/pages/detail/detail'
+        url: '/pages/detail/detail?troubleId=' + that.data.troubleId
     })
   },
   toHome: function() {
@@ -31,15 +16,10 @@ Page({
         url: '/pages/submit/submit'
     })
   },
-  onLoad: function() {
-
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+    onLoad: function (options) {
+        var troubleId = options.troubleId;
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+        troubleId: troubleId
+    });
   }
 })

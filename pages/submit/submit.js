@@ -17,19 +17,20 @@ Page({
      * 页面的初始数据
      */
     data: {
+        userInfo: wx.getStorageSync('userInfo'),
         showTopTips: false,
         TopTips: '',
-        username: app.globalData.nickName,
-        office: app.globalData.office,
+        username: wx.getStorageSync("userInfo").nickName,
+        office: wx.getStorageSync("userInfo").office,
         imageUrl: "",
         noteMaxLen: 200, //备注最多字数
         content: "",
         noteNowLen: 0, //备注当前字数
         firTypes: ['其他问题'],
-        firTypeValue: '',
+        firTypeValue: '其他问题',
         firTypeIndex: 0,
         secTypes: ['其他问题'],
-        secTypeValue: '',
+        secTypeValue: '其他问题',
         secTypeDis: false,
         secTypeIndex: 0,
         src: "",
@@ -56,6 +57,20 @@ Page({
         that.setData({
             content: value,
             noteNowLen: len
+        })
+    },
+    bindUserChange: function (e) {
+        var that = this;
+        var value = e.detail.value;
+        that.setData({
+            username: value,
+        })
+    },
+    bindOfficeChange: function (e) {
+        var that = this;
+        var value = e.detail.value;
+        that.setData({
+            office: value,
         })
     },
 
@@ -201,9 +216,9 @@ Page({
         var troubleOwner = this.data.username;
         var office = this.data.office;
         var content = this.data.content;
-        var firType = this.data.firType;
-        var secType = this.data.secType;
-        // var imgSrc = this.data.src;
+        var firType = this.data.firTypeValue;
+        var secType = this.data.secTypeValue;
+        var captureUrls = this.data.src;
         //先进行表单非空验证
         if (troubleOwner == "") {
             this.setData({
@@ -216,19 +231,28 @@ Page({
                 TopTips: '请输入所属科室'
             });
         } else {
-            console.log("校验完毕");
             wx.request({
                 url: app.globalData.localApiUrl + '/trouble/submit',
                 method: 'POST',
                 header: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                data: {
+                    'userId': 1,
+                    'troublePersonName': troubleOwner,
+                    'office': office,
+                    'detail': content,
+                    'firType': firType,
+                    'secType': secType,
+                    'captureUrls': captureUrls
                 },
                 success(res) {
                     console.log(res.data);
                     if (res.data.code == 1) {
+                        console.log(res.data.data.id);
                         // 跳转到提交成功页面
                         wx.navigateTo({
-                            url: '/pages/home/submit_suc/submit_suc'
+                            url: '/pages/home/submit_suc/submit_suc?troubleId=' + res.data.data.id
                         })
                     } else {
                         // 提交失败

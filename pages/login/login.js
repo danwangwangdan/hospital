@@ -54,6 +54,10 @@ Page({
               url: '/pages/submit/submit'
             });
             // 存储用户信息
+              wx.setStorage({
+                  key: "userInfo",
+                  data: res.data.data
+              })
             app.globalData.userInfo = res.data.data;
           } else {
             // 登录失败
