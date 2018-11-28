@@ -2,17 +2,17 @@
 <scroll-view scroll-y="true" class="all_scr" style="padding-bottom:112rpx;">
   <view style='margin-top:20px'>
     <i-steps>
-      <i-step status="" icon="createtask">
+      <i-step status="{{isCommitted}}" icon="createtask">
         <view slot="title">
           已提交
         </view>
       </i-step>
-      <i-step status="process" icon="flashlight">
+      <i-step status="{{isConfirmed}}" icon="flashlight">
         <view slot="title">
           已确认
         </view>
       </i-step>
-      <i-step icon="right">
+      <i-step icon="{{isSolved}}">
         <view slot="title">
           已解决
         </view>
@@ -23,18 +23,17 @@
     <!--发布者信息、发布时间、点赞量、评论量-->
     <view class="des_txt detail_msg">
       <view>
-        <text>故障人：黄士明</text>
+        <text>故障人：{{troubleOwner}}</text>
       </view>
       <view>
         <text style="margin-right:12px;"></text>
-        <text style="margin-right:12px;">2018.11.11 11:11</text>
+        <text style="margin-right:12px;">{{submitTime}}</text>
       </view>
     </view>
     <view class="detail_input" style="padding-bottom:15rpx;">
       <text class="des_txt detail_txt">所属科室</text>
       <view class="detail_row_right actAddress">
-        <!--活动地点-->
-        <view class="txt-overflow">网络中心</view>
+        <view class="txt-overflow">{{office}}</view>
       </view>
       <view class="detail_lineh"></view>
       <view style="display:flex;justify-content:flex-end">
@@ -43,10 +42,20 @@
       </view>
     </view>
     <view class="detail_input" style="padding-bottom:15rpx;">
-      <text class="des_txt detail_txt">故障类型</text>
+      <text class="des_txt detail_txt">一级类型</text>
       <view class="detail_row_right actAddress">
-        <!--活动地点-->
-        <view class="txt-overflow">打印机故障</view>
+        <view class="txt-overflow">{{firType}}</view>
+      </view>
+      <view class="detail_lineh"></view>
+      <view style="display:flex;justify-content:flex-end">
+        <!--分割线-->
+        <view class="detail_linev"></view>
+      </view>
+    </view>
+    <view class="detail_input" style="padding-bottom:15rpx;">
+      <text class="des_txt detail_txt">二级类型</text>
+      <view class="detail_row_right actAddress">
+        <view class="txt-overflow">{{secType}}</view>
       </view>
       <view class="detail_lineh"></view>
       <view style="display:flex;justify-content:flex-end">
@@ -55,12 +64,11 @@
       </view>
     </view>
 
-    <!--活动时间item-->
     <view class="detail_input">
       <text class="des_txt detail_txt">详细描述</text>
       <view class="detail_right">
         <!--时间-->
-        <text class="note_item_text">我的打印机卡纸了，快来帮忙看一下。我的打印机卡纸了，快来帮忙看一下。我的打印机卡纸了，快来帮忙看一下。</text>
+        <text class="note_item_text">{{detail}}</text>
       </view>
       <view class="detail_lineh"></view>
     </view>
@@ -69,7 +77,7 @@
         <text class="des_txt detail_txt">故障截图</text>
       </view>
       <view style='text-align:center'>
-        <image class="photo" src="../../pics/me_photo.png"></image>
+        <image class="photo" src="{{captureUrl}}"></image>
       </view>
       
     </view>
