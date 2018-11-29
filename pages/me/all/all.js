@@ -4,11 +4,13 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    troubleList: []
+  },
   //事件处理函数
   toDetail: function() {
     wx.navigateTo({
-      url: '/pages/detail/detail'
+      url: '/pages/detail/detail?troubleId='
     })
   },
   /**

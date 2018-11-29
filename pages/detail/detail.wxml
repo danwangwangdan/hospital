@@ -12,7 +12,7 @@
           已确认
         </view>
       </i-step>
-      <i-step icon="{{isSolved}}">
+      <i-step icon="{{isSolved}}" icon="right">
         <view slot="title">
           已解决
         </view>
