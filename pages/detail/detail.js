@@ -20,7 +20,7 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
-    var troubleId = 1;
+    var troubleId = options.troubleId;
     that.setData({
       troubleId: troubleId
     });

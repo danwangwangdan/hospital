@@ -1,15 +1,12 @@
 <scroll-view class="centerView">
   <view style="margin-top:10px">
     <i-cell-group>
-      <i-cell bindtap="toDetail" title="打印机问题" value="2018.10.8 10:00">
-        <i-icon type="createtask" size="20" slot="icon" />
-      </i-cell>
-      <i-cell bindtap="toDetail" title="导航台问题" value="2018.10.8 09:00">
-        <i-icon type="createtask" size="20" slot="icon" />
-      </i-cell>
-      <i-cell bindtap="toDetail" title="电脑问题" value="2018.10.5 18:00">
-        <i-icon type="createtask" size="20" slot="icon" />
-      </i-cell>
+      <block wx:key="id" wx:for="{{troubleList}}">
+        <i-cell data-id="{{item.id}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
+          <i-icon type="createtask" size="20" slot="icon" />
+        </i-cell>
+      </block>
+    
     </i-cell-group>
   </view>
 </scroll-view>

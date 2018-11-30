@@ -1,13 +1,14 @@
 // pages/me/me.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    nickname: '黄士明',
-    office: '网络中心',
-    tel: "15974040709"
+    nickname: '',
+    office: '',
+    tel: ""
   },
   toAll: function() {
     wx.navigateTo({

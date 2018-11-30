@@ -21,13 +21,11 @@ Page({
     this.setData({
       username: event.detail.detail.value
     });
-    // console.log(event)
   },
   //事件处理函数
   toLogin: function() {
     var username = this.data.username;
     var password = this.data.password;
-    console.log(username + password);
     // 非空检验
     if (username == "" || password == "") {
       wx.showToast({

@@ -2,24 +2,24 @@ const app = getApp()
 
 Page({
   data: {
-      troubleId: 0
+    troubleId: 0
   },
   //事件处理函数
   toView: function() {
-      var that = this;
+    var that = this;
     wx.navigateTo({
-        url: '/pages/detail/detail?troubleId=' + that.data.troubleId
+      url: '/pages/detail/detail?troubleId=' + that.data.troubleId
     })
   },
   toHome: function() {
     wx.reLaunch({
-        url: '/pages/submit/submit'
+      url: '/pages/submit/submit'
     })
   },
-    onLoad: function (options) {
-        var troubleId = options.troubleId;
+  onLoad: function(options) {
+    var troubleId = options.troubleId;
     this.setData({
-        troubleId: troubleId
+      troubleId: troubleId
     });
   }
 })
