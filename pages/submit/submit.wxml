@@ -1,6 +1,6 @@
 <!-- 新建故障 -->
 <view class="add-page">
-  <form bindsubmit="submitForm">
+  <form>
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
     <view class="mod-a mt20">
       <view class="mod t-name">
@@ -10,7 +10,7 @@
       </view>
       <view class="mod t-name">
         <text class="key">所属科室</text>
-        <input name="office" class="input" maxlength="100" value="{{office}}" bindinput="bindOfficeChange"/>
+        <input name="office" class="input" maxlength="100" value="{{office}}" bindinput="bindOfficeChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="mod t-name">
@@ -46,7 +46,7 @@
       </view>
     </view>
     <view>
-      <button style="display:block;margin:0 auto;width:60%;margin-top:30px" form-type="submit" type="primary" shape="circle">提交</button>
+      <i-button style="display:block;margin:0 auto;width:60%;margin-top:30px" bind:click="submitTrouble" type="primary" shape="circle">提交</i-button>
     </view>
   </form>
 </view>

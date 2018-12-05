@@ -5,7 +5,8 @@ const app = getApp()
 Page({
   data: {
     username: '',
-    password: ''
+    password: '',
+    jsCode: ''
   },
   // bindUsernameChange: function (event) {
   //   this.setData({
@@ -22,8 +23,12 @@ Page({
       username: event.detail.detail.value
     });
   },
+  bindGetUserInfo: function(e) {
+
+  },
   //事件处理函数
   toLogin: function() {
+    var that = this;
     var username = this.data.username;
     var password = this.data.password;
     // 非空检验
@@ -34,39 +39,47 @@ Page({
         duration: 2000
       });
     } else {
-      wx.request({
-        url: app.globalData.localApiUrl + '/user/login',
-        method: 'POST',
-        data: {
-          "username": username,
-          "password": password
-        },
-        header: {
-          'content-type': 'application/json'
-        },
+      wx.login({
         success(res) {
-          console.log(res.data);
-          if (res.data.code == 1) {
-            // 登录成功
-            wx.switchTab({
-              url: '/pages/submit/submit'
+          console.log(res)
+          if (res.code) {
+            wx.request({
+              url: app.globalData.localApiUrl + '/user/login',
+              method: 'POST',
+              data: {
+                "username": username,
+                "password": password,
+                "jsCode": res.code
+              },
+              header: {
+                'content-type': 'application/json'
+              },
+              success(res) {
+                console.log(res.data);
+                if (res.data.code == 1) {
+                  // 登录成功
+                  wx.switchTab({
+                    url: '/pages/submit/submit'
+                  });
+                  // 存储用户信息
+                  wx.setStorageSync("userInfo", res.data.data);
+                  app.globalData.userInfo = res.data.data;
+                } else {
+                  // 登录失败
+                  wx.showToast({
+                    title: '登录失败，账号或密码错误',
+                    icon: 'none',
+                    duration: 2000
+                  })
+                }
+              }
             });
-            // 存储用户信息
-              wx.setStorage({
-                  key: "userInfo",
-                  data: res.data.data
-              })
-            app.globalData.userInfo = res.data.data;
           } else {
-            // 登录失败
-            wx.showToast({
-              title: '登录失败，账号或密码错误',
-              icon: 'none',
-              duration: 2000
-            })
+            console.log('登录失败！' + res.errMsg)
           }
         }
-      });
+      })
+
     }
   },
   getUserInfo: function(e) {

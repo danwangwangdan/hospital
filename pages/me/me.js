@@ -36,6 +36,7 @@ Page({
     })
   },
   toLogout: function() {
+    wx.clearStorageSync();
     wx.request({
       url: app.globalData.localApiUrl + '/user/logout',
       method: 'GET',

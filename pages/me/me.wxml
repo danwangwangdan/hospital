@@ -28,7 +28,7 @@
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon3 flex-item">
-        <image src="../../pics/submitted.png" style="height:28px;width:28px"></image>
+        <image src="../../pics/submitted.png" style="height:26px;width:26px"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toConfirmed">
         <text>已确认的故障</text>
@@ -43,7 +43,7 @@
       </view>
     </view>
     <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item">
+      <view class="myitem-icon5 flex-item">
         <image src="../../pics/advice.png" style="height:20px;weight:20px"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toSuggest">

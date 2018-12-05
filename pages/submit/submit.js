@@ -17,10 +17,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isLogin: true,
+    userInfo: wx.getStorageSync('userInfo'),
     showTopTips: false,
     TopTips: '',
-    username: wx.getStorageSync("userInfo").nickname,
-    office: wx.getStorageSync("userInfo").office,
+    username: "",
+    office: "",
     imageUrl: "",
     noteMaxLen: 200, //备注最多字数
     content: "",
@@ -78,14 +80,27 @@ Page({
    */
   onLoad: function(options) {
     that = this;
+    // 判断是否登录
+    wx.checkSession({
+      fail() {
+        that.setData({
+          isLogin: false
+        });
+      },
+    });
+    if (wx.getStorageSync("userInfo") == undefined || wx.getStorageSync("userInfo") == "") {
+      that.setData({
+        isLogin: false
+      })
+    }
+    if (!that.data.isLogin) {
+      wx.reLaunch({
+        url: '/pages/login/login'
+      })
+    }
     that.setData({ //初始化数据
-      src: "",
-      isSrc: false,
-      ishide: "0",
-      autoFocus: true,
-      isLoading: false,
-      loading: true,
-      isdisabled: false
+      username: wx.getStorageSync("userInfo").nickname,
+      office: wx.getStorageSync("userInfo").office
     })
   },
 
@@ -209,7 +224,7 @@ Page({
   },
 
   //提交表单
-  submitForm: function(e) {
+  submitTrouble: function(e) {
     var that = this;
     var troubleOwner = this.data.username;
     var office = this.data.office;
@@ -233,7 +248,7 @@ Page({
         url: app.globalData.localApiUrl + '/trouble/submit',
         method: 'POST',
         header: {
-          'content-type': 'application/x-www-form-urlencoded'
+          'content-type': 'application/json'
         },
         data: {
           'userId': 1,

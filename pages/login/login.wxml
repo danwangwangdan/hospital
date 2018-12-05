@@ -3,11 +3,9 @@
     <view class="login_welcome">
       <text style="font-size:30px;margin-top:-42px">欢迎登录</text>
     </view>
-    <view class="divView">
-      <view class="divLine"></view>
-    </view>
+    <i-divider></i-divider>
     <view>
-      <image style='margin-top:35px;margin-left:-10px' src="../../pics/login_welcome.png" mode="widthFix">
+      <image style='margin-top:10px;margin-left:-10px' src="../../pics/login_welcome.png" mode="widthFix">
       </image>
     </view>
     <view style='margin-top:35px'>
@@ -16,7 +14,7 @@
     </view>
 
     <view style='margin-top:35px'>
-      <i-button bind:click="toLogin" type="primary" shape="circle">登录</i-button>
+      <i-button bind:click="toLogin" open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo" type="primary" shape="circle">登录</i-button>
     </view>
   </view>
   <view class="footer">
