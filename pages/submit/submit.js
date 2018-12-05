@@ -18,7 +18,6 @@ Page({
    */
   data: {
     isLogin: true,
-    userInfo: wx.getStorageSync('userInfo'),
     showTopTips: false,
     TopTips: '',
     username: "",
@@ -97,46 +96,34 @@ Page({
       wx.reLaunch({
         url: '/pages/login/login'
       })
-    }
-    that.setData({ //初始化数据
-      username: wx.getStorageSync("userInfo").nickname,
-      office: wx.getStorageSync("userInfo").office
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    //获取一级类型
-    wx.request({
-      url: app.globalData.localApiUrl + '/common/firTypes',
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res) {
-        console.log(res.data);
-        if (res.data.code == 1) {
-          var data = res.data.data;
-          var firTypes = new Array();
-          for (var i in data) {
-            firTypes.push(data[i].typeName);
+    }else {
+      //获取一级类型
+      wx.request({
+        url: app.globalData.localApiUrl + '/common/firTypes',
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            var data = res.data.data;
+            var firTypes = new Array();
+            for (var i in data) {
+              firTypes.push(data[i].typeName);
+            }
+            console.log(firTypes);
+            that.setData({
+              firTypes: firTypes,
+            })
           }
-          console.log(firTypes);
-          that.setData({
-            firTypes: firTypes,
-          })
         }
-      }
-    });
+      });
+      that.setData({ //初始化数据
+        username: wx.getStorageSync("userInfo").nickname,
+        office: wx.getStorageSync("userInfo").office
+      })
+    }
   },
 
   //改变故障类别

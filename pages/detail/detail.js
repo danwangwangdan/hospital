@@ -35,7 +35,7 @@ Page({
       troubleId: troubleId
     });
     wx.request({
-      url: app.globalData.localApiUrl + '/trouble/detail?troubleId=2', //+ troubleId,
+      url: app.globalData.localApiUrl + '/trouble/detail?troubleId=' + troubleId,
       method: 'GET',
       success(res) {
         console.log(res.data);
@@ -113,7 +113,7 @@ Page({
               'content-type': 'application/json'
             },
             data: {
-              'troubleId': 2,//this.data.troubleId,
+              'troubleId': this.data.troubleId,
               'confirmerId': wx.getStorageSync("userInfo").id,
               'confirmer': wx.getStorageSync("userInfo").nickname
             },
