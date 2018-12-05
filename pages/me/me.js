@@ -42,7 +42,7 @@ Page({
       success(res) {
         console.log(res.data);
         if (res.data.code == 1) {
-          wx.navigateTo({
+          wx.reLaunch({
             url: '/pages/login/login'
           })
         } else {

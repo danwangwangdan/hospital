@@ -4,7 +4,7 @@
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
     <view class="mod-a mt20">
       <view class="mod t-name">
-        <text class="key">故障人</text>
+        <text decode="{{true}}"class="key">故障人&nbsp;&nbsp;&nbsp;</text>
         <input name="user" class="input" maxlength="100" value="{{username}}" bindinput="bindUserChange"/>
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>

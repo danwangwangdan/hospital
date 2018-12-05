@@ -1,11 +1,18 @@
-// pages/me/me.js
+var app = getApp();
+function formatDate(timeStampValue) {
+  var now = new Date(timeStampValue);
+  var year = now.getFullYear;
+  var returnString = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes();
+  return returnString;
+};
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    troubleList: []
+    troubleList: [],
+    isNull:true
   },
   toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
@@ -20,7 +27,7 @@ Page({
   onLoad: function(options) {
     var that = this;
     wx.request({
-      url: app.globalData.localApiUrl + '/trouble/byStatus?status=1',
+      url: app.globalData.localApiUrl + '/trouble/byStatus?status=1&userId=' + wx.getStorageSync("userInfo").id,
       method: 'GET',
       success(res) {
         console.log(res.data);
@@ -28,11 +35,14 @@ Page({
           var data = res.data.data;
           for (let i = 0; i < data.length; i++) {
             console.log(data[i].submitTime);
-            data[i].submitTime = new Date(data[i].submitTime).toLocaleString();
+            data[i].submitTime = formatDate(data[i].submitTime);
           }
-          that.setData({
-            troubleList: data,
-          })
+          if (data.length != 0) {
+            that.setData({
+              troubleList: data,
+              isNull: false
+            });
+          }
         }
       }
     });

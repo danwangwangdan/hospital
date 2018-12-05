@@ -3,7 +3,8 @@
     "i-row": "../../plugins/iview/row/index",
     "i-col": "../../plugins/iview/col/index",
     "i-steps": "../../plugins/iview/steps/index",
-    "i-step": "../../plugins/iview/step/index"
+    "i-step": "../../plugins/iview/step/index",
+    "i-button": "../../plugins/iview/button/index"
   },
   "navigationBarTitleText": "故障详情"
 }

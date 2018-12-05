@@ -1,17 +1,17 @@
 {
   "pages": [
-    "pages/me/confirmed/confirmed",
-    "pages/login/login",
-    "pages/me/suggestion/suggestion",
-    "pages/me/all/all",
-    "pages/me/me",
     "pages/detail/detail",
+    "pages/login/login",
     "pages/submit/submit",
+    "pages/me/submited/submited",
+    "pages/me/me",
+    "pages/me/solved/solved",
+    "pages/me/confirmed/confirmed",
+    "pages/me/all/all",
+    "pages/me/suggestion/suggestion",
     "pages/me/suggestion/suggest_suc/suggest_suc",
     "pages/home/submit_suc/submit_suc",
     "pages/home/home",
-    "pages/me/solved/solved",
-    "pages/me/submited/submited",
     "pages/logs/logs"
   ],
   "window": {

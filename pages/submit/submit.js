@@ -17,7 +17,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: wx.getStorageSync('userInfo'),
     showTopTips: false,
     TopTips: '',
     username: wx.getStorageSync("userInfo").nickname,
@@ -186,7 +185,6 @@ Page({
       current: this.data.src, // 当前显示图片的http链接
       urls: this.data.src // 需要预览的图片http链接列表
     })
-
   },
 
   //删除图片
@@ -249,7 +247,7 @@ Page({
         success(res) {
           console.log(res.data);
           if (res.data.code == 1) {
-            console.log("提交成功，id为："+res.data.data.id);
+            console.log("提交成功，id为：" + res.data.data.id);
             // 跳转到提交成功页面
             wx.navigateTo({
               url: '/pages/home/submit_suc/submit_suc?troubleId=' + res.data.data.id

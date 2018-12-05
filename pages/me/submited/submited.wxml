@@ -1,4 +1,4 @@
-<scroll-view class="centerView">
+<scroll-view>
   <view style="margin-top:10px">
     <i-cell-group>
       <block wx:key="id" wx:for="{{troubleList}}">
@@ -6,7 +6,10 @@
           <i-icon type="createtask" size="20" slot="icon" />
         </i-cell>
       </block>
-    
     </i-cell-group>
   </view>
 </scroll-view>
+<view class='centerView'>
+  <text  wx:if="{{isNull}}" style='color:#80848f'>这里什么也没有
+    </text>
+</view>

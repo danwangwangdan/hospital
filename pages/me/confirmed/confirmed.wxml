@@ -9,9 +9,8 @@
 
     </i-cell-group>
   </view>
-  
 </scroll-view>
 <view class='centerView'>
-    <text style='color:#80848f'>这里什么也没有
+  <text  wx:if="{{isNull}}"style='color:#80848f'>这里什么也没有
     </text>
-  </view>
+</view>

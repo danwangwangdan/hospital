@@ -6,15 +6,25 @@
         <view slot="title">
           已提交
         </view>
+        <view wx:if="{{isCommitContent}}" slot="content">
+          {{commitContent}}
+        </view>
       </i-step>
+
       <i-step status="{{isConfirmed}}" icon="flashlight">
         <view slot="title">
           已确认
         </view>
+        <view wx:if="{{isConfirmContent}}" slot="content">
+          {{confirmContent}}
+        </view>
       </i-step>
       <i-step icon="{{isSolved}}" icon="right">
         <view slot="title">
-          已解决
+          已完成
+        </view>
+        <view  wx:if="{{isSolveContent}}" slot="content">
+          {{solveContent}}
         </view>
       </i-step>
     </i-steps>
@@ -42,9 +52,9 @@
       </view>
     </view>
     <view class="detail_input" style="padding-bottom:15rpx;">
-      <text class="des_txt detail_txt">一级类型</text>
+      <text class="des_txt detail_txt">故障类型</text>
       <view class="detail_row_right actAddress">
-        <view class="txt-overflow">{{firType}}</view>
+        <view class="txt-overflow">{{troubleType}}</view>
       </view>
       <view class="detail_lineh"></view>
       <view style="display:flex;justify-content:flex-end">
@@ -52,18 +62,6 @@
         <view class="detail_linev"></view>
       </view>
     </view>
-    <view class="detail_input" style="padding-bottom:15rpx;">
-      <text class="des_txt detail_txt">二级类型</text>
-      <view class="detail_row_right actAddress">
-        <view class="txt-overflow">{{secType}}</view>
-      </view>
-      <view class="detail_lineh"></view>
-      <view style="display:flex;justify-content:flex-end">
-        <!--分割线-->
-        <view class="detail_linev"></view>
-      </view>
-    </view>
-
     <view class="detail_input">
       <text class="des_txt detail_txt">详细描述</text>
       <view class="detail_right">
@@ -77,9 +75,12 @@
         <text class="des_txt detail_txt">故障截图</text>
       </view>
       <view style='text-align:center'>
-        <image class="photo" src="{{captureUrl}}"></image>
+        <image class="photo" src="{{captureUrl}}" bindtap='previewImage' mode='aspectFit'></image>
       </view>
-      
+
+    </view>
+     <view style='margin-top:15px'>
+      <i-button wx:if="{{isRevokeShow}}" bind:click="toRevoke" type="primary" shape="circle">撤回故障</i-button>
     </view>
   </view>
 </scroll-view>
