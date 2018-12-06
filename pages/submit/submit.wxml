@@ -15,7 +15,7 @@
       </view>
       <view class="mod t-name">
         <text class="key">一级类型</text>
-        <picker bindchange="firTypeChange" value="{{typeIndex}}" range="{{firTypes}}">
+        <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}" >
           <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
             <image class="arrow-r" src="/pics/arrow_right.png"></image>
           </view>
@@ -23,7 +23,7 @@
       </view>
       <view class="mod t-name">
         <text class="key">二级类型</text>
-        <picker bindchange="secTypeChange" disabled="{{secTypeDis}}" value="{{typeIndex}}" range="{{secTypes}}">
+        <picker bindchange="secTypeChange" disabled="{{secTypeDis}}" value="{{secTypeIndex}}" range="{{secTypes}}">
           <view class="value" name="secTypes">{{secTypes[secTypeIndex]}}
             <image class="arrow-r" src="/pics/arrow_right.png"></image>
           </view>

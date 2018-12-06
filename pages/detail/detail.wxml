@@ -19,11 +19,11 @@
           {{confirmContent}}
         </view>
       </i-step>
-      <i-step icon="{{isSolved}}" icon="right">
+      <i-step status="{{isSolved}}" icon="right">
         <view slot="title">
           已完成
         </view>
-        <view  wx:if="{{isSolveContent}}" slot="content">
+        <view wx:if="{{isSolveContent}}" slot="content">
           {{solveContent}}
         </view>
       </i-step>
@@ -70,7 +70,7 @@
       </view>
       <view class="detail_lineh"></view>
     </view>
-    <view>
+    <view wx:if="{{isPicTextShow}}">
       <view class="detail_input">
         <text class="des_txt detail_txt">故障截图</text>
       </view>
@@ -79,7 +79,7 @@
       </view>
 
     </view>
-     <view style='margin-top:15px'>
+    <view style='margin-top:15px'>
       <i-button wx:if="{{isRevokeShow}}" bind:click="toRevoke" type="primary" shape="circle">撤回故障</i-button>
     </view>
   </view>

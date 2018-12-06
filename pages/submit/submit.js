@@ -129,6 +129,7 @@ Page({
 
   //改变故障类别
   firTypeChange: function(e) {
+    var that = this;
     console.log(e.detail.value + "," + this.data.firTypes[e.detail.value]);
     this.setData({
       firTypeIndex: e.detail.value,
@@ -152,6 +153,7 @@ Page({
           console.log(secTypes);
           that.setData({
             secTypes: secTypes,
+            secTypeValue: secTypes[0]
           })
         }
       }

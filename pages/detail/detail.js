@@ -19,6 +19,7 @@ Page({
     confirmContent: "",
     isSolveContent: false,
     isRevokeShow: false,
+    isPicTextShow: true,
     solveContent: "",
     captureUrl: "",
     captureUrls: [],
@@ -28,14 +29,10 @@ Page({
     submitTime: "",
     troubleOwner: ""
   },
-  onLoad: function(options) {
+  onShow: function() {
     var that = this;
-    var troubleId = options.troubleId;
-    that.setData({
-      troubleId: troubleId
-    });
     wx.request({
-      url: app.globalData.localApiUrl + '/trouble/detail?troubleId=' + troubleId,
+      url: app.globalData.localApiUrl + '/trouble/detail?troubleId=' + that.data.troubleId,
       method: 'GET',
       success(res) {
         console.log(res.data);
@@ -50,6 +47,16 @@ Page({
             detail: trouble.detail,
             captureUrl: trouble.captureUrls
           })
+          if (trouble.captureUrls == "") {
+            that.setData({
+              isPicTextShow: false
+            });
+          }
+          if (trouble.detail == "") {
+            that.setData({
+              detail: "无"
+            });
+          }
           if (trouble.status == 1) { // 已提交
             that.setData({
               isRevokeShow: true,
@@ -91,6 +98,15 @@ Page({
       }
     });
   },
+  onLoad: function(options) {
+    var that = this;
+    if (that.data.troubleId == 0) {
+      var troubleId = options.troubleId;
+      that.setData({
+        troubleId: troubleId
+      });
+    }
+  },
   previewImage: function() {
 
     wx.previewImage({
@@ -113,22 +129,33 @@ Page({
               'content-type': 'application/json'
             },
             data: {
-              'troubleId': this.data.troubleId,
-              'confirmerId': wx.getStorageSync("userInfo").id,
-              'confirmer': wx.getStorageSync("userInfo").nickname
+              'troubleId': that.data.troubleId,
+              'solverId': wx.getStorageSync("userInfo").id,
+              'solver': wx.getStorageSync("userInfo").nickname
             },
             success(res) {
               console.log(res.data);
               if (res.data.code == 1) {
-                var data = res.data.data;
-                var firTypes = new Array();
-                for (var i in data) {
-                  firTypes.push(data[i].typeName);
-                }
-                console.log(firTypes);
+                // 撤回成功
+                wx.showToast({
+                  title: '撤回成功',
+                  icon: 'none',
+                  duration: 2000
+                });
+                that.onShow();
+                var troubleId = options.troubleId;
                 that.setData({
-                  firTypes: firTypes,
-                })
+                  troubleId: troubleId
+                });
+                // var data = res.data.data;
+                // var firTypes = new Array();
+                // for (var i in data) {
+                //   firTypes.push(data[i].typeName);
+                // }
+                // console.log(firTypes);
+                // that.setData({
+                //   firTypes: firTypes,
+                // })
               }
             }
           });

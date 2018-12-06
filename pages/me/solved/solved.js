@@ -16,7 +16,7 @@ Page({
     troubleList: [],
     isNull: true
   },
-  toDetail: function() {
+  toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
     console.log("跳转到：" + troubleId);
 
@@ -37,7 +37,7 @@ Page({
         if (res.data.code == 1) {
           var data = res.data.data;
           for (let i = 0; i < data.length; i++) {
-            console.log(data[i].submitTime);
+     
             data[i].submitTime = formatDate(data[i].submitTime);
           }
           if (data.length != 0) {
