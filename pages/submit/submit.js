@@ -34,6 +34,7 @@ Page({
     secTypeDis: false,
     secTypeIndex: 0,
     src: "",
+    srcArray:[],
     isSrc: false,
     ishide: "0",
     autoFocus: true,
@@ -174,8 +175,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         that.setData({
-          isSrc: true,
-          src: tempFilePaths
+          isSrc: true
         });
         upload(that, tempFilePaths);
       },
@@ -185,7 +185,7 @@ Page({
   previewImage: function() {
     wx.previewImage({
       current: this.data.src, // 当前显示图片的http链接
-      urls: this.data.src // 需要预览的图片http链接列表
+      urls: this.data.srcArray // 需要预览的图片http链接列表
     })
   },
 
@@ -336,7 +336,8 @@ function upload(page, path) {
       }
       // 设置待上传至后台的图片url
       page.setData({
-        src: imageList.data[0].url
+        src: imageList.data[0].url,
+        srcArray: path
       })
     },
   })
