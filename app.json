@@ -11,8 +11,7 @@
     "pages/home/submit_suc/submit_suc",
     "pages/home/home",
     "pages/me/solved/solved",
-    "pages/me/submited/submited",
-    "pages/logs/logs"
+    "pages/me/submited/submited"
   ],
   "window": {
     "backgroundTextStyle": "light",

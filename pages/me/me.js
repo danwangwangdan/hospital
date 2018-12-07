@@ -8,7 +8,8 @@ Page({
   data: {
     nickname: '',
     office: '',
-    tel: ""
+    tel: "",
+    imgSrc: ""
   },
   toAll: function() {
     wx.navigateTo({
@@ -57,12 +58,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this;
     var userInfo = wx.getStorageSync("userInfo");
+    var _imgSrc = wx.getStorageSync("imgSrc");
+    if (_imgSrc == "") {
+      _imgSrc = "../../pics/me_photo.png"
+    }
+
     this.setData({
       nickname: wx.getStorageSync("userInfo").nickname,
       office: wx.getStorageSync("userInfo").office,
-      tel: wx.getStorageSync("userInfo").mobile
-    })
+      tel: wx.getStorageSync("userInfo").mobile,
+      imgSrc: _imgSrc
+    });
+    console.log("设置图片2" + _imgSrc)
   },
 
   /**

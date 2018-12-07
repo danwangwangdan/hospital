@@ -1,16 +1,5 @@
 //获取应用实例
 var app = getApp()
-var that;
-var myDate = new Date();
-
-//格式化日期
-function formate_data(myDate) {
-  let month_add = myDate.getMonth() + 1;
-  var formate_result = myDate.getFullYear() + '-' +
-    month_add + '-' +
-    myDate.getDate()
-  return formate_result;
-}
 
 Page({
   /**
@@ -34,7 +23,7 @@ Page({
     secTypeDis: false,
     secTypeIndex: 0,
     src: "",
-    srcArray:[],
+    srcArray: [],
     isSrc: false,
     ishide: "0",
     autoFocus: true,
@@ -79,7 +68,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    that = this;
+    console.log("onLoad加载，" + JSON.stringify(wx.getStorageSync("userInfo")));
+    var that = this;
     // 判断是否登录
     wx.checkSession({
       fail() {
@@ -93,11 +83,12 @@ Page({
         isLogin: false
       })
     }
+    console.log("isLogin:" + that.data.isLogin)
     if (!that.data.isLogin) {
       wx.reLaunch({
         url: '/pages/login/login'
       })
-    }else {
+    } else {
       //获取一级类型
       wx.request({
         url: app.globalData.localApiUrl + '/common/firTypes',
@@ -125,6 +116,19 @@ Page({
         office: wx.getStorageSync("userInfo").office
       })
     }
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console.log(res.userInfo.avatarUrl)
+              wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
+            }
+          })
+        }
+      }
+    })
   },
 
   //改变故障类别
@@ -169,6 +173,7 @@ Page({
 
   //上传活动图片
   uploadPic: function() { //选择图标
+    var that = this;
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original'], //压缩图

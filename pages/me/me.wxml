@@ -1,7 +1,7 @@
 <view class="container more">
   <view class="user flex-wrp">
     <view class="avatar flex-item">
-      <image class="userinfo-avatar" src="../../pics/me_photo.png" background-size="cover"></image>
+      <image class="userinfo-avatar" src="{{imgSrc}}" background-size="cover"></image>
     </view>
     <view class="user-info flex-item">
       <text class="userinfo-nickname">{{nickname}}</text>

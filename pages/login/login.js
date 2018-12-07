@@ -24,7 +24,7 @@ Page({
     });
   },
   bindGetUserInfo: function(e) {
-
+      
   },
   //事件处理函数
   toLogin: function() {
@@ -57,13 +57,12 @@ Page({
               success(res) {
                 console.log(res.data);
                 if (res.data.code == 1) {
+                  // 存储用户信息
+                  wx.setStorageSync("userInfo", res.data.data);
                   // 登录成功
                   wx.switchTab({
                     url: '/pages/submit/submit'
                   });
-                  // 存储用户信息
-                  wx.setStorageSync("userInfo", res.data.data);
-                  app.globalData.userInfo = res.data.data;
                 } else {
                   // 登录失败
                   wx.showToast({

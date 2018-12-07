@@ -1,12 +1,5 @@
 var app = getApp();
 
-function formatDate(timeStampValue) {
-  var now = new Date(timeStampValue);
-  var year = now.getFullYear;
-  var returnString = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes();
-  return returnString;
-};
-
 Page({
 
   /**
@@ -38,7 +31,7 @@ Page({
           var data = res.data.data;
           for (let i = 0; i < data.length; i++) {
      
-            data[i].submitTime = formatDate(data[i].submitTime);
+            data[i].submitTime = new Date(data[i].submitTime).Format("yyyy-MM-dd HH:mm");
           }
           if (data.length != 0) {
             that.setData({
