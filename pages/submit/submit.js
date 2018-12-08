@@ -27,6 +27,7 @@ Page({
     secTypeIndex: 0,
     src: "",
     srcArray: [],
+    isAllOther: true, //是否选择了 其他类型的故障
     isSrc: false,
     ishide: "0",
     autoFocus: true,
@@ -100,7 +101,6 @@ Page({
         isLogin: false
       })
     }
-    console.log("isLogin:" + that.data.isLogin)
     if (!that.data.isLogin) {
       wx.reLaunch({
         url: '/pages/login/login'
@@ -176,6 +176,46 @@ Page({
     let troubleId = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/detail/detail?troubleId=' + troubleId
+    }else {
+      //获取一级类型
+      wx.request({
+        url: app.globalData.localApiUrl + '/common/firTypes',
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            var data = res.data.data;
+            var firTypes = new Array();
+            for (var i in data) {
+              firTypes.push(data[i].typeName);
+            }
+            console.log(firTypes);
+            that.setData({
+              firTypes: firTypes,
+            })
+          }
+        }
+      });
+      that.setData({ //初始化数据
+        username: wx.getStorageSync("userInfo").nickname,
+        office: wx.getStorageSync("userInfo").office
+      })
+    }
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console.log(res.userInfo.avatarUrl)
+              wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
+            }
+          })
+        }
+      }
     })
   },
   submitSuc: function() {
@@ -218,6 +258,11 @@ Page({
       firTypeIndex: e.detail.value,
       firTypeValue: this.data.firTypes[e.detail.value]
     });
+    if (this.data.firTypes[e.detail.value] != '其他问题') {
+      this.setData({
+        isAllOther: false
+      });
+    }
     //获取二级类型
     wx.request({
       url: app.globalData.localApiUrl + '/common/secTypes?firTypeId=' + this.data.firTypeIndex,
@@ -307,14 +352,22 @@ Page({
     var captureUrls = this.data.src;
     //先进行表单非空验证
     if (troubleOwner == "") {
-      this.setData({
-        showTopTips: true,
-        TopTips: '请输入故障人'
+      wx.showToast({
+        title: '故障人不能为空',
+        icon: 'none',
+        duration: 3000
       });
     } else if (office == '') {
-      this.setData({
-        showTopTips: true,
-        TopTips: '请输入所属科室'
+      wx.showToast({
+        title: '所属科室不能为空',
+        icon: 'none',
+        duration: 3000
+      });
+    } else if (that.data.isAllOther && content == "") {
+      wx.showToast({
+        title: '选择其他问题时必须输入问题详细信息',
+        icon: 'none',
+        duration: 3000
       });
     } else {
       wx.request({
@@ -359,20 +412,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
@@ -386,12 +425,6 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })
 
 function upload(page, path) {
