@@ -1,16 +1,5 @@
 //获取应用实例
 var app = getApp()
-var that;
-var myDate = new Date();
-
-//格式化日期
-function formate_data(myDate) {
-  let month_add = myDate.getMonth() + 1;
-  var formate_result = myDate.getFullYear() + '-' +
-    month_add + '-' +
-    myDate.getDate()
-  return formate_result;
-}
 
 Page({
   /**
@@ -75,33 +64,31 @@ Page({
       office: value,
     })
   },
-  onLoad: function () {
-    that = this;
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    console.log("onLoad加载，" + JSON.stringify(wx.getStorageSync("userInfo")));
+    var that = this;
     // 判断是否登录
-    // wx.checkSession({
-    //   fail() {
-    //     console.error("登录状态失败")
-    //     that.setData({
-    //       isLogin: false
-    //     });
-    //   },
-    //   success() {
-    //     console.error("登录状态正常")
-    //   }
-    // });
-    console.error("缓存中数据值：" + JSON.stringify(wx.getStorageSync("userInfo")));
-    if (Object.keys(wx.getStorageSync("userInfo")).length === 0) {
-      console.error("缓存失效")
+    wx.checkSession({
+      fail() {
+        that.setData({
+          isLogin: false
+        });
+      },
+    });
+    if (wx.getStorageSync("userInfo") == undefined || wx.getStorageSync("userInfo") == "") {
       that.setData({
         isLogin: false
       })
     }
-    console.error("是否登录值为：" + that.data.isLogin)
     if (!that.data.isLogin) {
       wx.reLaunch({
         url: '/pages/login/login'
       })
-    } else {
+    }else {
       //获取一级类型
       wx.request({
         url: app.globalData.localApiUrl + '/common/firTypes',
@@ -129,63 +116,21 @@ Page({
         office: wx.getStorageSync("userInfo").office
       })
     }
-  },
-  onShow: function() {
-    that = this;
-    // 判断是否登录
-    // wx.checkSession({
-    //   fail() {
-    //     console.error("登录状态失败")
-    //     that.setData({
-    //       isLogin: false
-    //     });
-    //   },
-    //   success() {
-    //     console.error("登录状态正常")
-    //   }
-    // });
-    console.error("缓存中数据值：" + JSON.stringify(wx.getStorageSync("userInfo")));
-    if (Object.keys(wx.getStorageSync("userInfo")).length === 0) {
-      console.error("缓存失效")
-      that.setData({
-        isLogin: false
-      })
-    }
-    console.error("是否登录值为：" + that.data.isLogin)
-    if (!that.data.isLogin) {
-      wx.reLaunch({
-        url: '/pages/login/login'
-      })
-    } else {
-      //获取一级类型
-      wx.request({
-        url: app.globalData.localApiUrl + '/common/firTypes',
-        method: 'GET',
-        header: {
-          'content-type': 'application/json'
-        },
-        success(res) {
-          console.log(res.data);
-          if (res.data.code == 1) {
-            var data = res.data.data;
-            var firTypes = new Array();
-            for (var i in data) {
-              firTypes.push(data[i].typeName);
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console.log(res.userInfo.avatarUrl)
+              wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
             }
-            console.log(firTypes);
-            that.setData({
-              firTypes: firTypes,
-            })
-          }
+          })
         }
-      });
-      that.setData({ //初始化数据
-        username: wx.getStorageSync("userInfo").nickname,
-        office: wx.getStorageSync("userInfo").office
-      })
-    }
+      }
+    })
   },
-  
+
   //改变故障类别
   firTypeChange: function(e) {
     var that = this;
@@ -233,6 +178,7 @@ Page({
 
   //上传活动图片
   uploadPic: function() { //选择图标
+    var that = this;
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original'], //压缩图

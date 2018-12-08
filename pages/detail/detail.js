@@ -1,12 +1,7 @@
 //获取应用实例
 const app = getApp();
 
-function formatDate(timeStampValue) {
-  var now = new Date(timeStampValue);
-  var year = now.getFullYear;
-  var returnString = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes();
-  return returnString;
-};
+
 Page({
   data: {
     troubleId: 0,
@@ -41,7 +36,7 @@ Page({
           that.data.captureUrls.push(trouble.captureUrls);
           that.setData({
             troubleOwner: trouble.troublePersonName,
-            submitTime: formatDate(trouble.submitTime),
+            submitTime: new Date(trouble.submitTime).Format("yyyy-MM-dd HH:mm"),
             office: trouble.office,
             troubleType: trouble.secType == '其他问题' ? trouble.secType : trouble.firType + "-" + trouble.secType,
             detail: trouble.detail,
@@ -72,7 +67,7 @@ Page({
               isConfirmed: 'process',
               isCommitted: '',
               isConfirmContent: true,
-              confirmContent: trouble.confirmer + " 于" + formatDate(trouble.confirmTime) + "确认"
+              confirmContent: trouble.confirmer + " 于" + new Date(trouble.confirmTime).Format("yyyy-MM-dd HH:mm") + "确认"
             });
           } else if (trouble.status == 3) { // 已完成
             that.setData({
@@ -81,7 +76,7 @@ Page({
               isCommitted: '',
               isSolved: 'process',
               isSolveContent: true,
-              solveContent: trouble.solver + " 于" + formatDate(trouble.solveTime) + "解决"
+              solveContent: trouble.solver + " 于" + new Date(trouble.solveTime).Format("yyyy-MM-dd HH:mm") + "解决"
             });
           } else { // 已撤回
             that.setData({
@@ -90,7 +85,7 @@ Page({
               isCommitted: '',
               isSolved: 'process',
               isSolveContent: true,
-              solveContent: trouble.solver + " 于" + formatDate(trouble.solveTime) + "撤回"
+              solveContent: trouble.solver + " 于" + new Date(trouble.confirmTime).Format("yyyy-MM-dd HH:mm") + "撤回"
             });
           }
 
