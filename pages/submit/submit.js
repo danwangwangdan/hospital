@@ -34,7 +34,8 @@ Page({
     secTypeDis: false,
     secTypeIndex: 0,
     src: "",
-    srcArray:[],
+    srcArray: [],
+    isAllOther: true, //是否选择了 其他类型的故障
     isSrc: false,
     ishide: "0",
     autoFocus: true,
@@ -74,30 +75,33 @@ Page({
       office: value,
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
+  onLoad: function () {
     that = this;
     // 判断是否登录
-    wx.checkSession({
-      fail() {
-        that.setData({
-          isLogin: false
-        });
-      },
-    });
-    if (wx.getStorageSync("userInfo") == undefined || wx.getStorageSync("userInfo") == "") {
+    // wx.checkSession({
+    //   fail() {
+    //     console.error("登录状态失败")
+    //     that.setData({
+    //       isLogin: false
+    //     });
+    //   },
+    //   success() {
+    //     console.error("登录状态正常")
+    //   }
+    // });
+    console.error("缓存中数据值：" + JSON.stringify(wx.getStorageSync("userInfo")));
+    if (Object.keys(wx.getStorageSync("userInfo")).length === 0) {
+      console.error("缓存失效")
       that.setData({
         isLogin: false
       })
     }
+    console.error("是否登录值为：" + that.data.isLogin)
     if (!that.data.isLogin) {
       wx.reLaunch({
         url: '/pages/login/login'
       })
-    }else {
+    } else {
       //获取一级类型
       wx.request({
         url: app.globalData.localApiUrl + '/common/firTypes',
@@ -126,7 +130,62 @@ Page({
       })
     }
   },
-
+  onShow: function() {
+    that = this;
+    // 判断是否登录
+    // wx.checkSession({
+    //   fail() {
+    //     console.error("登录状态失败")
+    //     that.setData({
+    //       isLogin: false
+    //     });
+    //   },
+    //   success() {
+    //     console.error("登录状态正常")
+    //   }
+    // });
+    console.error("缓存中数据值：" + JSON.stringify(wx.getStorageSync("userInfo")));
+    if (Object.keys(wx.getStorageSync("userInfo")).length === 0) {
+      console.error("缓存失效")
+      that.setData({
+        isLogin: false
+      })
+    }
+    console.error("是否登录值为：" + that.data.isLogin)
+    if (!that.data.isLogin) {
+      wx.reLaunch({
+        url: '/pages/login/login'
+      })
+    } else {
+      //获取一级类型
+      wx.request({
+        url: app.globalData.localApiUrl + '/common/firTypes',
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            var data = res.data.data;
+            var firTypes = new Array();
+            for (var i in data) {
+              firTypes.push(data[i].typeName);
+            }
+            console.log(firTypes);
+            that.setData({
+              firTypes: firTypes,
+            })
+          }
+        }
+      });
+      that.setData({ //初始化数据
+        username: wx.getStorageSync("userInfo").nickname,
+        office: wx.getStorageSync("userInfo").office
+      })
+    }
+  },
+  
   //改变故障类别
   firTypeChange: function(e) {
     var that = this;
@@ -135,6 +194,11 @@ Page({
       firTypeIndex: e.detail.value,
       firTypeValue: this.data.firTypes[e.detail.value]
     });
+    if (this.data.firTypes[e.detail.value] != '其他问题') {
+      this.setData({
+        isAllOther: false
+      });
+    }
     //获取二级类型
     wx.request({
       url: app.globalData.localApiUrl + '/common/secTypes?firTypeId=' + this.data.firTypeIndex,
@@ -223,14 +287,22 @@ Page({
     var captureUrls = this.data.src;
     //先进行表单非空验证
     if (troubleOwner == "") {
-      this.setData({
-        showTopTips: true,
-        TopTips: '请输入故障人'
+      wx.showToast({
+        title: '故障人不能为空',
+        icon: 'none',
+        duration: 3000
       });
     } else if (office == '') {
-      this.setData({
-        showTopTips: true,
-        TopTips: '请输入所属科室'
+      wx.showToast({
+        title: '所属科室不能为空',
+        icon: 'none',
+        duration: 3000
+      });
+    } else if (that.data.isAllOther && content == "") {
+      wx.showToast({
+        title: '选择其他问题时必须输入问题详细信息',
+        icon: 'none',
+        duration: 3000
       });
     } else {
       wx.request({
@@ -275,20 +347,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
@@ -302,12 +360,6 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })
 
 function upload(page, path) {
