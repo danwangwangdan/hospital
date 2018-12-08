@@ -22,16 +22,22 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+    var status, userId;
+    if (wx.getStorageSync("userInfo").isAdmin == 1) {
+      status = 6;
+    } else {
+      status = 3;
+    }
     wx.request({
-      url: app.globalData.localApiUrl + '/trouble/byStatus?status=3&userId=' + wx.getStorageSync("userInfo").id,
+      url: app.globalData.localApiUrl + '/trouble/byStatus?status=' + status + '&userId=' + wx.getStorageSync("userInfo").id,
       method: 'GET',
       success(res) {
         console.log(res.data);
         if (res.data.code == 1) {
           var data = res.data.data;
           for (let i = 0; i < data.length; i++) {
-     
-            data[i].submitTime = new Date(data[i].submitTime).Format("yyyy-MM-dd HH:mm");
+
+            data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
           }
           if (data.length != 0) {
             that.setData({

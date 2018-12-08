@@ -18,7 +18,15 @@
         <text>全部故障</text>
       </view>
     </view>
-    <view class="my-item flex-wrp" style="">
+    <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp" style="">
+      <view class="myitem-icon2 flex-item">
+        <image src="../../pics/processing.png" style="height:30px;width:30px"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="toNotSolved">
+        <text>未解决的故障</text>
+      </view>
+    </view>
+    <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp" style="">
       <view class="myitem-icon2 flex-item">
         <image src="../../pics/processing.png" style="height:30px;width:30px"></image>
       </view>
@@ -26,7 +34,7 @@
         <text>待确认的故障</text>
       </view>
     </view>
-    <view class="my-item flex-wrp">
+    <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon3 flex-item">
         <image src="../../pics/submitted.png" style="height:26px;width:26px"></image>
       </view>
@@ -42,7 +50,7 @@
         <text>已解决的故障</text>
       </view>
     </view>
-    <view class="my-item flex-wrp">
+    <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon5 flex-item">
         <image src="../../pics/advice.png" style="height:20px;weight:20px"></image>
       </view>

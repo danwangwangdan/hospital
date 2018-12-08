@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isAdmin: 0,
     nickname: '',
     office: '',
     tel: "",
@@ -29,6 +30,11 @@ Page({
   toSolved: function() {
     wx.navigateTo({
       url: '/pages/me/solved/solved'
+    })
+  },
+  toNotSolved: function() {
+    wx.navigateTo({
+      url: '/pages/me/notsolved/notsolved'
     })
   },
   toSuggest: function() {
@@ -69,9 +75,9 @@ Page({
       nickname: wx.getStorageSync("userInfo").nickname,
       office: wx.getStorageSync("userInfo").office,
       tel: wx.getStorageSync("userInfo").mobile,
+      isAdmin: wx.getStorageSync("userInfo").isAdmin,
       imgSrc: _imgSrc
     });
-    console.log("设置图片2" + _imgSrc)
   },
 
   /**

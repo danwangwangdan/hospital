@@ -1,6 +1,14 @@
 {
+  "enablePullDownRefresh": true,
   "usingComponents": {
+    "i-cell-group": "../../plugins/iview/cell-group/index",
+    "i-cell": "../../plugins/iview/cell/index",
+    "i-icon": "../../plugins/iview/icon/index",
+    "i-row": "../../plugins/iview/row/index",
+    "i-col": "../../plugins/iview/col/index",
+    "i-tabs": "../../plugins/iview/tabs/index",
+    "i-tab": "../../plugins/iview/tab/index",
     "i-button": "../../plugins/iview/button/index"
   },
-  "navigationBarTitleText": "新建故障"
+  "navigationBarTitleText": "首页"
 }

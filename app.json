@@ -1,11 +1,14 @@
 {
   "pages": [
-    "pages/submit/submit",
-    "pages/login/login",
     "pages/me/me",
-    "pages/me/confirmed/confirmed",
-    "pages/me/suggestion/suggestion",
+    "pages/submit/submit",
+    "pages/solve_suc/solve_suc",
+    "pages/solve/solve",
     "pages/me/all/all",
+    "pages/login/login",
+    "pages/me/confirmed/confirmed",
+    "pages/me/notsolved/notsolved",
+    "pages/me/suggestion/suggestion",
     "pages/detail/detail",
     "pages/me/suggestion/suggest_suc/suggest_suc",
     "pages/home/submit_suc/submit_suc",
@@ -26,9 +29,9 @@
     "list": [
       {
         "pagePath": "pages/submit/submit",
-        "text": "新建",
-        "iconPath": "pics/tab_new.png",
-        "selectedIconPath": "pics/tab_new_fill.png"
+        "text": "首页",
+        "iconPath": "pics/tab_home.png",
+        "selectedIconPath": "pics/tab_home_fill.png"
       },
       {
         "pagePath": "pages/me/me",

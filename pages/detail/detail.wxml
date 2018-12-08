@@ -10,7 +10,6 @@
           {{commitContent}}
         </view>
       </i-step>
-
       <i-step status="{{isConfirmed}}" icon="flashlight">
         <view slot="title">
           已确认
@@ -33,7 +32,7 @@
     <!--发布者信息、发布时间、点赞量、评论量-->
     <view class="des_txt detail_msg">
       <view>
-        <text>故障人：{{troubleOwner}}</text>
+        <text>申报人：{{troubleOwner}}</text>
       </view>
       <view>
         <text style="margin-right:12px;"></text>
@@ -65,7 +64,6 @@
     <view class="detail_input">
       <text class="des_txt detail_txt">详细描述</text>
       <view class="detail_right">
-        <!--时间-->
         <text class="note_item_text">{{detail}}</text>
       </view>
       <view class="detail_lineh"></view>
@@ -80,7 +78,11 @@
 
     </view>
     <view style='margin-top:15px'>
-      <i-button wx:if="{{isRevokeShow}}" bind:click="toRevoke" type="primary" shape="circle">撤回故障</i-button>
+      <i-button wx:if="{{isRevokeShow}}" bind:click="toRevoke" type="success" shape="circle">撤回故障</i-button>
+    </view>
+    <view>
+      <i-button wx:if="{{isConfirmShow}}" bind:click="toConfirm" type="success" shape="circle">确认故障</i-button>
+      <i-button wx:if="{{isSolveShow}}" bind:click="toSolve" type="primary" shape="circle">解决故障</i-button>
     </view>
   </view>
 </scroll-view>

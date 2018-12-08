@@ -1145,8 +1145,7 @@ label {
 }
 
 .note_item_text {
-  word-break: keep-all;
-  word-wrap: break-word;
+  word-break:break-all;
 }
 
 /*按钮*/

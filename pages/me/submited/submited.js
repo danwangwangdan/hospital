@@ -30,7 +30,7 @@ Page({
           var data = res.data.data;
           for (let i = 0; i < data.length; i++) {
          
-            data[i].submitTime = new Date(data[i].submitTime).Format("yyyy-MM-dd HH:mm");
+            data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
           }
           if (data.length != 0) {
             that.setData({

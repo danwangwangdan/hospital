@@ -2,8 +2,8 @@
 App({
   globalData: {
     userInfo: null,
-    //localApiUrl: "http://localhost/hishelp", 
-    localApiUrl: "https://www.daliandaxue.cn/hishelp", 
+    localApiUrl: "http://localhost/hishelp", 
+    //localApiUrl: "https://www.daliandaxue.cn/hishelp", 
     remoteApiUrl: "",
   },
   onLaunch: function() {
@@ -11,7 +11,7 @@ App({
   }
 
 })
-Date.prototype.Format = function (fmt) {
+Date.prototype.format = function (fmt) {
   var o = {
     "M+": this.getMonth() + 1, //月份
     "d+": this.getDate(), //日

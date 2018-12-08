@@ -18,6 +18,6 @@
     </view>
   </view>
   <view class="footer">
-    <text style='font-size:13px; color:#80848f'>技术支持： 新晃县人民医院@网络中心</text>
+    <text style='font-size:13px; color: = "../../pics/me_photo.png"#80848f'>技术支持： 新晃县人民医院@网络中心</text>
   </view>
 </page>

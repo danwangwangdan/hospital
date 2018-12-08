@@ -6,9 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    currentTab: 'tab1',
+    troubleList: [],
+    isNull: true,
+    isAdmin: 0,
+
     isLogin: true,
-    showTopTips: false,
-    TopTips: '',
     username: "",
     office: "",
     imageUrl: "",
@@ -31,7 +34,150 @@ Page({
     loading: true,
     isdisabled: false
   },
+  handleChange({detail}) {
+    var that = this;
+    this.setData({
+      currentTab: detail.key,
+      troubleList: [],
+      isNull: true
+    });
+    console.log("切换至" + detail.key);
+    if(detail.key=='tab1'){ //待确认
+      wx.request({
+        url: app.globalData.localApiUrl + '/trouble/submitted',
+        method: 'GET',
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            var data = res.data.data;
+            for (let i = 0; i < data.length; i++) {
+              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+            }
+            if (data.length != 0) {
+              that.setData({
+                troubleList: data,
+                isNull: false
+              });
+            }
+          }
+        }
+      });
+    }else{
+      wx.request({
+        url: app.globalData.localApiUrl + '/trouble/confirmed',
+        method: 'GET',
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            var data = res.data.data;
+            for (let i = 0; i < data.length; i++) {
+              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+            }
+            if (data.length != 0) {
+              that.setData({
+                troubleList: data,
+                isNull: false
+              });
+            }
+          }
+        }
+      });
+    }
+  },
+  onLoad: function(options) {
+    // console.log("onLoad加载，" + JSON.stringify(wx.getStorageSync("userInfo")));
+    var that = this;
+    // 判断是否登录
+    wx.checkSession({
+      fail() {
+        that.setData({
+          isLogin: false
+        });
+      },
+    });
+    if (wx.getStorageSync("userInfo") == undefined || wx.getStorageSync("userInfo") == "") {
+      that.setData({
+        isLogin: false
+      })
+    }
+    console.log("isLogin:" + that.data.isLogin)
+    if (!that.data.isLogin) {
+      wx.reLaunch({
+        url: '/pages/login/login'
+      })
+    } else {
+      that.setData({ //初始化数据
+        username: wx.getStorageSync("userInfo").nickname,
+        office: wx.getStorageSync("userInfo").office,
+        isAdmin: wx.getStorageSync("userInfo").isAdmin,
+      })
+      // 分用户和管理员两种情况
+      if (that.data.isAdmin == 1) {
+        wx.request({
+          url: app.globalData.localApiUrl + '/trouble/submitted',
+          method: 'GET',
+          success(res) {
+            console.log(res.data);
+            if (res.data.code == 1) {
+              var data = res.data.data;
+              for (let i = 0; i < data.length; i++) {
+                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+              }
+              if (data.length != 0) {
+                that.setData({
+                  troubleList: data,
+                  isNull: false
+                });
+              }
+            }
+          }
+        });
+      } else {
+        //获取一级类型
+        wx.request({
+          url: app.globalData.localApiUrl + '/common/firTypes',
+          method: 'GET',
+          header: {
+            'content-type': 'application/json'
+          },
+          success(res) {
+            console.log(res.data);
+            if (res.data.code == 1) {
+              var data = res.data.data;
+              var firTypes = new Array();
+              for (var i in data) {
+                firTypes.push(data[i].typeName);
+              }
+              console.log(firTypes);
+              that.setData({
+                firTypes: firTypes,
+              })
+            }
+          }
+        });
+        wx.getSetting({
+          success(res) {
+            if (res.authSetting['scope.userInfo']) {
+              // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+              wx.getUserInfo({
+                success: function(res) {
+                  console.log(res.userInfo.avatarUrl)
+                  wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
+                }
+              })
+            }
+          }
+        })
+      };
+    }
+  },
 
+  toDetail: function(e) {
+    let troubleId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/detail/detail?troubleId=' + troubleId
+    })
+  },
   submitSuc: function() {
     wx.navigateTo({
       url: '/pages/home/submit_suc/submit_suc'
@@ -61,73 +207,6 @@ Page({
     var value = e.detail.value;
     that.setData({
       office: value,
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    console.log("onLoad加载，" + JSON.stringify(wx.getStorageSync("userInfo")));
-    var that = this;
-    // 判断是否登录
-    wx.checkSession({
-      fail() {
-        that.setData({
-          isLogin: false
-        });
-      },
-    });
-    if (wx.getStorageSync("userInfo") == undefined || wx.getStorageSync("userInfo") == "") {
-      that.setData({
-        isLogin: false
-      })
-    }
-    console.log("isLogin:" + that.data.isLogin)
-    if (!that.data.isLogin) {
-      wx.reLaunch({
-        url: '/pages/login/login'
-      })
-    } else {
-      //获取一级类型
-      wx.request({
-        url: app.globalData.localApiUrl + '/common/firTypes',
-        method: 'GET',
-        header: {
-          'content-type': 'application/json'
-        },
-        success(res) {
-          console.log(res.data);
-          if (res.data.code == 1) {
-            var data = res.data.data;
-            var firTypes = new Array();
-            for (var i in data) {
-              firTypes.push(data[i].typeName);
-            }
-            console.log(firTypes);
-            that.setData({
-              firTypes: firTypes,
-            })
-          }
-        }
-      });
-      that.setData({ //初始化数据
-        username: wx.getStorageSync("userInfo").nickname,
-        office: wx.getStorageSync("userInfo").office
-      })
-    }
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              console.log(res.userInfo.avatarUrl)
-              wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
-            }
-          })
-        }
-      }
     })
   },
 

@@ -10,13 +10,14 @@ color: #118fff;
 .centerView {
   text-align: center;
   border-radius: 20px;
-  width: 250px;
+  width: 300px;
+  height: 350px;
   position: absolute;
   left: 50%;
-  top: 50%;
-  margin-top: 200px;
+  top: 70%;
   transform: translate(-50%, -50%);
 }
+
 .line-css {
   height: 1px;
   background: #b2b2b2;

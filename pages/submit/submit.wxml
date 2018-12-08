@@ -1,10 +1,32 @@
-<!-- 新建故障 -->
-<view class="add-page">
+<view wx:if="{{isAdmin==1}}">
+  <i-tabs current="{{currentTab}}" bindchange="handleChange">
+    <i-tab key="tab1" title="待确认"></i-tab>
+    <i-tab key="tab2" title="已确认"></i-tab>
+  </i-tabs>
+  <scroll-view>
+  <view style="margin-top:10px">
+    <i-cell-group>
+      <block wx:key="id" wx:for="{{troubleList}}">
+        <i-cell data-id="{{item.id}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
+          <i-icon wx:if="{{item.status==1}}" type="createtask" size="20" slot="icon" />
+          <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon" />
+          <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon" />
+        </i-cell>
+      </block>
+    </i-cell-group>
+  </view>
+</scroll-view>
+<view wx:if="{{isNull}}" class='centerView'>
+  <text style='color:#80848f'>这里什么也没有</text>
+</view>
+  
+</view>
+<view class="add-page" wx:if="{{isAdmin==0}}">
   <form>
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
     <view class="mod-a mt20">
       <view class="mod t-name">
-        <text decode="{{true}}"class="key">故障人&nbsp;&nbsp;&nbsp;</text>
+        <text decode="{{true}}"class="key">申报人&nbsp;&nbsp;&nbsp;</text>
         <input name="user" class="input" maxlength="100" value="{{username}}" bindinput="bindUserChange"/>
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
