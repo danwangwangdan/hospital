@@ -24,7 +24,7 @@ Page({
     });
   },
   bindGetUserInfo: function(e) {
-      
+
   },
   //事件处理函数
   toLogin: function() {
@@ -39,45 +39,61 @@ Page({
         duration: 2000
       });
     } else {
-      wx.login({
+      wx.request({
+        url: app.globalData.localApiUrl + '/user/login',
+        method: 'POST',
+        data: {
+          "username": username,
+          "password": password,
+          "jsCode": ''
+        },
+        header: {
+          'content-type': 'application/json'
+        },
         success(res) {
-          console.log(res)
-          if (res.code) {
-            wx.request({
-              url: app.globalData.localApiUrl + '/user/login',
-              method: 'POST',
-              data: {
-                "username": username,
-                "password": password,
-                "jsCode": res.code
-              },
-              header: {
-                'content-type': 'application/json'
-              },
+          console.log(res.data);
+          if (res.data.code == 1) {
+            // 存储用户信息
+            wx.setStorageSync("userInfo", res.data.data);
+            console.log("登录成功，开始获取微信信息")
+            wx.login({
               success(res) {
-                console.log(res.data);
-                if (res.data.code == 1) {
-                  // 存储用户信息
-                  wx.setStorageSync("userInfo", res.data.data);
-                  // 登录成功
-                  wx.switchTab({
-                    url: '/pages/submit/submit'
-                  });
-                } else {
-                  // 登录失败
-                  wx.showToast({
-                    title: '登录失败，账号或密码错误',
-                    icon: 'none',
-                    duration: 2000
+                console.log(res)
+                if (res.code) {
+                  // 登录成功，发送jsCode
+                  wx.request({
+                    url: app.globalData.localApiUrl + '/user/login',
+                    method: 'POST',
+                    data: {
+                      "username": username,
+                      "password": password,
+                      "jsCode": res.code
+                    },
+                    header: {
+                      'content-type': 'application/json'
+                    },
+                    success(res) {
+                      wx.switchTab({
+                        url: '/pages/submit/submit'
+                      });
+                    }
                   })
+                } else {
+                  console.log('登录失败！' + res.errMsg)
                 }
               }
-            });
+            })
           } else {
-            console.log('登录失败！' + res.errMsg)
+            // 登录失败
+            wx.showToast({
+              title: '登录失败，账号或密码错误',
+              icon: 'none',
+              duration: 2000
+            })
           }
         }
-      })
+      });
+
 
     }
   },

@@ -4,30 +4,30 @@
     <i-tab key="tab2" title="已确认"></i-tab>
   </i-tabs>
   <scroll-view>
-  <view style="margin-top:10px">
-    <i-cell-group>
-      <block wx:key="id" wx:for="{{troubleList}}">
-        <i-cell data-id="{{item.id}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
-          <i-icon wx:if="{{item.status==1}}" type="createtask" size="20" slot="icon" />
-          <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon" />
-          <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon" />
-        </i-cell>
-      </block>
-    </i-cell-group>
+    <view style="margin-top:10px">
+      <i-cell-group>
+        <block wx:key="id" wx:for="{{troubleList}}">
+          <i-cell data-id="{{item.id}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
+            <i-icon wx:if="{{item.status==1}}" type="createtask" size="20" slot="icon" />
+            <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon" />
+            <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon" />
+          </i-cell>
+        </block>
+      </i-cell-group>
+    </view>
+  </scroll-view>
+  <view wx:if="{{isNull}}" class='centerView'>
+    <text style='color:#80848f'>这里什么也没有</text>
   </view>
-</scroll-view>
-<view wx:if="{{isNull}}" class='centerView'>
-  <text style='color:#80848f'>这里什么也没有</text>
-</view>
-  
+
 </view>
 <view class="add-page" wx:if="{{isAdmin==0}}">
-  <form>
+  <form report-submit="true" bindsubmit='submitTrouble'>
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
     <view class="mod-a mt20">
       <view class="mod t-name">
-        <text decode="{{true}}"class="key">申报人&nbsp;&nbsp;&nbsp;</text>
-        <input name="user" class="input" maxlength="100" value="{{username}}" bindinput="bindUserChange"/>
+        <text decode="{{true}}" class="key">申报人&nbsp;&nbsp;&nbsp;</text>
+        <input name="user" class="input" maxlength="100" value="{{username}}" bindinput="bindUserChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="mod t-name">
@@ -37,7 +37,7 @@
       </view>
       <view class="mod t-name">
         <text class="key">一级类型</text>
-        <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}" >
+        <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}">
           <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
             <image class="arrow-r" src="/pics/arrow_right.png"></image>
           </view>
@@ -67,8 +67,16 @@
         <view bindtap="clearPic"></view>
       </view>
     </view>
-    <view>
-      <i-button style="display:block;margin:0 auto;width:60%;margin-top:30px" bind:click="submitTrouble" type="primary" shape="circle">提交</i-button>
-    </view>
+    <button  formType="submit" type="primary" shape="circle">
+      <form report-submit="true" bindsubmit='submitTrouble'>
+        <button formType="submit" type="primary" shape="circle">
+          <form report-submit="true" bindsubmit='submitTrouble'>
+            <button  formType="submit" type="primary" shape="circle">
+              <view class='publish_btn'>发布</view>
+            </button>
+          </form>
+        </button>
+      </form>
+    </button>
   </form>
 </view>

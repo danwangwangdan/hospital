@@ -12,6 +12,8 @@ Page({
     isAdmin: 0,
 
     isLogin: true,
+    lastSubmitTime: new Date(),
+    formIds: [],
     username: "",
     office: "",
     imageUrl: "",
@@ -35,7 +37,9 @@ Page({
     loading: true,
     isdisabled: false
   },
-  handleChange({detail}) {
+  handleChange({
+    detail
+  }) {
     var that = this;
     this.setData({
       currentTab: detail.key,
@@ -43,7 +47,7 @@ Page({
       isNull: true
     });
     console.log("切换至" + detail.key);
-    if(detail.key=='tab1'){ //待确认
+    if (detail.key == 'tab1') { //待确认
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/submitted',
         method: 'GET',
@@ -63,7 +67,7 @@ Page({
           }
         }
       });
-    }else{
+    } else {
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/confirmed',
         method: 'GET',
@@ -155,20 +159,20 @@ Page({
             }
           }
         });
-        wx.getSetting({
-          success(res) {
-            if (res.authSetting['scope.userInfo']) {
-              // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-              wx.getUserInfo({
-                success: function(res) {
-                  console.log(res.userInfo.avatarUrl)
-                  wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
-                }
-              })
-            }
-          }
-        })
       };
+      wx.getSetting({
+        success(res) {
+          if (res.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            wx.getUserInfo({
+              success: function(res) {
+                console.log(res.userInfo.avatarUrl)
+                wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
+              }
+            })
+          }
+        }
+      });
     }
   },
 
@@ -282,7 +286,7 @@ Page({
 
   //删除图片
   clearPic: function() { //删除图片
-    that.setData({
+    this.setData({
       isSrc: false,
       src: ""
     })
@@ -304,6 +308,11 @@ Page({
   //提交表单
   submitTrouble: function(e) {
     var that = this;
+    // 收集formId
+    let formId = e.detail.formId;
+    console.log("formId:" + formId);
+    this.data.formIds.push(formId);
+
     var troubleOwner = this.data.username;
     var office = this.data.office;
     var content = this.data.content;
@@ -337,7 +346,7 @@ Page({
           'content-type': 'application/json'
         },
         data: {
-          'userId': 1,
+          'userId': wx.getStorageSync('userInfo').id,
           'troublePersonName': troubleOwner,
           'office': office,
           'detail': content,
@@ -364,9 +373,21 @@ Page({
         }
       });
     }
+    // 设置定时发送formIds
     setTimeout(function() {
-      that.setData({
-        showTopTips: false
+
+      wx.request({
+        url: app.globalData.localApiUrl + '/trouble/formids',
+        method: 'POST',
+        header: {
+          'content-type': 'application/json'
+        },
+        data: {
+          formIds: that.data.formIds
+        },
+        success(res) {
+          console.log(res.data);
+        }
       });
     }, 1000);
   },
@@ -384,6 +405,13 @@ Page({
   onReachBottom: function() {
 
   },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
+
+  }
 
 })
 
@@ -419,5 +447,6 @@ function upload(page, path) {
         srcArray: path
       })
     },
+
   })
 }

@@ -1,5 +1,24 @@
-/* @import '/style/weui.wxss';
-@import '/style/zanui.wxss'; */
+form button{
+  padding: 0;
+}
+
+form button::after{
+  content: '';
+  display: none;
+}
+.publish_btn{
+  position: fixed;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500rpx;
+  line-height: 90rpx;
+  border-radius: 4rpx;
+  background: #2d8cf0;
+  font-size: 38rpx;
+  color: #fff;
+}
 .select{
 padding-right:20px;
 height:2.58823529em;

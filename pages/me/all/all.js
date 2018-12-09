@@ -23,7 +23,7 @@ Page({
   onLoad: function(options) {
     var that = this;
     var isAdmin = wx.getStorageSync('userInfo').isAdmin;
-    if(isAdmin==1){
+    if (isAdmin == 1) {
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/all',
         method: 'GET',
@@ -43,26 +43,26 @@ Page({
           }
         }
       });
-    }else{
-    wx.request({
-      url: app.globalData.localApiUrl + '/trouble/myAll?userId='+wx.getStorageSync("userInfo").id,
-      method: 'GET',
-      success(res) {
-        console.log(res.data);
-        if (res.data.code == 1) {
-          var data = res.data.data;
-          for (let i = 0; i < data.length; i++) {
-            data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-          }
-          if (data.length != 0) {
-            that.setData({
-              troubleList: data,
-              isNull: false
-            });
+    } else {
+      wx.request({
+        url: app.globalData.localApiUrl + '/trouble/myAll?userId=' + wx.getStorageSync("userInfo").id,
+        method: 'GET',
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            var data = res.data.data;
+            for (let i = 0; i < data.length; i++) {
+              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+            }
+            if (data.length != 0) {
+              that.setData({
+                troubleList: data,
+                isNull: false
+              });
+            }
           }
         }
-      }
-    });
+      });
     }
   },
 

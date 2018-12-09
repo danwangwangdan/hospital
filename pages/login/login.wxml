@@ -12,9 +12,9 @@
         <i-input title="账号:" placeholder="请输入账号" value="{{ username }}" bind:change="bindUsernameChange"/>
         <i-input title="密码:" type="password" placeholder="请输入密码" value="{{ password }}" bind:change="bindPasswordChange" />
     </view>
-
+<!-- bindgetuserinfo="bindGetUserInfo" -->
     <view style='margin-top:35px'>
-      <i-button bind:click="toLogin" open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo" type="primary" shape="circle">登录</i-button>
+      <i-button bind:click="toLogin" open-type='getUserInfo' type="primary" shape="circle">登录</i-button>
     </view>
   </view>
   <view class="footer">
