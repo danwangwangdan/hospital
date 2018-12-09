@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/me/me",
     "pages/submit/submit",
+    "pages/me/me",
     "pages/solve_suc/solve_suc",
     "pages/solve/solve",
     "pages/me/all/all",

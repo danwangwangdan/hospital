@@ -176,47 +176,7 @@ Page({
     let troubleId = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/detail/detail?troubleId=' + troubleId
-    }else {
-      //获取一级类型
-      wx.request({
-        url: app.globalData.localApiUrl + '/common/firTypes',
-        method: 'GET',
-        header: {
-          'content-type': 'application/json'
-        },
-        success(res) {
-          console.log(res.data);
-          if (res.data.code == 1) {
-            var data = res.data.data;
-            var firTypes = new Array();
-            for (var i in data) {
-              firTypes.push(data[i].typeName);
-            }
-            console.log(firTypes);
-            that.setData({
-              firTypes: firTypes,
-            })
-          }
-        }
-      });
-      that.setData({ //初始化数据
-        username: wx.getStorageSync("userInfo").nickname,
-        office: wx.getStorageSync("userInfo").office
-      })
-    }
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              console.log(res.userInfo.avatarUrl)
-              wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
-            }
-          })
-        }
-      }
-    })
+    });
   },
   submitSuc: function() {
     wx.navigateTo({
