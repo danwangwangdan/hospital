@@ -1,0 +1,23 @@
+<view class="add-page">
+  <form bindsubmit="submitForm">
+    <view class="mod-a mt20">
+      <view class="mod  t-name">
+        <text class="key">解决方案</text>
+        <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}">
+          <view class="value" name="types">{{type}}
+            <image class="arrow-r" src="/pics/arrow_right.png"></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="mod-a mt20">
+      <view class="mod-big my-nick">
+        <textarea name="content" class="weui-textarea" placeholder="留言，选填..." value="{{content}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
+        <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
+      </view>
+    </view>
+    <view style='margin-top:25px'>
+      <i-button bind:click="toSolve" type="primary" shape="circle">确认解决</i-button> 
+    </view>
+  </form>
+</view>

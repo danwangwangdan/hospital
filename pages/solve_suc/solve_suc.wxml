@@ -1,0 +1,11 @@
+<view class="centerView">
+  <view>
+    <image style="height:128px;width:128px" src="../../pics/oper_success.png" />
+  </view>
+  <view style="margin-top:25px">
+    <text style="font-size:20px">解决成功</text>
+  </view>
+  <view style="margin-top:25px">
+    <i-button style="margin-top:15px" bind:click="toHome" type="success" shape="circle">回首页</i-button>
+  </view>
+</view>

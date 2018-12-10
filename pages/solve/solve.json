@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-button": "../../plugins/iview/button/index"
+  },
+  "navigationBarTitleText": "解决故障" 
+}
