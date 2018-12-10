@@ -1,5 +1,5 @@
 <view class="add-page">
-  <form bindsubmit="submitForm">
+  <form report-submit="true" bindsubmit="toSolve">
     <view class="mod-a mt20">
       <view class="mod  t-name">
         <text class="key">解决方案</text>
@@ -17,7 +17,7 @@
       </view>
     </view>
     <view style='margin-top:25px'>
-      <i-button bind:click="toSolve" type="primary" shape="circle">确认解决</i-button> 
+        <button formType="submit" class="circleBlue">解决故障</button>
     </view>
   </form>
 </view>

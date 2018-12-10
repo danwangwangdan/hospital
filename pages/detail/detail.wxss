@@ -8,6 +8,43 @@
   transform: translate(-50%, -50%);
 }
 
+.circleBlue {
+  width: 550rpx;
+  line-height: 30rpx;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 56px;
+  padding-right: 56px;
+  border-width: 0px;
+  border-color: rgb(197, 229, 145);
+  border-style: solid;
+  border-radius: 41px;
+  background-color: rgb(45, 140, 240);
+}
+.circleGreen {
+  width: 550rpx;
+  line-height: 30rpx;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 56px;
+  padding-right: 56px;
+  border-width: 0px;
+  border-color: rgb(197, 229, 145);
+  border-style: solid;
+  border-radius: 41px;
+  background-color: #19BE6B;
+}
+
+#testButton:hover {
+  color: #fff;
+  background-color: #78c300;
+  border-color: #c5e591;
+}
+
 .line {
   width: 100%;
   height: 1px;
@@ -149,7 +186,6 @@ label {
   font-size: 28rpx;
   letter-spacing: 2rpx;
   color: #666;
-  
 }
 
 .detail_map {
@@ -158,11 +194,12 @@ label {
   margin-left: 39rpx;
   margin-right: 39rpx;
 }
-.detail_right {
 
+.detail_right {
   font-size: 28rpx;
   margin-left: 54rpx;
 }
+
 .detail_row_right {
   /*item右侧详情*/
   display: flex;
@@ -1145,7 +1182,7 @@ label {
 }
 
 .note_item_text {
-  word-break:break-all;
+  word-break: break-all;
 }
 
 /*按钮*/

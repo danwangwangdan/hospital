@@ -68,6 +68,13 @@
       </view>
       <view class="detail_lineh"></view>
     </view>
+    <view wx:if="{{isCommentShow}}" class="detail_input">
+      <text class="des_txt detail_txt">方案留言</text>
+      <view class="detail_right">
+        <text class="note_item_text">{{comment}}</text>
+      </view>
+      <view class="detail_lineh"></view>
+    </view>
     <view wx:if="{{isPicTextShow}}">
       <view class="detail_input">
         <text class="des_txt detail_txt">故障截图</text>
@@ -78,11 +85,18 @@
 
     </view>
     <view style='margin-top:15px'>
-      <i-button wx:if="{{isRevokeShow}}" bind:click="toRevoke" type="success" shape="circle">撤回故障</i-button>
+      <form report-submit="true" bindsubmit='toRevoke'>
+        <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button>
+      </form>
     </view>
-    <view>
-      <i-button wx:if="{{isConfirmShow}}" bind:click="toConfirm" type="success" shape="circle">确认故障</i-button>
-      <i-button wx:if="{{isSolveShow}}" bind:click="toSolve" type="primary" shape="circle">解决故障</i-button>
+    <view style='margin-top:15px'>
+      <form report-submit="true" bindsubmit='toConfirm'>
+        <button formType="submit" class="circleGreen" wx:if="{{isConfirmShow}}">确认故障</button>
+      </form>
     </view>
+    <view style='margin-top:15px'>
+      <button formType="submit" bindtap='toSolve' class="circleBlue" wx:if="{{isSolveShow}}">解决故障</button>
+    </view>
+
   </view>
 </scroll-view>

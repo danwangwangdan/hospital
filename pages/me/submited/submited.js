@@ -19,12 +19,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onShow: function(options) {
     var that = this;
     wx.request({
       url: app.globalData.localApiUrl + '/trouble/byStatus?status=1&userId=' + wx.getStorageSync("userInfo").id,
       method: 'GET',
       success(res) {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
         console.log(res.data);
         if (res.data.code == 1) {
           var data = res.data.data;
@@ -72,10 +74,12 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
+ * 页面相关事件处理函数--监听用户下拉动作
+ */
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.onShow();
+    
   },
 
   /**

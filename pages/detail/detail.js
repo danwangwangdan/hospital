@@ -17,12 +17,14 @@ Page({
     isConfirmShow: false,
     isSolveShow: false,
     isPicTextShow: true,
+    isCommentShow: false,
     solveContent: "",
     captureUrl: "",
     captureUrls: [],
     detail: "",
     troubleType: "",
     office: "",
+    comment:"",
     submitTime: "",
     troubleOwner: ""
   },
@@ -33,6 +35,8 @@ Page({
       url: app.globalData.localApiUrl + '/trouble/detail?troubleId=' + that.data.troubleId,
       method: 'GET',
       success(res) {
+        wx.hideNavigationBarLoading(); //完成停止加载
+        wx.stopPullDownRefresh(); //停止下拉刷新
         console.log(res.data);
         if (res.data.code == 1) {
           var trouble = res.data.data;
@@ -43,11 +47,17 @@ Page({
             office: trouble.office,
             troubleType: trouble.secType == '其他问题' ? trouble.secType : trouble.firType + "-" + trouble.secType,
             detail: trouble.detail,
+            comment: trouble.solutionComment,
             captureUrl: trouble.captureUrls
           })
           if (trouble.captureUrls == "") {
             that.setData({
               isPicTextShow: false
+            });
+          }
+          if (trouble.solutionComment == "") {
+            that.setData({
+              comment: "无"
             });
           }
           if (trouble.detail == "") {
@@ -61,7 +71,10 @@ Page({
               isCommitted: 'process',
               isSolved: "",
               isConfirmed: "",
-              isCommitContent: true
+              isCommitContent: true,
+              isConfirmContent: false,
+              isSolveContent: false,
+              isCommentShow: false,
             });
             if (isAdmin) {
               that.setData({
@@ -78,7 +91,10 @@ Page({
               isSolved: "",
               isConfirmed: 'process',
               isCommitted: '',
+              isCommitContent: false,
               isConfirmContent: true,
+              isSolveContent: false,
+              isCommentShow: false,
               confirmContent: trouble.confirmer + " 于" + new Date(trouble.confirmTime).format("yyyy-MM-dd HH:mm") + "确认"
             });
             if (isAdmin) {
@@ -95,7 +111,10 @@ Page({
               isConfirmed: "",
               isCommitted: '',
               isSolved: 'process',
+              isCommitContent: false,
+              isConfirmContent: false,
               isSolveContent: true,
+              isCommentShow: true,
               solveContent: trouble.solver + " 于" + new Date(trouble.solveTime).format("yyyy-MM-dd HH:mm") + "解决"
             });
           } else { // 已撤回
@@ -105,7 +124,10 @@ Page({
               isConfirmed: "",
               isCommitted: '',
               isSolved: 'process',
+              isCommitContent: false,
+              isConfirmContent: false,
               isSolveContent: true,
+              isCommentShow: false,
               solveContent: trouble.solver + " 于" + new Date(trouble.confirmTime).format("yyyy-MM-dd HH:mm") + "撤回"
             });
           }
@@ -123,9 +145,26 @@ Page({
       });
     }
   },
+  /**
+ * 页面相关事件处理函数--监听用户下拉动作
+ */
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading(); //在标题栏中显示加载
+    this.onShow();
+  },
 
-  toConfirm: function() {
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  toConfirm: function(e) {
     var that = this;
+    // 收集formId
+    let formId = e.detail.formId;
+    console.log("formId:" + formId);
     wx.request({
       url: app.globalData.localApiUrl + '/trouble/confirm',
       method: 'POST',
@@ -134,8 +173,9 @@ Page({
       },
       data: {
         'troubleId': that.data.troubleId,
-        'confirmerId': wx.getStorageSync("userInfo").id,
-        'confirmer': wx.getStorageSync("userInfo").nickname
+        'formId': formId,
+        'solverId': wx.getStorageSync("userInfo").id,
+        'solver': wx.getStorageSync("userInfo").nickname
       },
       success(res) {
         console.log(res.data);
@@ -156,7 +196,7 @@ Page({
             isConfirmContent: true,
             confirmContent: trouble.confirmer + " 于" + new Date(trouble.confirmTime).format("yyyy-MM-dd HH:mm") + "确认"
           });
-          this.onShow();
+          that.onShow();
         }
       }
     });

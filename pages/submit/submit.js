@@ -89,7 +89,7 @@ Page({
       });
     }
   },
-  onLoad: function(options) {
+  onShow: function(options) {
     // console.log("onLoad加载，" + JSON.stringify(wx.getStorageSync("userInfo")));
     var that = this;
     // 判断是否登录
@@ -175,7 +175,12 @@ Page({
       });
     }
   },
-
+  /**
+ * 页面相关事件处理函数--监听用户下拉动作
+ */
+  onPullDownRefresh: function () {
+    this.onShow();
+  },
   toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -362,6 +367,29 @@ Page({
             wx.navigateTo({
               url: '/pages/home/submit_suc/submit_suc?troubleId=' + res.data.data.id
             });
+            wx.login({
+              success(res) {
+                console.log(res)
+                if (res.code) {
+                  // 登录成功，发送jsCode
+                  wx.request({
+                    url: app.globalData.localApiUrl + '/user/login',
+                    method: 'POST',
+                    data: {
+                      "username": wx.getStorageSync('userInfo').username,
+                      "password": wx.getStorageSync('userInfo').password,
+                      "jsCode": res.code
+                    },
+                    header: {
+                      'content-type': 'application/json'
+                    },
+                    success(res) {
+                      
+                    }
+                  })
+                }
+              }
+            })
             // 设置定时发送formIds
             setTimeout(function () {
               wx.request({

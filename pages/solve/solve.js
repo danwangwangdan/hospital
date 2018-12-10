@@ -11,8 +11,11 @@ Page({
     content: "",
     noteNowLen: 0, //备注当前字数
   },
-  toSolve: function() {
+  toSolve: function (e) {
     var that = this;
+    // 收集formId
+    let formId = e.detail.formId;
+    console.log("formId:" + formId);
     wx.request({
       url: app.globalData.localApiUrl + '/trouble/solve',
       method: 'POST',
@@ -20,6 +23,7 @@ Page({
         'content-type': 'application/json'
       },
       data: {
+        'formId': formId,
         'troubleId': that.data.troubleId,
         'solverId': wx.getStorageSync("userInfo").id,
         'solver': wx.getStorageSync("userInfo").nickname,
