@@ -361,7 +361,27 @@ Page({
             // 跳转到提交成功页面
             wx.navigateTo({
               url: '/pages/home/submit_suc/submit_suc?troubleId=' + res.data.data.id
-            })
+            });
+            // 设置定时发送formIds
+            setTimeout(function () {
+              wx.request({
+                url: app.globalData.localApiUrl + '/trouble/message/submit',
+                method: 'POST',
+                header: {
+                  'content-type': 'application/json'
+                },
+                data: {
+                  'formIds': that.data.formIds,
+                  'troublePersonName': troubleOwner,
+                  'office': office,
+                  'detail': content
+
+                },
+                success(res) {
+                  console.log(res.data);
+                }
+              });
+            }, 1000);
           } else {
             // 提交失败
             wx.showToast({
@@ -373,23 +393,7 @@ Page({
         }
       });
     }
-    // 设置定时发送formIds
-    setTimeout(function() {
-
-      wx.request({
-        url: app.globalData.localApiUrl + '/trouble/formids',
-        method: 'POST',
-        header: {
-          'content-type': 'application/json'
-        },
-        data: {
-          formIds: that.data.formIds
-        },
-        success(res) {
-          console.log(res.data);
-        }
-      });
-    }, 1000);
+   
   },
 
   /**
