@@ -14,7 +14,7 @@
     </view>
 <!-- bindgetuserinfo="bindGetUserInfo" -->
     <view style='margin-top:35px'>
-      <i-button bind:click="toLogin" open-type='getUserInfo' type="primary" shape="circle">登录</i-button>
+      <button class="circleBlue" bindtap="toLogin" open-type='getUserInfo' >登录</button>
     </view>
   </view>
   <view class="footer">

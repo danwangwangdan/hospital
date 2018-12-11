@@ -8,7 +8,8 @@ Page({
    */
   data: {
     troubleList: [],
-    isNull: true
+    isNull: true,
+    initialText: "加载中..."
   },
   //事件处理函数
   toDetail: function(e) {
@@ -42,6 +43,12 @@ Page({
                 troubleList: data,
                 isNull: false
               });
+            } else {
+              that.setData({
+                troubleList: data,
+                isNull: true,
+                initialText: "这里什么也没有..."
+              });
             }
           }
         }
@@ -63,6 +70,12 @@ Page({
               that.setData({
                 troubleList: data,
                 isNull: false
+              });
+            } else {
+              that.setData({
+                troubleList: data,
+                isNull: true,
+                initialText: "这里什么也没有..."
               });
             }
           }

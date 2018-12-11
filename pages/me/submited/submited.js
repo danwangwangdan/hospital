@@ -7,11 +7,12 @@ Page({
    */
   data: {
     troubleList: [],
-    isNull:true
+    isNull: true,
+    initialText: "加载中..."
   },
   toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
-    console.log("跳转到："+troubleId);
+    console.log("跳转到：" + troubleId);
     wx.navigateTo({
       url: '/pages/detail/detail?troubleId=' + troubleId
     })
@@ -31,13 +32,19 @@ Page({
         if (res.data.code == 1) {
           var data = res.data.data;
           for (let i = 0; i < data.length; i++) {
-         
+
             data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
           }
           if (data.length != 0) {
             that.setData({
               troubleList: data,
               isNull: false
+            });
+          } else {
+            that.setData({
+              troubleList: data,
+              isNull: true,
+              initialText: "这里什么也没有..."
             });
           }
         }
@@ -68,12 +75,12 @@ Page({
   },
 
   /**
- * 页面相关事件处理函数--监听用户下拉动作
- */
-  onPullDownRefresh: function () {
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.onShow();
-    
+
   },
 
   /**

@@ -7,7 +7,8 @@ Page({
    */
   data: {
     troubleList: [],
-    isNull: true
+    isNull: true,
+    initialText: "加载中..."
   },
   toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
@@ -45,6 +46,12 @@ Page({
             that.setData({
               troubleList: data,
               isNull: false
+            });
+          } else {
+            that.setData({
+              troubleList: data,
+              isNull: true,
+              initialText: "这里什么也没有..."
             });
           }
         }

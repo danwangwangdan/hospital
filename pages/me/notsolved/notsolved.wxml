@@ -10,6 +10,6 @@
   </view>
 </scroll-view>
 <view wx:if="{{isNull}}" class='centerView'>
-  <text style='color:#80848f'>这里什么也没有
+  <text style='color:#80848f'>{{initialText}}
     </text>
 </view>

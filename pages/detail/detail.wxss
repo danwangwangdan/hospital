@@ -10,7 +10,7 @@
 
 .circleBlue {
   width: 550rpx;
-  line-height: 30rpx;
+  line-height: 35rpx;
   color: rgb(255, 255, 255);
   font-size: 14px;
   padding-top: 11px;
@@ -25,7 +25,7 @@
 }
 .circleGreen {
   width: 550rpx;
-  line-height: 30rpx;
+  line-height: 35rpx;
   color: rgb(255, 255, 255);
   font-size: 14px;
   padding-top: 11px;

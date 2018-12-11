@@ -1,7 +1,7 @@
 <view wx:if="{{isAdmin==1}}">
   <i-tabs current="{{currentTab}}" bindchange="handleChange">
-    <i-tab key="tab1" title="待确认"></i-tab>
-    <i-tab key="tab2" title="已确认"></i-tab>
+    <i-tab key="tab1" title="待确认" count="{{submitCount}}"></i-tab>
+    <i-tab key="tab2" title="已确认" count="{{confirmCount}}"></i-tab>
   </i-tabs>
   <scroll-view>
     <view style="margin-top:10px">
@@ -17,7 +17,7 @@
     </view>
   </scroll-view>
   <view wx:if="{{isNull}}" class='centerView'>
-    <text style='color:#80848f'>这里什么也没有</text>
+    <text style='color:#80848f'>{{initialText}}</text>
   </view>
 
 </view>
