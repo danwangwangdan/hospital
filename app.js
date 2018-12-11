@@ -2,7 +2,7 @@
 App({
   globalData: {
     userInfo: null,
-    //localApiUrl: "http://192.168.0.101/hishelp",
+    //localApiUrl: "http://localhost/hishelp",
     localApiUrl: "https://www.daliandaxue.cn/hishelp",
     remoteApiUrl: "",
   },
@@ -11,7 +11,7 @@ App({
   }
 
 })
-Date.prototype.format = function (fmt) {
+Date.prototype.format = function(fmt) {
   var o = {
     "M+": this.getMonth() + 1, //月份
     "d+": this.getDate(), //日

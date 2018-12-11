@@ -72,7 +72,7 @@
         <button formType="submit" type="primary" >
           <form report-submit="true" bindsubmit='submitTrouble'>
             <button formType="submit" type="primary" >
-              <view class='publish_btn'>发布</view>
+              <view class='publish_btn'>提交</view>
             </button>
           </form>
         </button>
