@@ -114,6 +114,9 @@ Page({
   },
   onShow: function(options) {
     console.log("onShow加载");
+    this.setData({ 
+      currentTab: 'tab1'
+    });
     var that = this;
     // 判断是否登录
     wx.checkSession({
