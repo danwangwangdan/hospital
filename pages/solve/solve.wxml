@@ -17,7 +17,18 @@
       </view>
     </view>
     <view style='margin-top:25px'>
-        <button formType="submit" class="circleBlue">解决故障</button>
+    <button formType="submit" type="primary">
+          <form report-submit="true" bindsubmit='toSolve'>
+            <button formType="submit" type="primary">
+              <form report-submit="true" bindsubmit='toSolve'>
+                <button formType="submit" type="primary">
+                  <view class='circleBlue'>解决故障</view>
+                </button>
+              </form>
+            </button>
+          </form>
+        </button>
+        <!-- <button formType="submit" class="circleBlue">解决故障</button> -->
     </view>
   </form>
 </view>

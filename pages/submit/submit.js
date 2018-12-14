@@ -422,21 +422,18 @@ Page({
                   })
                 }
               }
-            })
+            });
             // 设置定时发送formIds
             setTimeout(function() {
               wx.request({
-                url: app.globalData.localApiUrl + '/trouble/message/submit',
+                url: app.globalData.localApiUrl + '/common/collectFormIds',
                 method: 'POST',
                 header: {
                   'content-type': 'application/json'
                 },
                 data: {
                   'formIds': that.data.formIds,
-                  'troublePersonName': troubleOwner,
-                  'office': office,
-                  'detail': content
-
+                  'userId': wx.getStorageSync('userInfo').id
                 },
                 success(res) {
                   console.log(res.data);

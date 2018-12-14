@@ -86,17 +86,39 @@
     </view>
     <view style='margin-top:15px'>
       <form report-submit="true" bindsubmit='toRevoke'>
-        <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button>
+        <button formType="submit" type="primary">
+          <form report-submit="true" bindsubmit='submitTrouble'>
+            <button formType="submit" type="primary">
+              <form report-submit="true" bindsubmit='submitTrouble'>
+                <button formType="submit" type="primary">
+                  <view class='circleGreen'>撤回故障</view>
+                </button>
+              </form>
+            </button>
+          </form>
+        </button>
+        <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
+
       </form>
     </view>
     <view style='margin-top:15px'>
       <form report-submit="true" bindsubmit='toConfirm'>
-        <button formType="submit" class="circleGreen" wx:if="{{isConfirmShow}}">确认故障</button>
+        <button formType="submit" type="primary">
+          <form report-submit="true" bindsubmit='toConfirm'>
+            <button formType="submit" type="primary">
+              <form report-submit="true" bindsubmit='toConfirm'>
+                <button formType="submit" type="primary">
+                  <view class='circleGreen'>确认故障</view>
+                </button>
+              </form>
+            </button>
+          </form>
+        </button>
+        <!-- <button formType="submit" class="circleGreen" wx:if="{{isConfirmShow}}">确认故障</button> -->
       </form>
     </view>
     <view style='margin-top:15px'>
       <button formType="submit" bindtap='toSolve' class="circleBlue" wx:if="{{isSolveShow}}">解决故障</button>
     </view>
-
   </view>
 </scroll-view>

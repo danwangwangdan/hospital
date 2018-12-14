@@ -9,6 +9,7 @@ Page({
     isConfirmed: "process",
     isSolved: "",
     isCommitContent: false,
+    formIds: [],
     commitContent: "请耐心等待技术人员确认",
     isConfirmContent: false,
     confirmContent: "",
@@ -165,6 +166,7 @@ Page({
     // 收集formId
     let formId = e.detail.formId;
     console.log("formId:" + formId);
+    that.data.formIds.push(formId);
     wx.request({
       url: app.globalData.localApiUrl + '/trouble/confirm',
       method: 'POST',
@@ -173,7 +175,6 @@ Page({
       },
       data: {
         'troubleId': that.data.troubleId,
-        'formId': formId,
         'solverId': wx.getStorageSync("userInfo").id,
         'solver': wx.getStorageSync("userInfo").nickname
       },
@@ -198,6 +199,23 @@ Page({
           });
           that.onShow();
         }
+        // 设置定时发送formIds
+        setTimeout(function () {
+          wx.request({
+            url: app.globalData.localApiUrl + '/common/collectFormIds',
+            method: 'POST',
+            header: {
+              'content-type': 'application/json'
+            },
+            data: {
+              'formIds': that.data.formIds,
+              'userId': wx.getStorageSync('userInfo').id
+            },
+            success(res) {
+              console.log(res.data);
+            }
+          });
+        }, 1000);
       }
     });
   },
