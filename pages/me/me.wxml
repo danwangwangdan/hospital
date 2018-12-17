@@ -12,7 +12,7 @@
   <view class="my">
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item">
-        <image src="../../pics/all.png" style="height:20px;weight:20px"></image>
+        <image src="../../pics/all.png" style="height:50rpx;width:50rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toAll">
         <text>全部故障</text>
@@ -20,7 +20,7 @@
     </view>
     <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp" style="">
       <view class="myitem-icon2 flex-item">
-        <image src="../../pics/processing.png" style="height:30px;width:30px"></image>
+        <image src="../../pics/processing.png" style="height:52rpx;width:52rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toNotSolved">
         <text>未解决的故障</text>
@@ -28,7 +28,7 @@
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp" style="">
       <view class="myitem-icon2 flex-item">
-        <image src="../../pics/processing.png" style="height:30px;width:30px"></image>
+        <image src="../../pics/processing.png" style="height:52rpx;width:52rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toSubmitted">
         <text>待确认的故障</text>
@@ -36,7 +36,7 @@
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon3 flex-item">
-        <image src="../../pics/submitted.png" style="height:26px;width:26px"></image>
+        <image src="../../pics/submitted.png" style="height:43rpx;width:43rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toConfirmed">
         <text>已确认的故障</text>
@@ -44,7 +44,7 @@
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon4 flex-item">
-        <image src="../../pics/solved.png" style="height:30px;width:30px"></image>
+        <image src="../../pics/solved.png" style="height:42rpx;width:42rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toSolved">
         <text>已解决的故障</text>
@@ -52,7 +52,7 @@
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon5 flex-item">
-        <image src="../../pics/advice.png" style="height:20px;weight:20px"></image>
+        <image src="../../pics/advice.png" style="height:48rpx;weight:48rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toSuggest">
         <text>意见反馈</text>

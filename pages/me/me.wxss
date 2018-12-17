@@ -72,28 +72,27 @@
 .my .my-item .myitem-icon image{
   width: 45rpx;
   height: 45rpx;
-  padding: 40rpx 0;
+  padding: 36rpx 0;
 }
 .my .my-item .myitem-icon2 image{
   width: 45rpx;
   height: 45rpx;
-  padding: 33rpx 0;
+  padding: 36rpx 0;
 }
 .my .my-item .myitem-icon3 image{
   width: 45rpx;
   height: 45rpx;
-  padding: 32rpx 0;
+  padding: 40rpx 0;
 }
 .my .my-item .myitem-icon4 image{
   width: 45rpx;
   height: 45rpx;
-  padding: 33rpx 0;
+  padding: 40rpx 0;
 }
 .my .my-item .myitem-icon5 image{
   width: 45rpx;
   height: 45rpx;
-  padding-top: 42rpx;
-  padding-left: 8rpx;
+  padding-top: 40rpx;
 }
 .my .my-item .myitem-name{
   flex: 5;

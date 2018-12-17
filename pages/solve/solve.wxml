@@ -16,19 +16,19 @@
         <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
       </view>
     </view>
-    <view style='margin-top:25px'>
-    <button formType="submit" type="primary">
-          <form report-submit="true" bindsubmit='toSolve'>
-            <button formType="submit" type="primary">
-              <form report-submit="true" bindsubmit='toSolve'>
-                <button formType="submit" type="primary">
-                  <view class='circleBlue'>解决故障</view>
-                </button>
-              </form>
-            </button>
-          </form>
-        </button>
-        <!-- <button formType="submit" class="circleBlue">解决故障</button> -->
+    <view style='margin-top:15px'>
+      <!-- <button formType="submit" type="primary">
+        <form report-submit="true" bindsubmit='toSolve'>
+          <button formType="submit" type="primary">
+            <form report-submit="true" bindsubmit='toSolve'>
+              <button formType="submit" type="primary">
+                <view class='solve_btn'>确认解决</view>
+              </button>
+            </form>
+          </button>
+        </form>
+      </button> -->
+      <button formType="submit" class="solve_btn">确认解决</button>
     </view>
   </form>
 </view>

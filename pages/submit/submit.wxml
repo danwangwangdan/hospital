@@ -35,7 +35,25 @@
         <input name="office" class="input" maxlength="100" value="{{office}}" bindinput="bindOfficeChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
+      <!-- <view class="mod t-name">
+        <text class="key">一级类型</text>
+        <picker bindchange="firTypeChange" value="{{firTypeIndex}}" listData="{{firTypes}}">
+          <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
+            <image class="arrow-r" src="/pics/arrow_right.png"></image>
+          </view>
+        </picker>
+      </view>
       <view class="mod t-name">
+        <text class="key">二级类型</text>
+        <picker bindchange="secTypeChange" disabled="{{secTypeDis}}" value="{{secTypeIndex}}" listData="{{secTypes}}">
+          <view class="value" name="secTypes">{{secTypes[secTypeIndex]}}
+            <image class="arrow-r" src="/pics/arrow_right.png"></image>
+          </view>
+        </picker>
+      </view>
+    </view> -->
+
+    <view class="mod t-name">
         <text class="key">一级类型</text>
         <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}">
           <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
@@ -52,6 +70,7 @@
         </picker>
       </view>
     </view>
+
     <view class="mod-a mt20">
       <view class="mod-big my-nick">
         <textarea name="content" class="weui-textarea" placeholder="请输入问题详细信息。注意附带病人住院号或床位号，打印机类型(A4/针式/条码)等关键信息..." value="{{content}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />

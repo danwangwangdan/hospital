@@ -14,10 +14,11 @@ Page({
   },
   toSolve: function(e) {
     var that = this;
-    // 收集formId
-    let formId = e.detail.formId;
-    console.log("formId:" + formId);
-    that.data.formIds.push(formId);
+    // // 收集formId
+    // let formId = e.detail.formId;
+    // console.log("formId:" + formId);
+    // that.data.formIds.push(formId);
+    
     wx.request({
       url: app.globalData.localApiUrl + '/trouble/solve',
       method: 'POST',
@@ -37,26 +38,38 @@ Page({
         wx.navigateTo({
           url: '/pages/solve_suc/solve_suc?troubleId=' + that.data.troubleId
         });
-        // 设置定时发送formIds
-        setTimeout(function() {
-          wx.request({
-            url: app.globalData.localApiUrl + '/common/collectFormIds',
-            method: 'POST',
-            header: {
-              'content-type': 'application/json'
-            },
-            data: {
-              'formIds': that.data.formIds,
-              'userId': wx.getStorageSync('userInfo').id
-            },
-            success(res) {
-              console.log(res.data);
-            }
-          });
-        }, 1000);
+        // // 设置定时发送formIds
+        // setTimeout(function() {
+        //   wx.request({
+        //     url: app.globalData.localApiUrl + '/common/collectFormIds',
+        //     method: 'POST',
+        //     header: {
+        //       'content-type': 'application/json'
+        //     },
+        //     data: {
+        //       'formIds': that.data.formIds,
+        //       'userId': wx.getStorageSync('userInfo').id
+        //     },
+        //     success(res) {
+        //       console.log(res.data);
+        //     }
+        //   });
+        // }, 100);
       }
     });
 
+  },
+  //字数改变触发事件
+  bindTextAreaChange: function(e) {
+    var that = this
+    var value = e.detail.value,
+      len = parseInt(value.length);
+    if (len > that.data.noteMaxLen)
+      return;
+    that.setData({
+      content: value,
+      noteNowLen: len
+    })
   },
   onLoad: function(options) {
     var that = this;

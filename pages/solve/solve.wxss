@@ -1,8 +1,17 @@
 /* @import '/style/weui.wxss';
 @import '/style/zanui.wxss'; */
-.circleBlue {
-  width: 550rpx;
-  line-height: 30rpx;
+
+.solve_btn {
+  /* position: fixed;
+  margin-top: 18%;
+  margin-bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500rpx;
+  line-height: 25rpx; */
+  line-height: 25rpx;
+  width: 80%;
+  margin-top: 10%;
   color: rgb(255, 255, 255);
   font-size: 14px;
   padding-top: 11px;

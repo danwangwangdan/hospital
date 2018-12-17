@@ -7,13 +7,12 @@ Page({
    */
   data: {
     currentTab: 'tab1',
+    isAdmin: 0,
     troubleList: [],
     isNull: true,
-    isAdmin: 0,
     submitCount: 0,
     confirCount: 0,
     initialText: "加载中...",
-
     isLogin: true,
     lastSubmitTime: new Date(),
     formIds: [],
@@ -31,6 +30,7 @@ Page({
     secTypeDis: false,
     secTypeIndex: 0,
     src: "",
+    uploadSrc: "",
     srcArray: [],
     isAllOther: true, //是否选择了 其他类型的故障
     isSrc: false,
@@ -112,11 +112,7 @@ Page({
       });
     }
   },
-  onShow: function(options) {
-    console.log("onShow加载");
-    this.setData({ 
-      currentTab: 'tab1'
-    });
+  onLoad: function(options) {
     var that = this;
     // 判断是否登录
     wx.checkSession({
@@ -211,12 +207,10 @@ Page({
       });
     }
   },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-    this.onShow();
+  onShow: function() {
+
   },
+ 
   toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -311,7 +305,8 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         that.setData({
-          isSrc: true
+          isSrc: true,
+          src: tempFilePaths[0]
         });
         upload(that, tempFilePaths);
       },
@@ -329,8 +324,88 @@ Page({
   clearPic: function() { //删除图片
     this.setData({
       isSrc: false,
-      src: ""
+      src: "",
+      uploadSrc: ""
     })
+  },
+
+  /**
+  * 页面相关事件处理函数--监听用户下拉动作
+  */
+  onPullDownRefresh: function () {
+    var that = this;
+    that.setData({
+      isNull: true,
+      submitCount: 0,
+      confirCount: 0,
+      initialText: "加载中...",
+      troubleList: []
+    });
+    if (that.data.currentTab == 'tab1') { //待确认
+      wx.request({
+        url: app.globalData.localApiUrl + '/trouble/submitted',
+        method: 'GET', 
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            wx.hideNavigationBarLoading() //完成停止加载
+            wx.stopPullDownRefresh() //停止下拉刷新
+            var data = res.data.data;
+            for (let i = 0; i < data.length; i++) {
+              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+            }
+            if (data.length != 0) {
+              that.setData({
+                troubleList: data,
+                isNull: false,
+                submitCount: data.length,
+                confirmCount: 0
+              });
+            } else {
+              that.setData({
+                troubleList: data,
+                isNull: true,
+                initialText: "这里什么也没有...",
+                submitCount: 0,
+                confirmCount: 0
+              });
+            }
+          }
+        }
+      });
+    } else {
+      wx.request({
+        url: app.globalData.localApiUrl + '/trouble/confirmed',
+        method: 'GET',
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            wx.hideNavigationBarLoading() //完成停止加载
+            wx.stopPullDownRefresh() //停止下拉刷新
+            var data = res.data.data;
+            for (let i = 0; i < data.length; i++) {
+              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+            }
+            if (data.length != 0) {
+              that.setData({
+                troubleList: data,
+                isNull: false,
+                submitCount: 0,
+                confirmCount: data.length
+              });
+            } else {
+              that.setData({
+                troubleList: data,
+                isNull: true,
+                initialText: "这里什么也没有...",
+                submitCount: 0,
+                confirmCount: 0
+              });
+            }
+          }
+        }
+      });
+    }
   },
 
   //表单验证
@@ -359,8 +434,13 @@ Page({
     var content = this.data.content;
     var firType = this.data.firTypeValue;
     var secType = this.data.secTypeValue;
-    var captureUrls = this.data.src;
+    var captureUrls = this.data.uploadSrc;
     //先进行表单非空验证
+    var isBlankContent = true;
+    if (content != "" || captureUrls != "") {
+      isBlankContent = false;
+
+    }
     if (troubleOwner == "") {
       wx.showToast({
         title: '故障人不能为空',
@@ -373,9 +453,9 @@ Page({
         icon: 'none',
         duration: 3000
       });
-    } else if (that.data.isAllOther && content == "") {
+    } else if (that.data.isAllOther && isBlankContent) {
       wx.showToast({
-        title: '选择其他问题时必须输入问题详细信息',
+        title: '选择其他问题时必须输入问题详细信息或上传截图',
         icon: 'none',
         duration: 3000
       });
@@ -405,7 +485,6 @@ Page({
             });
             wx.login({
               success(res) {
-                console.log(res)
                 if (res.code) {
                   // 登录成功，发送jsCode
                   wx.request({
@@ -458,19 +537,6 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-    this.setData({
-      currentTab: 'tab1',
-      troubleList: [],
-      isNull: true
-    });
-    this.onShow();
-
-  },
-
-  /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
@@ -514,7 +580,7 @@ function upload(page, path) {
       }
       // 设置待上传至后台的图片url
       page.setData({
-        src: imageList.data[0].url,
+        uploadSrc: imageList.data[0].url,
         srcArray: path
       })
     },

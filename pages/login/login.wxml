@@ -9,12 +9,16 @@
       </image>
     </view>
     <view style='margin-top:35px'>
-        <i-input title="账号:" placeholder="请输入账号" value="{{ username }}" bind:change="bindUsernameChange"/>
-        <i-input title="密码:" type="password" placeholder="请输入密码" value="{{ password }}" bind:change="bindPasswordChange" />
+      <i-input title="账号:" placeholder="请输入账号" value="{{ username }}" bind:change="bindUsernameChange" />
+      <i-input title="密码:" type="password" placeholder="请输入密码" value="{{ password }}" bind:change="bindPasswordChange" />
     </view>
-<!-- bindgetuserinfo="bindGetUserInfo" -->
+    <!-- bindgetuserinfo="bindGetUserInfo" -->
+    <!-- <view style='margin-top:35px'>
+      <button class="circleBlue" loading="{{isLoading}}" bindtap="toLogin" open-type='getUserInfo' >{{loginText}}</button>
+      
+    </view> -->
     <view style='margin-top:35px'>
-      <button class="circleBlue" bindtap="toLogin" open-type='getUserInfo' >登录</button>
+      <button style='width:80%' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toLogin" open-type='getUserInfo'>{{loginText}}</button>
     </view>
   </view>
   <view class="footer">

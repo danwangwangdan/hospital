@@ -19,13 +19,14 @@ Page({
     isSolveShow: false,
     isPicTextShow: true,
     isCommentShow: false,
+    confirmPressContent: 0,
     solveContent: "",
     captureUrl: "",
     captureUrls: [],
     detail: "",
     troubleType: "",
     office: "",
-    comment:"",
+    comment: "",
     submitTime: "",
     troubleOwner: ""
   },
@@ -79,7 +80,7 @@ Page({
             });
             if (isAdmin) {
               that.setData({
-                isSolveShow: true,
+                isSolveShow: false,
                 isConfirmShow: true,
                 isRevokeShow: false,
 
@@ -101,7 +102,6 @@ Page({
             if (isAdmin) {
               that.setData({
                 isSolveShow: true,
-                
                 isRevokeShow: false,
               });
             }
@@ -129,7 +129,7 @@ Page({
               isConfirmContent: false,
               isSolveContent: true,
               isCommentShow: false,
-              solveContent: trouble.solver + " 于" + new Date(trouble.confirmTime).format("yyyy-MM-dd HH:mm") + "撤回"
+              solveContent: trouble.solver + " 于" + new Date(trouble.solveTime).format("yyyy-MM-dd HH:mm") + "撤回"
             });
           }
 
@@ -147,9 +147,9 @@ Page({
     }
   },
   /**
- * 页面相关事件处理函数--监听用户下拉动作
- */
-  onPullDownRefresh: function () {
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
     this.onShow();
   },
@@ -157,7 +157,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
@@ -200,7 +200,7 @@ Page({
           that.onShow();
         }
         // 设置定时发送formIds
-        setTimeout(function () {
+        setTimeout(function() {
           wx.request({
             url: app.globalData.localApiUrl + '/common/collectFormIds',
             method: 'POST',
@@ -215,7 +215,7 @@ Page({
               console.log(res.data);
             }
           });
-        }, 1000);
+        }, 100);
       }
     });
   },

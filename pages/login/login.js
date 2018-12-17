@@ -6,7 +6,10 @@ Page({
   data: {
     username: '',
     password: '',
-    jsCode: ''
+    jsCode: '',
+    loginText: "登录",
+    isLoading: false,
+    isDisabled: false
   },
   // bindUsernameChange: function (event) {
   //   this.setData({
@@ -39,6 +42,11 @@ Page({
         duration: 2000
       });
     } else {
+      that.setData({
+        isDisabled: true,
+        isLoading: true,
+        loginText: "登录中..."
+      })
       wx.request({
         url: app.globalData.localApiUrl + '/user/login',
         method: 'POST',
