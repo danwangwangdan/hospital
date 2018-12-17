@@ -9,7 +9,7 @@
   transform: translateX(-50%);
   width: 500rpx;
   line-height: 25rpx; */
-  line-height: 25rpx;
+  line-height: 27rpx;
   width: 80%;
   margin-top: 10%;
   color: rgb(255, 255, 255);

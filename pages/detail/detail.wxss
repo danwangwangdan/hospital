@@ -10,12 +10,11 @@
 
 .revoke_btn {
   position: fixed;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 2%;
   left: 50%;
   transform: translateX(-50%);
   width: 350rpx;
-  line-height: 22rpx;
+  line-height: 27rpx;
   color: rgb(255, 255, 255);
   font-size: 14px;
   padding-top: 11px;
@@ -31,12 +30,11 @@
 
 .confirm_btn {
   position: fixed;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 2%;
   left: 50%;
   transform: translateX(-50%);
   width: 350rpx;
-  line-height: 22rpx;
+  line-height: 27rpx;
   color: rgb(255, 255, 255);
   font-size: 14px;
   padding-top: 11px;
@@ -52,12 +50,11 @@
 
 .solve_btn {
   position: fixed;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 2%;
   left: 50%;
   transform: translateX(-50%);
   width: 350rpx;
-  line-height: 22rpx;
+  line-height: 27rpx;
   color: rgb(255, 255, 255);
   font-size: 14px;
   padding-top: 11px;
@@ -68,7 +65,7 @@
   border-color: rgb(197, 229, 145);
   border-style: solid;
   border-radius: 41px;
-  background-color: #2D8CF0;
+  background-color: #2d8cf0;
 }
 
 #testButton:hover {

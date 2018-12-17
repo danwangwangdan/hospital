@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    clickCount: 0, //button点击次数
     currentTab: 'tab1',
     isAdmin: 0,
     troubleList: [],
@@ -210,7 +211,7 @@ Page({
   onShow: function() {
 
   },
- 
+
   toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -330,9 +331,9 @@ Page({
   },
 
   /**
-  * 页面相关事件处理函数--监听用户下拉动作
-  */
-  onPullDownRefresh: function () {
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
     var that = this;
     that.setData({
       isNull: true,
@@ -344,7 +345,7 @@ Page({
     if (that.data.currentTab == 'tab1') { //待确认
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/submitted',
-        method: 'GET', 
+        method: 'GET',
         success(res) {
           console.log(res.data);
           if (res.data.code == 1) {
@@ -426,9 +427,12 @@ Page({
     var that = this;
     // 收集formId
     let formId = e.detail.formId;
-    console.log("formId:" + formId);
-    this.data.formIds.push(formId);
 
+    this.data.formIds.push(formId);
+    console.log("clickCount:" + that.data.clickCount);
+    if (that.data.clickCount > 0) {
+      return;
+    }
     var troubleOwner = this.data.username;
     var office = this.data.office;
     var content = this.data.content;
@@ -460,6 +464,8 @@ Page({
         duration: 3000
       });
     } else {
+      that.data.clickCount++;
+      console.log("clickCount2:" + that.data.clickCount);
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/submit',
         method: 'POST',
@@ -521,7 +527,10 @@ Page({
                   console.log(res.data);
                 }
               });
-            }, 1000);
+              that.setData({
+                clickCount: 0
+              })
+            }, 500);
           } else {
             // 提交失败
             wx.showToast({

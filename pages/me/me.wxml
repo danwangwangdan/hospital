@@ -36,7 +36,7 @@
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon3 flex-item">
-        <image src="../../pics/submitted.png" style="height:43rpx;width:43rpx"></image>
+        <image src="../../pics/submitted.png" style="height:50rpx;width:50rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toConfirmed">
         <text>已确认的故障</text>
@@ -52,14 +52,17 @@
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon5 flex-item">
-        <image src="../../pics/advice.png" style="height:48rpx;weight:48rpx"></image>
+        <image src="../../pics/advice.png" style="height:50rpx;weight:50rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toSuggest">
         <text>意见反馈</text>
       </view>
     </view>
-    <view class="my-item flex-wrp">
-      <i-button style="display:block;margin:0 auto;width:80%;height:60%" bind:click="toLogout" type="primary" shape="circle">退出登录</i-button>
-    </view>
+    <!-- <view class="my-item flex-wrp">
+      <i-button style="display:block;margin:0 auto;width:80%;height:50%" bind:click="toLogout" type="primary" shape="circle">退出登录</i-button>
+    </view> -->
   </view>
+</view>
+<view style="display:block;margin:0 auto;width:85%;height:50%">
+  <button style='width:85%;margin-top:50rpx;font-size:30rpx; line-height:75rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toLogout">{{logoutText}}</button>
 </view>

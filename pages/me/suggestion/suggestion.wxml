@@ -1,5 +1,5 @@
 <view class="centerView">
-  <textarea placeholder="请输入遇到的问题或建议..." value="{{content}}"  bindinput="bindContentChange"/>
+  <textarea placeholder="在这里畅言吧..." value="{{content}}"  bindinput="bindContentChange"/>
   <input placeholder="联系方式   选填" value="{{mobile}}" bindinput="bindMobileChange" />
   <view style='margin-top:60px'>
     <i-button bind:click="toSubmit" type="primary" shape="circle">提交</i-button>

@@ -9,14 +9,14 @@ form button::after {
 
 .publish_btn {
   position: fixed;
-  margin-top: 10%;
+  margin-top: 8%;
   margin-bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
   width: 280rpx;
-  line-height: 33rpx;
+  line-height: 30rpx;
   color: rgb(255, 255, 255);
-  font-size: 16px;
+  font-size:30rpx;
   padding-top: 11px;
   padding-bottom: 11px;
   padding-left: 56px;

@@ -1,5 +1,5 @@
 <!--pages/detail/detail.wxml-->
-<scroll-view scroll-y="true" class="all_scr" style="padding-bottom:112rpx;">
+<scroll-view scroll-y="true">
   <view style='margin-top:20px'>
     <i-steps>
       <i-step status="{{isCommitted}}" icon="createtask">

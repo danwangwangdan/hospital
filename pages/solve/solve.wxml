@@ -1,4 +1,4 @@
-<view class="add-page">
+<scroll-view class="add-page">
   <form report-submit="true" bindsubmit="toSolve">
     <view class="mod-a mt20">
       <view class="mod  t-name">
@@ -31,4 +31,4 @@
       <button formType="submit" class="solve_btn">确认解决</button>
     </view>
   </form>
-</view>
+</scroll-view>

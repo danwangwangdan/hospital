@@ -10,7 +10,10 @@ Page({
     nickname: '',
     office: '',
     tel: "",
-    imgSrc: ""
+    imgSrc: "",
+    logoutText: "退出登录",
+    isLoading: false,
+    isDisabled: false
   },
   toAll: function() {
     wx.navigateTo({
@@ -43,7 +46,13 @@ Page({
     })
   },
   toLogout: function() {
+    var that = this;
     wx.clearStorageSync();
+    that.setData({
+      isDisabled: true,
+      isLoading: true,
+      loginText: "退出登录中..."
+    })
     wx.request({
       url: app.globalData.localApiUrl + '/user/logout',
       method: 'GET',
@@ -52,9 +61,10 @@ Page({
         if (res.data.code == 1) {
           wx.reLaunch({
             url: '/pages/login/login'
-          })
-        } else {
+          });
+          that.setData({
 
+          })
         }
       }
     });
