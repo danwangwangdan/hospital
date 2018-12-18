@@ -9,8 +9,8 @@
         <block wx:key="id" wx:for="{{troubleList}}">
           <i-cell data-id="{{item.id}}" label="{{item.office+item.troublePersonName}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
             <i-icon wx:if="{{item.status==1}}" type="createtask" size="20" slot="icon" />
-            <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon"/>
-            <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon"/>    
+            <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon" />
+            <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon" />
           </i-cell>
         </block>
       </i-cell-group>
@@ -22,8 +22,11 @@
 
 </view>
 <view class="add-page" wx:if="{{isAdmin==0}}">
+
   <form report-submit="true" bindsubmit='submitTrouble'>
-    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
+    <i-notice-bar icon="systemprompt">
+      <text decode="{{true}}" space="{{true}}">{{noticeText}}</text>
+    </i-notice-bar>
     <view class="mod-a mt20">
       <view class="mod t-name">
         <text decode="{{true}}" class="key">申报人&nbsp;&nbsp;&nbsp;</text>

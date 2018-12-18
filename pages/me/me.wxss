@@ -69,32 +69,41 @@
 .my .my-item .myitem-icon5{
   flex: 1;
 }
+.my .my-item .myitem-icon6{
+  flex: 1;
+}
 .my .my-item .myitem-icon image{
   width: 45rpx;
   height: 45rpx;
-  padding: 36rpx 0;
+  padding: 35rpx 0;
 }
 .my .my-item .myitem-icon2 image{
   width: 45rpx;
   height: 45rpx;
-  padding: 36rpx 0;
+  padding: 35rpx 0;
 }
 .my .my-item .myitem-icon3 image{
   width: 50rpx;
   height: 50rpx;
-  padding: 40rpx 0;
+  padding: 38rpx 0;
   padding-left: -10rpx;
 }
 .my .my-item .myitem-icon4 image{
   width: 45rpx;
   height: 45rpx;
   padding: 40rpx 0;
-  padding-left: 6rpx;
+  padding-left: 3rpx;
 }
 .my .my-item .myitem-icon5 image{
   width: 45rpx;
   height: 45rpx;
-  padding-top: 40rpx;
+  padding-top: 36rpx;
+}
+.my .my-item .myitem-icon6 image{
+  width: 45rpx;
+  height: 45rpx;
+  padding-top: 36rpx;
+    padding-left: 5rpx;
 }
 .my .my-item .myitem-name{
   flex: 5;

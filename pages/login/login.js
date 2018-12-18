@@ -29,6 +29,7 @@ Page({
   bindGetUserInfo: function(e) {
 
   },
+  
   //事件处理函数
   toLogin: function() {
     var that = this;

@@ -8,7 +8,8 @@
     "i-col": "../../plugins/iview/col/index",
     "i-tabs": "../../plugins/iview/tabs/index",
     "i-tab": "../../plugins/iview/tab/index",
-    "i-button": "../../plugins/iview/button/index"
+    "i-button": "../../plugins/iview/button/index",
+    "i-notice-bar": "../../plugins/iview/notice-bar/index"
   },
   "navigationBarTitleText": "首页"
 }

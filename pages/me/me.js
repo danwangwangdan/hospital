@@ -45,6 +45,11 @@ Page({
       url: '/pages/me/suggestion/suggestion'
     })
   },
+  toContact: function () {
+    wx.navigateTo({
+      url: '/pages/me/contact/contact'
+    })
+  },
   toLogout: function() {
     var that = this;
     wx.clearStorageSync();

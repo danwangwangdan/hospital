@@ -58,11 +58,16 @@
         <text>意见反馈</text>
       </view>
     </view>
-    <!-- <view class="my-item flex-wrp">
-      <i-button style="display:block;margin:0 auto;width:80%;height:50%" bind:click="toLogout" type="primary" shape="circle">退出登录</i-button>
-    </view> -->
+   <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
+      <view class="myitem-icon6 flex-item">
+        <image src="../../pics/contact.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="toContact">
+        <text>联系方式</text>
+      </view>
+    </view>
   </view>
 </view>
 <view style="display:block;margin:0 auto;width:85%;height:50%">
-  <button style='width:85%;margin-top:50rpx;font-size:30rpx; line-height:75rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toLogout">{{logoutText}}</button>
+  <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toLogout">{{logoutText}}</button>
 </view>

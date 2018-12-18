@@ -18,6 +18,9 @@ Page({
     place:"0",
     lastSubmitTime: new Date(),
     formIds: [],
+
+    noticeText:"",
+    isLoop: false,
     username: "",
     office: "",
     imageUrl: "",
@@ -189,6 +192,25 @@ Page({
               console.log(firTypes);
               that.setData({
                 firTypes: firTypes,
+              })
+            }
+          }
+        });
+        //获取公告
+        wx.request({
+          url: app.globalData.localApiUrl + '/common/notice',
+          method: 'GET',
+          header: {
+            'content-type': 'application/json'
+          },
+          success(res) {
+            console.log(res.data);
+            if (res.data.code == 1) {
+              var data = res.data.data;
+              console.log(data);
+              that.setData({
+                noticeText: data.noticeText,
+                isLoop: true
               })
             }
           }

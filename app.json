@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/submit/submit",
+    "pages/me/contact/contact",
     "pages/me/me",
     "pages/me/all/all",
     "pages/login/login",
