@@ -7,10 +7,10 @@
     <view style="margin-top:10px">
       <i-cell-group>
         <block wx:key="id" wx:for="{{troubleList}}">
-          <i-cell data-id="{{item.id}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
+          <i-cell data-id="{{item.id}}" label="{{item.office+item.troublePersonName}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
             <i-icon wx:if="{{item.status==1}}" type="createtask" size="20" slot="icon" />
-            <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon" />
-            <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon" />
+            <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon"/>
+            <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon"/>    
           </i-cell>
         </block>
       </i-cell-group>
@@ -53,7 +53,7 @@
       </view>
     </view> -->
 
-    <view class="mod t-name">
+      <view class="mod t-name">
         <text class="key">一级类型</text>
         <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}">
           <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
@@ -86,11 +86,11 @@
         <view bindtap="clearPic"></view>
       </view>
     </view>
-    <button  formType="submit" type="primary">
+    <button formType="submit" type="primary">
       <form report-submit="true" bindsubmit='submitTrouble'>
-        <button formType="submit" type="primary" >
+        <button formType="submit" type="primary">
           <form report-submit="true" bindsubmit='submitTrouble'>
-            <button formType="submit" type="primary" >
+            <button formType="submit" type="primary">
               <view class='publish_btn'>提交</view>
             </button>
           </form>

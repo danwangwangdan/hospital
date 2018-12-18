@@ -2,7 +2,7 @@
   <view style="margin-top:10px">
     <i-cell-group>
       <block wx:key="id" wx:for="{{troubleList}}">
-        <i-cell data-id="{{item.id}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
+        <i-cell data-id="{{item.id}}" label="{{item.office+item.troublePersonName}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
           <i-icon type="createtask" size="20" slot="icon" />
         </i-cell>
       </block>

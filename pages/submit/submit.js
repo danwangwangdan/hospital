@@ -15,6 +15,7 @@ Page({
     confirCount: 0,
     initialText: "加载中...",
     isLogin: true,
+    place:"0",
     lastSubmitTime: new Date(),
     formIds: [],
     username: "",
