@@ -84,7 +84,7 @@
       </view>
 
     </view>
-    <view  wx:if="{{isRevokeShow}}" style='margin-top:10px'>
+    <view wx:if="{{isRevokeShow}}" style='margin-top:10px'>
       <button bindtap='toRevoke'>
         <view class='revoke_btn'>撤回故障</view>
       </button>
@@ -97,7 +97,31 @@
             <button formType="submit" type="primary">
               <form report-submit="true" bindsubmit='toConfirm'>
                 <button formType="submit" type="primary">
-                  <view class='confirm_btn'>确认故障</view>
+                  <form report-submit="true" bindsubmit='toConfirm'>
+                    <button formType="submit" type="primary">
+                      <form report-submit="true" bindsubmit='toConfirm'>
+                        <button formType="submit" type="primary">
+                          <form report-submit="true" bindsubmit='toConfirm'>
+                            <button formType="submit" type="primary">
+                              <form report-submit="true" bindsubmit='toConfirm'>
+                                <button formType="submit" type="primary">
+                                  <form report-submit="true" bindsubmit='toConfirm'>
+                                    <button formType="submit" type="primary">
+                                      <form report-submit="true" bindsubmit='toConfirm'>
+                                        <button formType="submit" type="primary">
+                                          <view class='confirm_btn'>确认故障</view>
+                                        </button>
+                                      </form>
+                                    </button>
+                                  </form>
+                                </button>
+                              </form>
+                            </button>
+                          </form>
+                        </button>
+                      </form>
+                    </button>
+                  </form>
                 </button>
               </form>
             </button>
@@ -107,7 +131,7 @@
       </form>
 
     </view>
-    <view  wx:if="{{isSolveShow}}" style='margin-top:10px'>
+    <view wx:if="{{isSolveShow}}" style='margin-top:10px'>
       <button bindtap='toSolve'>
         <view class='solve_btn'>解决故障</view>
       </button>
