@@ -14,11 +14,18 @@ Page({
    */
   onShow: function(options) {
     var that = this;
+    wx.showLoading({
+      title: "请求中...",
+      mask: true
+    });
     wx.request({
       url: app.globalData.localApiUrl + '/common/contact',
       method: 'GET',
       success(res) {
         console.log(res.data);
+        setTimeout(() => {
+          wx.hideLoading();
+        }, 100);
         if (res.data.code == 1) {
           var data = res.data.data;
           that.setData({

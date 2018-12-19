@@ -23,7 +23,7 @@
         <image src="../../pics/processing.png" style="height:52rpx;width:52rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toNotSolved">
-        <text>未解决的故障</text>
+        <text>未解决故障</text>
       </view>
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp" style="">
@@ -31,7 +31,7 @@
         <image src="../../pics/processing.png" style="height:52rpx;width:52rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toSubmitted">
-        <text>待确认的故障</text>
+        <text>待确认故障</text>
       </view>
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
@@ -39,7 +39,7 @@
         <image src="../../pics/submitted.png" style="height:50rpx;width:50rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toConfirmed">
-        <text>已确认的故障</text>
+        <text>已确认故障</text>
       </view>
     </view>
     <view class="my-item flex-wrp">
@@ -47,7 +47,16 @@
         <image src="../../pics/solved.png" style="height:42rpx;width:42rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toSolved">
-        <text>已解决的故障</text>
+        <text>已解决故障</text>
+      </view>
+    </view>
+
+    <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
+      <view class="myitem-icon6 flex-item">
+        <image src="../../pics/contact.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="toContact">
+        <text>联系方式</text>
       </view>
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
@@ -58,15 +67,8 @@
         <text>意见反馈</text>
       </view>
     </view>
-   <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
-      <view class="myitem-icon6 flex-item">
-        <image src="../../pics/contact.png"></image>
-      </view>
-      <view class="myitem-name flex-item" bindtap="toContact">
-        <text>联系方式</text>
-      </view>
-    </view>
   </view>
+
 </view>
 <view style="display:block;margin:0 auto;width:85%;height:50%">
   <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toLogout">{{logoutText}}</button>

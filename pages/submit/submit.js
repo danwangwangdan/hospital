@@ -15,11 +15,11 @@ Page({
     confirCount: 0,
     initialText: "加载中...",
     isLogin: true,
-    place:"0",
+    place: "0",
     lastSubmitTime: new Date(),
     formIds: [],
 
-    noticeText:"",
+    noticeText: "",
     isLoop: false,
     username: "",
     office: "",
@@ -276,7 +276,10 @@ Page({
   //改变故障类别
   firTypeChange: function(e) {
     var that = this;
-    console.log(e.detail.value + "," + this.data.firTypes[e.detail.value]);
+    wx.showLoading({
+      title: "请求中...",
+      mask: true
+    });
     this.setData({
       firTypeIndex: e.detail.value,
       firTypeValue: this.data.firTypes[e.detail.value]
@@ -295,6 +298,9 @@ Page({
       },
       success(res) {
         console.log(res.data);
+        setTimeout(() => {
+          wx.hideLoading();
+        }, 100);
         if (res.data.code == 1) {
           var data = res.data.data;
           var secTypes = new Array();
@@ -489,6 +495,10 @@ Page({
     } else {
       that.data.clickCount++;
       console.log("clickCount2:" + that.data.clickCount);
+      wx.showLoading({
+        title: "提交中...",
+        mask: true
+      });
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/submit',
         method: 'POST',
@@ -508,6 +518,9 @@ Page({
           console.log(res.data);
           if (res.data.code == 1) {
             console.log("提交成功，id为：" + res.data.data.id);
+            setTimeout(() => {
+              wx.hideLoading();
+            }, 100);
             // 跳转到提交成功页面
             wx.navigateTo({
               url: '/pages/home/submit_suc/submit_suc?troubleId=' + res.data.data.id
@@ -586,6 +599,10 @@ Page({
 
 function upload(page, path) {
   // 成功后直接上传
+  wx.showLoading({
+    title: "图片上传中...",
+    mask: true
+  });
   wx.uploadFile({
     url: app.globalData.localApiUrl + '/common/uploadPic',
     filePath: path[0],
@@ -593,10 +610,6 @@ function upload(page, path) {
     header: {
       "Content-Type": "multipart/form-data"
     },
-    // formData: {
-    //   //和服务器约定的token, 一般也可以放在header中
-    //   'session_token': wx.getStorageSync('session_token')
-    // },
     success: function(res) {
       console.log(res.data)
       var imageList = JSON.parse(res.data);
@@ -605,11 +618,19 @@ function upload(page, path) {
       if (res.statusCode != 200) {
         wx.showModal({
           title: '提示',
-          content: '上传失败',
+          content: '上传失败，请稍后再试',
           showCancel: false
         })
         return;
       }
+      setTimeout(() => {
+        wx.hideLoading();
+      }, 100);
+      wx.showToast({
+        title: '图片上传成功',
+        icon: 'none',
+        duration: 1500
+      });
       // 设置待上传至后台的图片url
       page.setData({
         src: imageList.data[0].url,
