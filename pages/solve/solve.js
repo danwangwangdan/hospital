@@ -12,6 +12,12 @@ Page({
     content: "",
     noteNowLen: 0, //备注当前字数
   },
+  bindTypeChange: function (e) {
+    this.setData({
+      typeIndex: e.detail.value,
+      type: this.data.types[e.detail.value]
+    })
+  },
   toSolve: function(e) {
     var that = this;
     // // 收集formId
