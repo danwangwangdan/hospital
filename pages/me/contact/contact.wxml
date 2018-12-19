@@ -1,0 +1,18 @@
+<view>
+  <!-- <view style="margin-top:15rpx">
+    <i-card title="杨铠华" extra="心想事成！" thumb="../../../pics/avatar3.png">
+      <view slot="content">手机号：17611111111/6856</view>
+      <view slot="content">所属部门：网络中心</view>
+    </i-card>
+  </view> -->
+  <view style="margin-top:10px">
+    <block wx:key="id" wx:for="{{contactList}}">
+      <view style="margin-top:15rpx">
+        <i-card title="{{item.name}}" extra="{{item.signature}}" thumb="{{item.photo}}">
+          <view slot="content">手机号：{{item.tel}}</view>
+          <view slot="content">所属部门：{{item.department}}</view>
+        </i-card>
+      </view>
+    </block>
+  </view>
+</view>

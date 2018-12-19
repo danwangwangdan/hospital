@@ -1,0 +1,9 @@
+.centerView {
+  text-align: center;
+  border-radius: 20px;
+  width: 750rpx;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+}

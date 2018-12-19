@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "i-card": "../../../plugins/iview/card/index",
+    "i-cell": "../../../plugins/iview/cell/index",
+    "i-icon": "../../../plugins/iview/icon/index"
+  },
+  "window": {
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "navigationBarTitleText": "联系方式"
+}
