@@ -329,8 +329,8 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         that.setData({
-          isSrc: true,
-          src: tempFilePaths[0]
+          isSrc: true
+          // src: tempFilePaths[0]
         });
         upload(that, tempFilePaths);
       },
@@ -461,7 +461,7 @@ Page({
     var content = this.data.content;
     var firType = this.data.firTypeValue;
     var secType = this.data.secTypeValue;
-    var captureUrls = this.data.uploadSrc;
+    var captureUrls = this.data.src;
     //先进行表单非空验证
     var isBlankContent = true;
     if (content != "" || captureUrls != "") {
@@ -612,7 +612,7 @@ function upload(page, path) {
       }
       // 设置待上传至后台的图片url
       page.setData({
-        uploadSrc: imageList.data[0].url,
+        src: imageList.data[0].url,
         srcArray: path
       })
     },
