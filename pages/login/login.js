@@ -29,7 +29,7 @@ Page({
   bindGetUserInfo: function(e) {
 
   },
-  
+
   //事件处理函数
   toLogin: function() {
     var that = this;
@@ -98,6 +98,11 @@ Page({
               title: '登录失败，账号或密码错误',
               icon: 'none',
               duration: 2000
+            });
+            that.setData({
+              isDisabled: false,
+              isLoading: false,
+              loginText: "登录"
             })
           }
         }

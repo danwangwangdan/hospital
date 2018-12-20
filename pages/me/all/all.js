@@ -35,10 +35,10 @@ Page({
           wx.stopPullDownRefresh() //停止下拉刷新
           if (res.data.code == 1) {
             var data = res.data.data;
-            for (let i = 0; i < data.length; i++) {
-              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-            }
-            if (data.length != 0) {
+            if (data != null && data.length != 0) {
+              for (let i = 0; i < data.length; i++) {
+                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+              }
               that.setData({
                 troubleList: data,
                 isNull: false
@@ -63,10 +63,10 @@ Page({
           wx.stopPullDownRefresh() //停止下拉刷新
           if (res.data.code == 1) {
             var data = res.data.data;
-            for (let i = 0; i < data.length; i++) {
-              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-            }
-            if (data.length != 0) {
+            if (data != null && data.length != 0) {
+              for (let i = 0; i < data.length; i++) {
+                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+              }
               that.setData({
                 troubleList: data,
                 isNull: false
@@ -106,9 +106,9 @@ Page({
   },
 
   /**
-  * 页面相关事件处理函数--监听用户下拉动作
-  */
-  onPullDownRefresh: function () {
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
     this.onShow();
     wx.showNavigationBarLoading() //在标题栏中显示加载
   },

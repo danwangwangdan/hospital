@@ -10,7 +10,7 @@ Page({
     isNull: true,
     initialText: "加载中..."
   },
-  toDetail: function (e) {
+  toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
     console.log("跳转到：" + troubleId);
     wx.navigateTo({
@@ -20,7 +20,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow: function (options) {
+  onShow: function(options) {
     var that = this;
     wx.request({
       url: app.globalData.localApiUrl + '/trouble/byStatus?status=5&userId=' + wx.getStorageSync("userInfo").id,
@@ -31,11 +31,10 @@ Page({
         wx.stopPullDownRefresh() //停止下拉刷新
         if (res.data.code == 1) {
           var data = res.data.data;
-          for (let i = 0; i < data.length; i++) {
-
-            data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-          }
-          if (data.length != 0) {
+          if (data != null && data.length != 0) {
+            for (let i = 0; i < data.length; i++) {
+              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+            }
             that.setData({
               troubleList: data,
               isNull: false
@@ -55,7 +54,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
@@ -64,21 +63,21 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
- * 页面相关事件处理函数--监听用户下拉动作
- */
-  onPullDownRefresh: function () {
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.onShow();
   },
@@ -86,14 +85,14 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

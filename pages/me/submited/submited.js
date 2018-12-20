@@ -31,11 +31,10 @@ Page({
         console.log(res.data);
         if (res.data.code == 1) {
           var data = res.data.data;
-          for (let i = 0; i < data.length; i++) {
-
-            data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-          }
-          if (data.length != 0) {
+          if (data != null && data.length != 0) {
+            for (let i = 0; i < data.length; i++) {
+              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+            }
             that.setData({
               troubleList: data,
               isNull: false
