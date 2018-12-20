@@ -11,5 +11,6 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "navigationBarTitleText": "待确认故障"
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "待确认问题"
 }

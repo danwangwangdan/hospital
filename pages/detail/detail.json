@@ -6,5 +6,6 @@
     "i-step": "../../plugins/iview/step/index",
     "i-button": "../../plugins/iview/button/index"
   },
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "故障详情"
 }
