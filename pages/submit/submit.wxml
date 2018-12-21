@@ -85,20 +85,22 @@
     </view>
     <view wx:if="{{isSrc}}" class="image_box">
       <view class="picPre">
-        <image src="{{src}}" mode="aspectFit" bindtap="previewImage"></image>
+        <image class="photo" src="{{src}}" mode="aspectFit" bindtap="previewImage"></image>
         <view bindtap="clearPic"></view>
       </view>
     </view>
-    <button formType="submit" type="primary">
-      <form report-submit="true" bindsubmit='submitTrouble'>
-        <button formType="submit" type="primary">
-          <form report-submit="true" bindsubmit='submitTrouble'>
-            <button formType="submit" type="primary">
-              <view class='publish_btn'>提交</view>
-            </button>
-          </form>
-        </button>
-      </form>
-    </button>
+    <view style="display:block;margin:0 auto">
+      <button formType="submit">
+        <form report-submit="true" bindsubmit='submitTrouble'>
+          <button style="background:none;border:none;display:block;margin:0 auto;width:85%;height:50%;" formType="submit">
+            <form report-submit="true" bindsubmit='submitTrouble'>
+              <button style="display:block;margin-left:70rpx;" formType="submit">
+                <view class='publish_btn'>提交</view>
+              </button>
+            </form>
+          </button>
+        </form>
+      </button>
+    </view>
   </form>
 </view>

@@ -7,16 +7,20 @@ form button::after {
   display: none;
 }
 
+.photo {
+  height: 100rpx;
+}
+
 .publish_btn {
-  position: fixed;
+  /* position: fixed; */
   margin-top: 30rpx;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 20%;
+  /* transform: translateX(-50%); */
   width: 280rpx;
   height: 20rpx;
   line-height: 22rpx;
   color: rgb(255, 255, 255);
-  font-size:30rpx;
+  font-size: 30rpx;
   padding-top: 11px;
   padding-bottom: 11px;
   padding-left: 56px;
@@ -25,7 +29,7 @@ form button::after {
   border-color: rgb(197, 229, 145);
   border-style: solid;
   border-radius: 41px;
-  background-color: #2D8CF0;
+  background-color: #2d8cf0;
 }
 
 .select {

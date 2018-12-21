@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/submit/submit",
+    "pages/detail/detail",
     "pages/me/contact/contact",
     "pages/me/me",
     "pages/me/all/all",
     "pages/login/login",
-    "pages/detail/detail",
     "pages/solve_suc/solve_suc",
     "pages/solve/solve",
     "pages/me/confirmed/confirmed",

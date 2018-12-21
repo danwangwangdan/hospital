@@ -93,15 +93,13 @@ Page({
           console.log(res.data);
           if (res.data.code == 1) {
             var data = res.data.data;
-            for (let i = 0; i < data.length; i++) {
-              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-            }
-            if (data.length != 0) {
+            if (data != null && data.length != 0) {
+              for (let i = 0; i < data.length; i++) {
+                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+              }
               that.setData({
                 troubleList: data,
-                isNull: false,
-                submitCount: 0,
-                confirmCount: data.length
+                isNull: false
               });
             } else {
               that.setData({
@@ -296,9 +294,7 @@ Page({
       },
       success(res) {
         console.log(res.data);
-        setTimeout(() => {
-          wx.hideLoading();
-        }, 100);
+        wx.hideLoading();
         if (res.data.code == 1) {
           var data = res.data.data;
           var secTypes = new Array();
@@ -454,9 +450,7 @@ Page({
     var that = this;
     // 收集formId
     let formId = e.detail.formId;
-
     this.data.formIds.push(formId);
-    console.log("clickCount:" + that.data.clickCount);
     if (that.data.clickCount > 0) {
       return;
     }
@@ -516,9 +510,7 @@ Page({
           console.log(res.data);
           if (res.data.code == 1) {
             console.log("提交成功，id为：" + res.data.data.id);
-            setTimeout(() => {
-              wx.hideLoading();
-            }, 100);
+            wx.hideLoading();
             // 跳转到提交成功页面
             wx.navigateTo({
               url: '/pages/home/submit_suc/submit_suc?troubleId=' + res.data.data.id
@@ -547,6 +539,7 @@ Page({
             });
             // 设置定时发送formIds
             setTimeout(function() {
+              console.log("formIds:" + that.data.formIds);
               wx.request({
                 url: app.globalData.localApiUrl + '/common/collectFormIds',
                 method: 'POST',
@@ -621,9 +614,7 @@ function upload(page, path) {
         })
         return;
       }
-      setTimeout(() => {
-        wx.hideLoading();
-      }, 100);
+      wx.hideLoading();
       wx.showToast({
         title: '图片上传成功',
         icon: 'none',

@@ -19,6 +19,7 @@ Page({
     isSolveShow: false,
     isPicTextShow: true,
     isCommentShow: false,
+    isHomeShow: true,
     confirmPressContent: 0,
     solveContent: "",
     captureUrl: "",
@@ -33,6 +34,10 @@ Page({
   onShow: function() {
     var that = this;
     var isAdmin = wx.getStorageSync("userInfo").isAdmin;
+    wx.showLoading({
+      title: "请求中...",
+      mask: true
+    });
     wx.request({
       url: app.globalData.localApiUrl + '/trouble/detail?troubleId=' + that.data.troubleId,
       method: 'GET',
@@ -40,6 +45,7 @@ Page({
         wx.hideNavigationBarLoading(); //完成停止加载
         wx.stopPullDownRefresh(); //停止下拉刷新
         console.log(res.data);
+        wx.hideLoading();
         if (res.data.code == 1) {
           var trouble = res.data.data;
           that.data.captureUrls.push(trouble.captureUrls);
@@ -77,19 +83,21 @@ Page({
               isConfirmContent: false,
               isSolveContent: false,
               isCommentShow: false,
+              isHomeShow: false
             });
             if (isAdmin) {
               that.setData({
                 isSolveShow: false,
                 isConfirmShow: true,
                 isRevokeShow: false,
-
+                isHomeShow: false
               });
             }
           } else if (trouble.status == 2) { // 已确认
             that.setData({
               isConfirmShow: false,
               isRevokeShow: false,
+              isHomeShow: true,
               isSolved: "",
               isConfirmed: 'process',
               isCommitted: '',
@@ -103,12 +111,14 @@ Page({
               that.setData({
                 isSolveShow: true,
                 isRevokeShow: false,
+                isHomeShow: false
               });
             }
           } else if (trouble.status == 3) { // 已完成
             that.setData({
               isRevokeShow: false,
               isSolveShow: false,
+              isHomeShow: true,
               isConfirmed: "",
               isCommitted: '',
               isSolved: 'process',
@@ -122,6 +132,7 @@ Page({
             that.setData({
               isRevokeShow: false,
               isSolveShow: false,
+              isHomeShow: true,
               isConfirmed: "",
               isCommitted: '',
               isSolved: 'process',
@@ -223,6 +234,11 @@ Page({
     wx.navigateTo({
       url: '/pages/solve/solve?troubleId=' + this.data.troubleId
     })
+  },
+  toHome: function() {
+    wx.reLaunch({
+      url: '/pages/submit/submit'
+    });
   },
 
   previewImage: function() {

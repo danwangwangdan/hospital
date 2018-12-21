@@ -2,31 +2,31 @@
 <scroll-view scroll-y="true">
   <view style='margin-top:20px'>
     <i-steps>
-          <i-step status="{{isCommitted}}" icon="createtask">
-            <view slot="title">
-              已提交
-            </view>
-            <view wx:if="{{isCommitContent}}" slot="content">
-              {{commitContent}}
-            </view>
-          </i-step>
-          <i-step status="{{isConfirmed}}" icon="flashlight">
-            <view slot="title">
-              已确认
-            </view>
-            <view wx:if="{{isConfirmContent}}" slot="content">
-              {{confirmContent}}
-            </view>
-          </i-step>
-          <i-step status="{{isSolved}}" icon="right">
-            <view slot="title">
-              已完成
-            </view>
-            <view wx:if="{{isSolveContent}}" slot="content">
-              {{solveContent}}
-            </view>
-          </i-step>
-        </i-steps>
+      <i-step status="{{isCommitted}}" icon="createtask">
+        <view slot="title">
+          已提交
+        </view>
+        <view wx:if="{{isCommitContent}}" slot="content">
+          {{commitContent}}
+        </view>
+      </i-step>
+      <i-step status="{{isConfirmed}}" icon="flashlight">
+        <view slot="title">
+          已确认
+        </view>
+        <view wx:if="{{isConfirmContent}}" slot="content">
+          {{confirmContent}}
+        </view>
+      </i-step>
+      <i-step status="{{isSolved}}" icon="right">
+        <view slot="title">
+          已完成
+        </view>
+        <view wx:if="{{isSolveContent}}" slot="content">
+          {{solveContent}}
+        </view>
+      </i-step>
+    </i-steps>
   </view>
   <view class="detail_con">
     <!--发布者信息、发布时间、点赞量、评论量-->
@@ -90,6 +90,13 @@
       </button>
       <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
     </view>
+    <view wx:if="{{isHomeShow}}" style='margin-top:10px'>
+      <button bindtap='toHome'>
+        <view class='solve_btn'>回到首页</view>
+      </button>
+      <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
+    </view>
+
     <view wx:if="{{isConfirmShow}}" style='margin-top:10px'>
       <form report-submit="true" bindsubmit='toConfirm'>
         <button formType="submit" type="primary">

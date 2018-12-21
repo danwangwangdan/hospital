@@ -23,9 +23,7 @@ Page({
       method: 'GET',
       success(res) {
         console.log(res.data);
-        setTimeout(() => {
-          wx.hideLoading();
-        }, 100);
+        wx.hideLoading();
         if (res.data.code == 1) {
           var data = res.data.data;
           that.setData({
