@@ -99,7 +99,9 @@ Page({
               }
               that.setData({
                 troubleList: data,
-                isNull: false
+                isNull: false,
+                confirmCount: data.length,
+                submitCount: 0
               });
             } else {
               that.setData({
@@ -155,7 +157,9 @@ Page({
                 }
                 that.setData({
                   troubleList: data,
-                  isNull: false
+                  isNull: false,
+                  submitCount: data.length,
+                  confirmCount: 0
                 });
               } else {
                 that.setData({
