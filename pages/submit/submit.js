@@ -119,6 +119,10 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
+    wx.showLoading({
+      title: "请求中...",
+      mask: true
+    });
     // 判断是否登录
     wx.checkSession({
       fail() {
@@ -149,6 +153,7 @@ Page({
           method: 'GET',
           success(res) {
             console.log(res.data);
+            wx.hideLoading();
             if (res.data.code == 1) {
               var data = res.data.data;
               if (data != null && data.length != 0) {
@@ -157,9 +162,7 @@ Page({
                 }
                 that.setData({
                   troubleList: data,
-                  isNull: false,
-                  submitCount: data.length,
-                  confirmCount: 0
+                  isNull: false
                 });
               } else {
                 that.setData({
@@ -183,6 +186,7 @@ Page({
           },
           success(res) {
             console.log(res.data);
+            wx.hideLoading();
             if (res.data.code == 1) {
               var data = res.data.data;
               var firTypes = new Array();
@@ -205,6 +209,7 @@ Page({
           },
           success(res) {
             console.log(res.data);
+            wx.hideLoading();
             if (res.data.code == 1) {
               var data = res.data.data;
               console.log(data);
