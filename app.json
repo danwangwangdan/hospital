@@ -1,18 +1,18 @@
 {
   "pages": [
     "pages/submit/submit",
+    "pages/me/suggestion/suggest_suc/suggest_suc",
+    "pages/solve_suc/solve_suc",
+    "pages/home/submit_suc/submit_suc",
     "pages/detail/detail",
     "pages/me/contact/contact",
     "pages/me/me",
     "pages/me/all/all",
     "pages/login/login",
-    "pages/solve_suc/solve_suc",
     "pages/solve/solve",
     "pages/me/confirmed/confirmed",
     "pages/me/notsolved/notsolved",
     "pages/me/suggestion/suggestion",
-    "pages/me/suggestion/suggest_suc/suggest_suc",
-    "pages/home/submit_suc/submit_suc",
     "pages/home/home",
     "pages/me/solved/solved",
     "pages/me/submited/submited"

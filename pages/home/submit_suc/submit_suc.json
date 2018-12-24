@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "i-button": "../../../plugins/iview/button/index"
+    "i-button": "../../../plugins/iview/button/index",
+    "wux-result": "../../../plugins/wux/result/index"
   },
   "navigationBarTitleText": "提交成功"
 }

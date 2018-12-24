@@ -1,4 +1,4 @@
-<view class="centerView">
+<!-- <view class="centerView">
   <view>
     <image style="height:128px;width:128px" src="../../../pics/oper_success.png"  />
   </view>
@@ -9,4 +9,11 @@
     <i-button bind:click="toView" type="success" shape="circle">去查看</i-button>
     <i-button style="margin-top:15px" bind:click="toHome" type="default" shape="circle">回首页</i-button>
   </view>
-</view>
+</view> -->
+<wux-result
+    title="提交成功"
+    label="我们将尽快解决"
+    buttons="{{ buttons }}" 
+    fixed
+    bind:click="onClick"
+/>
