@@ -2,7 +2,8 @@
   "usingComponents": {
     "i-cell-group": "../../../plugins/iview/cell-group/index",
     "i-cell": "../../../plugins/iview/cell/index",
-    "i-icon": "../../../plugins/iview/icon/index"
+    "i-icon": "../../../plugins/iview/icon/index",
+    "wux-refresher": "../../plugins/wux/refresher/index"
   },
   "window": {
     "backgroundColor": "#eeeeee",
@@ -11,6 +12,5 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "enablePullDownRefresh": true,
   "navigationBarTitleText": "全部问题"
 }

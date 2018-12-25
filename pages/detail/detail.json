@@ -4,8 +4,8 @@
     "i-col": "../../plugins/iview/col/index",
     "i-steps": "../../plugins/iview/steps/index",
     "i-step": "../../plugins/iview/step/index",
-    "i-button": "../../plugins/iview/button/index"
+    "i-button": "../../plugins/iview/button/index",
+    "wux-refresher": "../../plugins/wux/refresher/index"
   },
-  "enablePullDownRefresh": true,
   "navigationBarTitleText": "故障详情"
 }

@@ -1,149 +1,149 @@
-<!--pages/detail/detail.wxml-->
 <scroll-view scroll-y="true">
-  <view style='margin-top:20px'>
-    <i-steps>
-      <i-step status="{{isCommitted}}" icon="createtask">
-        <view slot="title">
-          已提交
-        </view>
-        <view wx:if="{{isCommitContent}}" slot="content">
-          {{commitContent}}
-        </view>
-      </i-step>
-      <i-step status="{{isConfirmed}}" icon="flashlight">
-        <view slot="title">
-          已确认
-        </view>
-        <view wx:if="{{isConfirmContent}}" slot="content">
-          {{confirmContent}}
-        </view>
-      </i-step>
-      <i-step status="{{isSolved}}" icon="right">
-        <view slot="title">
-          已完成
-        </view>
-        <view wx:if="{{isSolveContent}}" slot="content">
-          {{solveContent}}
-        </view>
-      </i-step>
-    </i-steps>
-  </view>
-  <view class="detail_con">
-    <!--发布者信息、发布时间、点赞量、评论量-->
-    <view class="des_txt detail_msg">
-      <view>
-        <text>申报人：{{troubleOwner}}</text>
-      </view>
-      <view>
-        <text style="margin-right:12px;"></text>
-        <text style="margin-right:12px;">{{submitTime}}</text>
-      </view>
+  <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
+    <view style='margin-top:20px'>
+      <i-steps>
+        <i-step status="{{isCommitted}}" icon="createtask">
+          <view slot="title">
+            已提交
+          </view>
+          <view wx:if="{{isCommitContent}}" slot="content">
+            {{commitContent}}
+          </view>
+        </i-step>
+        <i-step status="{{isConfirmed}}" icon="flashlight">
+          <view slot="title">
+            已确认
+          </view>
+          <view wx:if="{{isConfirmContent}}" slot="content">
+            {{confirmContent}}
+          </view>
+        </i-step>
+        <i-step status="{{isSolved}}" icon="right">
+          <view slot="title">
+            已完成
+          </view>
+          <view wx:if="{{isSolveContent}}" slot="content">
+            {{solveContent}}
+          </view>
+        </i-step>
+      </i-steps>
     </view>
-    <view class="detail_input" style="padding-bottom:15rpx;">
-      <text class="des_txt detail_txt">所属科室</text>
-      <view class="detail_row_right actAddress">
-        <view class="txt-overflow">{{office}}</view>
+    <view class="detail_con">
+      <!--发布者信息、发布时间、点赞量、评论量-->
+      <view class="des_txt detail_msg">
+        <view>
+          <text>申报人：{{troubleOwner}}</text>
+        </view>
+        <view>
+          <text style="margin-right:12px;"></text>
+          <text style="margin-right:12px;">{{submitTime}}</text>
+        </view>
       </view>
-      <view class="detail_lineh"></view>
-      <view style="display:flex;justify-content:flex-end">
-        <!--分割线-->
-        <view class="detail_linev"></view>
+      <view class="detail_input" style="padding-bottom:15rpx;">
+        <text class="des_txt detail_txt">所属科室</text>
+        <view class="detail_row_right actAddress">
+          <view class="txt-overflow">{{office}}</view>
+        </view>
+        <view class="detail_lineh"></view>
+        <view style="display:flex;justify-content:flex-end">
+          <!--分割线-->
+          <view class="detail_linev"></view>
+        </view>
       </view>
-    </view>
-    <view class="detail_input" style="padding-bottom:15rpx;">
-      <text class="des_txt detail_txt">故障类型</text>
-      <view class="detail_row_right actAddress">
-        <view class="txt-overflow">{{troubleType}}</view>
+      <view class="detail_input" style="padding-bottom:15rpx;">
+        <text class="des_txt detail_txt">故障类型</text>
+        <view class="detail_row_right actAddress">
+          <view class="txt-overflow">{{troubleType}}</view>
+        </view>
+        <view class="detail_lineh"></view>
+        <view style="display:flex;justify-content:flex-end">
+          <!--分割线-->
+          <view class="detail_linev"></view>
+        </view>
       </view>
-      <view class="detail_lineh"></view>
-      <view style="display:flex;justify-content:flex-end">
-        <!--分割线-->
-        <view class="detail_linev"></view>
-      </view>
-    </view>
-    <view class="detail_input">
-      <text class="des_txt detail_txt">详细描述</text>
-      <view class="detail_right">
-        <text class="note_item_text">{{detail}}</text>
-      </view>
-      <view class="detail_lineh"></view>
-    </view>
-    <view wx:if="{{isCommentShow}}" class="detail_input">
-      <text class="des_txt detail_txt">方案留言</text>
-      <view class="detail_right">
-        <text class="note_item_text">{{comment}}</text>
-      </view>
-      <view class="detail_lineh"></view>
-    </view>
-    <view wx:if="{{isPicTextShow}}">
       <view class="detail_input">
-        <text class="des_txt detail_txt">故障截图</text>
+        <text class="des_txt detail_txt">详细描述</text>
+        <view class="detail_right">
+          <text class="note_item_text">{{detail}}</text>
+        </view>
+        <view class="detail_lineh"></view>
       </view>
-      <view style='text-align:center'>
-        <image class="photo" src="{{captureUrl}}" bindtap='previewImage' mode='aspectFit'></image>
+      <view wx:if="{{isCommentShow}}" class="detail_input">
+        <text class="des_txt detail_txt">方案留言</text>
+        <view class="detail_right">
+          <text class="note_item_text">{{comment}}</text>
+        </view>
+        <view class="detail_lineh"></view>
       </view>
+      <view wx:if="{{isPicTextShow}}">
+        <view class="detail_input">
+          <text class="des_txt detail_txt">故障截图</text>
+        </view>
+        <view style='text-align:center'>
+          <image class="photo" src="{{captureUrl}}" bindtap='previewImage' mode='aspectFit'></image>
+        </view>
 
-    </view>
-    <view wx:if="{{isRevokeShow}}" style='margin-top:10px'>
-      <button bindtap='toRevoke'>
-        <view class='revoke_btn'>撤回故障</view>
-      </button>
-      <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
-    </view>
-    <view wx:if="{{isHomeShow}}" style='margin-top:10px'>
-      <button bindtap='toHome'>
-        <view class='solve_btn'>回到首页</view>
-      </button>
-      <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
-    </view>
-
-    <view wx:if="{{isConfirmShow}}" style='margin-top:10px'>
-      <form report-submit="true" bindsubmit='toConfirm'>
-        <button formType="submit" type="primary">
-          <form report-submit="true" bindsubmit='toConfirm'>
-            <button formType="submit" type="primary">
-              <form report-submit="true" bindsubmit='toConfirm'>
-                <button formType="submit" type="primary">
-                  <form report-submit="true" bindsubmit='toConfirm'>
-                    <button formType="submit" type="primary">
-                      <form report-submit="true" bindsubmit='toConfirm'>
-                        <button formType="submit" type="primary">
-                          <form report-submit="true" bindsubmit='toConfirm'>
-                            <button formType="submit" type="primary">
-                              <form report-submit="true" bindsubmit='toConfirm'>
-                                <button formType="submit" type="primary">
-                                  <form report-submit="true" bindsubmit='toConfirm'>
-                                    <button formType="submit" type="primary">
-                                      <form report-submit="true" bindsubmit='toConfirm'>
-                                        <button formType="submit" type="primary">
-                                          <view class='confirm_btn'>确认故障</view>
-                                        </button>
-                                      </form>
-                                    </button>
-                                  </form>
-                                </button>
-                              </form>
-                            </button>
-                          </form>
-                        </button>
-                      </form>
-                    </button>
-                  </form>
-                </button>
-              </form>
-            </button>
-          </form>
+      </view>
+      <view wx:if="{{isRevokeShow}}" style='margin-top:10px'>
+        <button bindtap='toRevoke'>
+          <view class='revoke_btn'>撤回故障</view>
         </button>
-        <!-- <button formType="submit" class="circleGreen" wx:if="{{isConfirmShow}}">确认故障</button> -->
-      </form>
+        <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
+      </view>
+      <view wx:if="{{isHomeShow}}" style='margin-top:10px'>
+        <button bindtap='toHome'>
+          <view class='solve_btn'>回到首页</view>
+        </button>
+        <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
+      </view>
 
-    </view>
-    <view wx:if="{{isSolveShow}}" style='margin-top:10px'>
-      <button bindtap='toSolve'>
-        <view class='solve_btn'>解决故障</view>
-      </button>
-      <!-- <button formType="submit" bindtap='toSolve' class="circleBlue" wx:if="{{isSolveShow}}">解决故障</button> -->
-    </view>
+      <view wx:if="{{isConfirmShow}}" style='margin-top:10px'>
+        <form report-submit="true" bindsubmit='toConfirm'>
+          <button formType="submit" type="primary">
+            <form report-submit="true" bindsubmit='toConfirm'>
+              <button formType="submit" type="primary">
+                <form report-submit="true" bindsubmit='toConfirm'>
+                  <button formType="submit" type="primary">
+                    <form report-submit="true" bindsubmit='toConfirm'>
+                      <button formType="submit" type="primary">
+                        <form report-submit="true" bindsubmit='toConfirm'>
+                          <button formType="submit" type="primary">
+                            <form report-submit="true" bindsubmit='toConfirm'>
+                              <button formType="submit" type="primary">
+                                <form report-submit="true" bindsubmit='toConfirm'>
+                                  <button formType="submit" type="primary">
+                                    <form report-submit="true" bindsubmit='toConfirm'>
+                                      <button formType="submit" type="primary">
+                                        <form report-submit="true" bindsubmit='toConfirm'>
+                                          <button formType="submit" type="primary">
+                                            <view class='confirm_btn'>确认故障</view>
+                                          </button>
+                                        </form>
+                                      </button>
+                                    </form>
+                                  </button>
+                                </form>
+                              </button>
+                            </form>
+                          </button>
+                        </form>
+                      </button>
+                    </form>
+                  </button>
+                </form>
+              </button>
+            </form>
+          </button>
+          <!-- <button formType="submit" class="circleGreen" wx:if="{{isConfirmShow}}">确认故障</button> -->
+        </form>
 
-  </view>
+      </view>
+      <view wx:if="{{isSolveShow}}" style='margin-top:10px'>
+        <button bindtap='toSolve'>
+          <view class='solve_btn'>解决故障</view>
+        </button>
+        <!-- <button formType="submit" bindtap='toSolve' class="circleBlue" wx:if="{{isSolveShow}}">解决故障</button> -->
+      </view>
+    </view>
+  </wux-refresher>
 </scroll-view>

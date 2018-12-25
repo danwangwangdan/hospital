@@ -1,5 +1,6 @@
 //获取应用实例
 var app = getApp()
+import { $stopWuxRefresher } from '../../plugins/wux/index'
 
 Page({
   /**
@@ -162,7 +163,9 @@ Page({
                 }
                 that.setData({
                   troubleList: data,
-                  isNull: false
+                  isNull: false,
+                  submitCount: data.length,
+                  confirmCount: 0
                 });
               } else {
                 that.setData({
@@ -365,7 +368,8 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onRefresh() {
+    console.log("onRefresh")
     var that = this;
     that.setData({
       isNull: true,
@@ -381,8 +385,7 @@ Page({
         success(res) {
           console.log(res.data);
           if (res.data.code == 1) {
-            wx.hideNavigationBarLoading() //完成停止加载
-            wx.stopPullDownRefresh() //停止下拉刷新
+            $stopWuxRefresher()//停止下拉刷新
             var data = res.data.data;
             for (let i = 0; i < data.length; i++) {
               data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
@@ -413,8 +416,7 @@ Page({
         success(res) {
           console.log(res.data);
           if (res.data.code == 1) {
-            wx.hideNavigationBarLoading() //完成停止加载
-            wx.stopPullDownRefresh() //停止下拉刷新
+            $stopWuxRefresher() //停止下拉刷新
             var data = res.data.data;
             for (let i = 0; i < data.length; i++) {
               data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
