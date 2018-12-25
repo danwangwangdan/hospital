@@ -84,6 +84,13 @@ Page({
               });
             }
           }
+        },
+        fail() {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试！',
+            icon: 'none',
+            duration: 2000
+          })  
         }
       });
     } else {
@@ -114,6 +121,13 @@ Page({
               });
             }
           }
+        },
+        fail() {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试！',
+            icon: 'none',
+            duration: 2000
+          })
         }
       });
     }
@@ -177,6 +191,13 @@ Page({
                 });
               }
             }
+          },
+          fail() {
+            wx.showToast({
+              title: '网络请求失败，请稍后重试！',
+              icon: 'none',
+              duration: 2000
+            })
           }
         });
       } else {
@@ -201,6 +222,13 @@ Page({
                 firTypes: firTypes,
               })
             }
+          },
+          fail() {
+            wx.showToast({
+              title: '网络请求失败，请稍后重试！',
+              icon: 'none',
+              duration: 2000
+            })
           }
         });
         //获取公告
@@ -221,6 +249,13 @@ Page({
                 isLoop: true
               })
             }
+          },
+          fail() {
+            wx.showToast({
+              title: '网络请求失败，请稍后重试！',
+              icon: 'none',
+              duration: 2000
+            })
           }
         });
       };
@@ -319,6 +354,13 @@ Page({
             secTypeValue: secTypes[0]
           })
         }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络请求失败，请稍后重试！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     });
 
@@ -407,6 +449,13 @@ Page({
               });
             }
           }
+        },
+        fail() {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试！',
+            icon: 'none',
+            duration: 2000
+          })
         }
       });
     } else {
@@ -438,22 +487,16 @@ Page({
               });
             }
           }
+        },
+        fail() {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试！',
+            icon: 'none',
+            duration: 2000
+          })
         }
       });
     }
-  },
-
-  //表单验证
-  showTopTips: function() {
-    var that = this;
-    this.setData({
-      showTopTips: true
-    });
-    setTimeout(function() {
-      that.setData({
-        showTopTips: false
-      });
-    }, 3000);
   },
 
   //提交表单
@@ -543,6 +586,13 @@ Page({
                     },
                     success(res) {
 
+                    },
+                    fail() {
+                      wx.showToast({
+                        title: '网络请求失败，请稍后重试！',
+                        icon: 'none',
+                        duration: 2000
+                      })
                     }
                   })
                 }
@@ -563,12 +613,19 @@ Page({
                 },
                 success(res) {
                   console.log(res.data);
+                },
+                fail() {
+                  wx.showToast({
+                    title: '网络请求失败，请稍后重试！',
+                    icon: 'none',
+                    duration: 2000
+                  })
                 }
               });
               that.setData({
                 clickCount: 0
               })
-            }, 500);
+            }, 100);
           } else {
             // 提交失败
             wx.showToast({
@@ -577,6 +634,13 @@ Page({
               duration: 2000
             })
           }
+        },
+        fail() {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试！',
+            icon: 'none',
+            duration: 2000
+          })
         }
       });
     }
@@ -637,6 +701,13 @@ function upload(page, path) {
         srcArray: path
       })
     },
+    fail() {
+      wx.showToast({
+        title: '网络请求失败，请稍后重试！',
+        icon: 'none',
+        duration: 2000
+      })
+    }
 
   })
 }

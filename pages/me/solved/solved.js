@@ -54,6 +54,13 @@ Page({
             });
           }
         }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络请求失败，请稍后重试！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     });
   },

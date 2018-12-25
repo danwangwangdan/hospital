@@ -99,8 +99,8 @@ Page({
               isRevokeShow: false,
               isHomeShow: true,
               isSolved: "",
+              isCommitted:'finish',
               isConfirmed: 'process',
-              isCommitted: '',
               isCommitContent: false,
               isConfirmContent: true,
               isSolveContent: false,
@@ -119,8 +119,8 @@ Page({
               isRevokeShow: false,
               isSolveShow: false,
               isHomeShow: true,
-              isConfirmed: "",
-              isCommitted: '',
+              isConfirmed: "finish",
+              isCommitted: 'finish',
               isSolved: 'process',
               isCommitContent: false,
               isConfirmContent: false,
@@ -133,8 +133,8 @@ Page({
               isRevokeShow: false,
               isSolveShow: false,
               isHomeShow: true,
-              isConfirmed: "",
-              isCommitted: '',
+              isConfirmed: "finish",
+              isCommitted: 'finish',
               isSolved: 'process',
               isCommitContent: false,
               isConfirmContent: false,
@@ -145,6 +145,13 @@ Page({
           }
 
         }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络请求失败，请稍后重试！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     });
   },
@@ -225,9 +232,23 @@ Page({
             },
             success(res) {
               console.log(res.data);
+            },
+            fail() {
+              wx.showToast({
+                title: '网络请求失败，请稍后重试！',
+                icon: 'none',
+                duration: 2000
+              })
             }
           });
         }, 100);
+      },
+      fail() {
+        wx.showToast({
+          title: '网络请求失败，请稍后重试！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     });
   },
@@ -279,6 +300,13 @@ Page({
                 });
                 that.onShow();
               }
+            },
+            fail() {
+              wx.showToast({
+                title: '网络请求失败，请稍后重试！',
+                icon: 'none',
+                duration: 2000
+              })
             }
           });
         } else if (res.cancel) {
