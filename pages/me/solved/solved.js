@@ -1,5 +1,5 @@
 var app = getApp();
-
+import { $stopWuxRefresher } from '../../../plugins/wux/index'
 Page({
 
   /**
@@ -34,7 +34,7 @@ Page({
       method: 'GET',
       success(res) {
         wx.hideNavigationBarLoading() //完成停止加载
-        wx.stopPullDownRefresh() //停止下拉刷新
+        $stopWuxRefresher()//停止下拉刷新
         console.log(res.data);
         if (res.data.code == 1) {
           var data = res.data.data;
@@ -89,7 +89,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onRefresh() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.onShow();
 

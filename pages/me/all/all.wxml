@@ -1,18 +1,22 @@
-<wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
-  <scroll-view>
-    <view style="margin-top:10px">
-      <i-cell-group>
-        <block wx:key="id" wx:for="{{troubleList}}">
-          <i-cell data-id="{{item.id}}" label="{{item.office+item.troublePersonName}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
-            <i-icon wx:if="{{item.status==1}}" type="createtask" size="20" slot="icon" />
-            <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon" />
-            <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon" />
-          </i-cell>
-        </block>
-      </i-cell-group>
+<wux-refresher id="wux-refresher" bind:refresh="onRefresh">
+  <view style='height:750rpx'>
+    <scroll-view>
+      <view style="margin-top:10px">
+        <view style="margin-top:10px">
+          <i-cell-group>
+            <block wx:key="id" wx:for="{{troubleList}}">
+              <i-cell data-id="{{item.id}}" label="{{item.office+item.troublePersonName}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
+                <i-icon wx:if="{{item.status==1}}" type="createtask" size="20" slot="icon" />
+                <i-icon wx:elif="{{item.status==2}}" type="flashlight" size="20" slot="icon" />
+                <i-icon wx:else="{{item.status==3}}" type="success" size="20" slot="icon" />
+              </i-cell>
+            </block>
+          </i-cell-group>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:if="{{isNull}}" class='centerView'>
+      <text style='color:#80848f'>{{initialText}}</text>
     </view>
-  </scroll-view>
-  <view wx:if="{{isNull}}" class='centerView'>
-    <text style='color:#80848f'>{{initialText}}</text>
   </view>
 </wux-refresher>

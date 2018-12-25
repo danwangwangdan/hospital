@@ -1,5 +1,5 @@
 <scroll-view scroll-y="true">
-  <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
+  <wux-refresher id="wux-refresher" bind:refresh="onRefresh">
     <view style='margin-top:20px'>
       <i-steps>
         <i-step status="{{isCommitted}}" icon="createtask">

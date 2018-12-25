@@ -1,4 +1,4 @@
-<wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
+<wux-refresher id="wux-refresher" bind:refresh="onRefresh">
   <view wx:if="{{isAdmin==1}}">
     <i-tabs current="{{currentTab}}" bindchange="handleChange">
       <i-tab key="tab1" title="待确认" count="{{submitCount}}"></i-tab>
