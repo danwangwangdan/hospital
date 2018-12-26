@@ -4,6 +4,7 @@ import { $stopWuxRefresher } from '../../plugins/wux/index'
 
 Page({
   data: {
+    height: '',
     troubleId: 0,
     isCommitted: "",
     isConfirmed: "process",
@@ -157,12 +158,22 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
+
     if (that.data.troubleId == 0) {
       var troubleId = options.troubleId;
       that.setData({
         troubleId: troubleId
       });
     }
+
+  },
+  onReady: function () {
+    var that = this;
+    console.log("onReady")
+    var res = wx.getSystemInfoSync();
+    that.setData({
+      height: "height:" + res.windowHeight + "px"
+    })
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

@@ -1,18 +1,20 @@
 <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
-  <scroll-view>
-    <view style="margin-top:10px">
-      <i-cell-group>
-        <block wx:key="id" wx:for="{{troubleList}}">
-          <i-cell data-id="{{item.id}}" label="{{item.office+item.troublePersonName}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
-            <i-icon type="flashlight" size="20" slot="icon" />
-          </i-cell>
-        </block>
+  <view style='{{height}}'>
+    <scroll-view>
+      <view style="margin-top:10px">
+        <i-cell-group>
+          <block wx:key="id" wx:for="{{troubleList}}">
+            <i-cell data-id="{{item.id}}" label="{{item.office+item.troublePersonName}}" bindtap="toDetail" title="{{item.secType}}" value="{{item.submitTime}}">
+              <i-icon type="flashlight" size="20" slot="icon" />
+            </i-cell>
+          </block>
 
-      </i-cell-group>
-    </view>
-  </scroll-view>
-  <view wx:if="{{isNull}}" class='centerView'>
-    <text style='color:#80848f'>{{initialText}}
+        </i-cell-group>
+      </view>
+    </scroll-view>
+    <view wx:if="{{isNull}}" class='centerView'>
+      <text style='color:#80848f'>{{initialText}}
     </text>
+    </view>
   </view>
 </wux-refresher>

@@ -4,7 +4,7 @@
       <i-tab key="tab1" title="待确认" count="{{submitCount}}"></i-tab>
       <i-tab key="tab2" title="已确认" count="{{confirmCount}}"></i-tab>
     </i-tabs>
-    <scroll-view>
+    <scroll-view style='{{height}}'>
       <view style="margin-top:10px">
         <i-cell-group>
           <block wx:key="id" wx:for="{{troubleList}}">

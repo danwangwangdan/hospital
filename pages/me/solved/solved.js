@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    height: "",
     troubleList: [],
     isNull: true,
     initialText: "加载中..."
@@ -65,11 +66,13 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
+  onReady: function () {
+    var that = this;
+    console.log("onReady")
+    var res = wx.getSystemInfoSync();
+    that.setData({
+      height: "height:" + res.windowHeight + "px"
+    })
   },
 
   /**

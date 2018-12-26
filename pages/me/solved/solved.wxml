@@ -1,5 +1,5 @@
 <wux-refresher id="wux-refresher" bind:refresh="onRefresh">
-  <view style='height:750rpx'>
+  <view style='{{height}}'>
     <scroll-view>
       <view style="margin-top:10px">
         <i-cell-group>

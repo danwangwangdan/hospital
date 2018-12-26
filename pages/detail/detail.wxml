@@ -1,5 +1,5 @@
-<scroll-view scroll-y="true">
-  <wux-refresher id="wux-refresher" bind:refresh="onRefresh">
+<wux-refresher id="wux-refresher" bind:refresh="onRefresh">
+  <scroll-view>
     <view style='margin-top:20px'>
       <i-steps>
         <i-step status="{{isCommitted}}" icon="createtask">
@@ -145,5 +145,6 @@
         <!-- <button formType="submit" bindtap='toSolve' class="circleBlue" wx:if="{{isSolveShow}}">解决故障</button> -->
       </view>
     </view>
-  </wux-refresher>
-</scroll-view>
+
+  </scroll-view>
+</wux-refresher>

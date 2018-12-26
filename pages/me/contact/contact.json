@@ -11,6 +11,5 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "enablePullDownRefresh": true,
   "navigationBarTitleText": "联系方式"
 }
