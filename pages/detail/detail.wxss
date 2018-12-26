@@ -50,13 +50,31 @@
   border-radius: 41px;
   background-color: #19be6b;
 }
-
-.solve_btn {
-  position: fixed;
+.active_btn {
+  /* position: fixed;
   margin-top: 2%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 350rpx;
+  transform: translateX(-50%); */
+  width: 84%;
+  line-height: 27rpx;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 56px;
+  padding-right: 56px;
+  border-width: 0px;
+  border-color: rgb(197, 229, 145);
+  border-style: solid;
+  border-radius: 41px;
+  background-color: #19be6b;
+}
+.solve_btn {
+  /* position: fixed;
+  margin-top: 2%;
+  left: 50%;
+  transform: translateX(-50%); */
+  width: 84%;
   line-height: 27rpx;
   color: rgb(255, 255, 255);
   font-size: 14px;

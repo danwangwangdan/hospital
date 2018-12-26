@@ -1,10 +1,11 @@
 {
   "pages": [
     "pages/submit/submit",
+    "pages/detail/detail",
+   
     "pages/me/suggestion/suggest_suc/suggest_suc",
     "pages/solve_suc/solve_suc",
     "pages/home/submit_suc/submit_suc",
-    "pages/detail/detail",
     "pages/me/contact/contact",
     "pages/me/me",
     "pages/me/all/all",

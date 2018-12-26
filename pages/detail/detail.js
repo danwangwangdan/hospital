@@ -20,6 +20,7 @@ Page({
     isSolveShow: false,
     isPicTextShow: true,
     isCommentShow: false,
+    isActiveShow: false,
     isHomeShow: true,
     confirmPressContent: 0,
     solveContent: "",
@@ -84,6 +85,7 @@ Page({
               isConfirmContent: false,
               isSolveContent: false,
               isCommentShow: false,
+              isActiveShow: false,
               isHomeShow: false
             });
             if (isAdmin) {
@@ -91,6 +93,7 @@ Page({
                 isSolveShow: false,
                 isConfirmShow: true,
                 isRevokeShow: false,
+                isActiveShow: false,
                 isHomeShow: false
               });
             }
@@ -105,6 +108,7 @@ Page({
               isCommitContent: false,
               isConfirmContent: true,
               isSolveContent: false,
+              isActiveShow: false,
               isCommentShow: false,
               confirmContent: trouble.confirmer + " 于" + new Date(trouble.confirmTime).format("yyyy-MM-dd HH:mm") + "确认"
             });
@@ -112,6 +116,7 @@ Page({
               that.setData({
                 isSolveShow: true,
                 isRevokeShow: false,
+                isActiveShow: false,
                 isHomeShow: false
               });
             }
@@ -119,6 +124,7 @@ Page({
             that.setData({
               isRevokeShow: false,
               isSolveShow: false,
+              isActiveShow: true,
               isHomeShow: true,
               isConfirmed: "finish",
               isCommitted: 'finish',
@@ -134,6 +140,7 @@ Page({
               isRevokeShow: false,
               isSolveShow: false,
               isHomeShow: true,
+              isActiveShow: true,
               isConfirmed: "finish",
               isCommitted: 'finish',
               isSolved: 'process',
@@ -144,7 +151,6 @@ Page({
               solveContent: trouble.solver + " 于" + new Date(trouble.solveTime).format("yyyy-MM-dd HH:mm") + "撤回"
             });
           }
-
         }
       },
       fail() {
@@ -273,7 +279,48 @@ Page({
       url: '/pages/submit/submit'
     });
   },
-
+  toActive: function () {
+    var that = this;
+    wx.showModal({
+      title: '你确定重新激活该故障吗？',
+      content: '激活将通知技术员重新来处理该故障',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.localApiUrl + '/trouble/active',
+            method: 'POST',
+            header: {
+              'content-type': 'application/json'
+            },
+            data: {
+              'troubleId': that.data.troubleId
+            },
+            success(res) {
+              console.log(res.data);
+              if (res.data.code == 1) {
+                // 激活成功
+                wx.showToast({
+                  title: '激活成功',
+                  icon: 'none',
+                  duration: 2000
+                });
+                that.onShow();
+              }
+            },
+            fail() {
+              wx.showToast({
+                title: '网络请求失败，请稍后重试！',
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    });
+  },
   previewImage: function() {
 
     wx.previewImage({

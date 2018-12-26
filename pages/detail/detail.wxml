@@ -90,14 +90,18 @@
         </button>
         <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
       </view>
-      <view wx:if="{{isHomeShow}}" style='margin-top:10px'>
-        <button bindtap='toHome'>
-          <view class='solve_btn'>回到首页</view>
-        </button>
+      <view wx:if="{{isActiveShow}}" style='margin-top:10px'>
+        <button bindtap='toActive' class="active_btn">重新激活</button>
+      </view>
+      <view wx:if="{{isHomeShow}}" style=' margin-top:10px '>
+        <button bindtap='toHome' class="solve_btn">回到首页</button>
+        <!-- <button bindtap='toHome '>
+          <view class='solve_btn '>回到首页</view>
+        </button> -->
         <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
       </view>
 
-      <view wx:if="{{isConfirmShow}}" style='margin-top:10px'>
+      <view wx:if="{{isConfirmShow}}" style='margin-top:10px '>
         <form report-submit="true" bindsubmit='toConfirm'>
           <button formType="submit" type="primary">
             <form report-submit="true" bindsubmit='toConfirm'>
@@ -116,7 +120,7 @@
                                       <button formType="submit" type="primary">
                                         <form report-submit="true" bindsubmit='toConfirm'>
                                           <button formType="submit" type="primary">
-                                            <view class='confirm_btn'>确认故障</view>
+                                            <view class='confirm_btn '>确认故障</view>
                                           </button>
                                         </form>
                                       </button>
@@ -138,11 +142,12 @@
         </form>
 
       </view>
-      <view wx:if="{{isSolveShow}}" style='margin-top:10px'>
-        <button bindtap='toSolve'>
-          <view class='solve_btn'>解决故障</view>
-        </button>
-        <!-- <button formType="submit" bindtap='toSolve' class="circleBlue" wx:if="{{isSolveShow}}">解决故障</button> -->
+      <view wx:if="{{isSolveShow}}" style='margin-top:10px '>
+        <button bindtap='toSolve' class="solve_btn">解决故障</button>
+        <!-- <button bindtap='toSolve '>
+          <view class='solve_btn '>解决故障</view>
+        </button> -->
+        <!-- <button formType="submit" bindtap='toSolve ' class="circleBlue" wx:if="{{isSolveShow}}">解决故障</button> -->
       </view>
     </view>
 
