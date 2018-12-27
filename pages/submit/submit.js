@@ -1,6 +1,8 @@
 //获取应用实例
 var app = getApp()
-import { $stopWuxRefresher } from '../../plugins/wux/index'
+import {
+  $stopWuxRefresher
+} from '../../plugins/wux/index'
 
 Page({
   /**
@@ -90,7 +92,7 @@ Page({
             title: '网络请求失败，请稍后重试！',
             icon: 'none',
             duration: 2000
-          })  
+          })
         }
       });
     } else {
@@ -134,6 +136,7 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
+    var startLoad = new Date();
     wx.showLoading({
       title: "请求中...",
       mask: true
@@ -146,12 +149,14 @@ Page({
         });
       },
     });
+    var checkSession = new Date();
     if (wx.getStorageSync("userInfo") == undefined || wx.getStorageSync("userInfo") == "") {
       that.setData({
         isLogin: false
       })
     }
     if (!that.data.isLogin) {
+      wx.hideLoading();
       wx.reLaunch({
         url: '/pages/login/login'
       })
@@ -163,6 +168,7 @@ Page({
       })
       // 分用户和管理员两种情况
       if (that.data.isAdmin == 1) {
+        var startRquest = new Date();
         wx.request({
           url: app.globalData.localApiUrl + '/trouble/submitted',
           method: 'GET',
@@ -171,6 +177,8 @@ Page({
             wx.hideLoading();
             if (res.data.code == 1) {
               var data = res.data.data;
+              var endLoad = new Date();
+              console.log('加载耗时：总' + (endLoad - startLoad) + 'ms，checkSession:' + (checkSession - startLoad) + 'ms，request:' + (endLoad - startRquest) + 'ms');
               if (data != null && data.length != 0) {
                 for (let i = 0; i < data.length; i++) {
                   data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
@@ -201,6 +209,7 @@ Page({
           }
         });
       } else {
+        var startRquest = new Date();
         //获取一级类型
         wx.request({
           url: app.globalData.localApiUrl + '/common/firTypes',
@@ -241,6 +250,8 @@ Page({
           success(res) {
             console.log(res.data);
             wx.hideLoading();
+            var endLoad = new Date();
+            console.log('加载耗时：总' + (endLoad - startLoad) + 'ms，checkSession:' + (checkSession - startLoad) + 'ms，request:' + (endLoad - startRquest) + 'ms');
             if (res.data.code == 1) {
               var data = res.data.data;
               console.log(data);
@@ -259,19 +270,13 @@ Page({
           }
         });
       };
-      wx.getSetting({
-        success(res) {
-          if (res.authSetting['scope.userInfo']) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-            wx.getUserInfo({
-              success: function(res) {
-                console.log(res.userInfo.avatarUrl)
-                wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
-              }
-            })
-          }
-        }
-      });
+      
+      // wx.showToast({
+      //   title: '加载耗时：总' + (endLoad - startLoad) + 'ms，checkSession:' + (checkSession - startLoad) + 'ms，request:' + (endLoad - startRquest) + 'ms',
+      //   icon: 'none',
+      //   duration: 5000
+      // });
+      
     }
   },
   onShow: function() {
@@ -427,7 +432,7 @@ Page({
         success(res) {
           console.log(res.data);
           if (res.data.code == 1) {
-            $stopWuxRefresher()//停止下拉刷新
+            $stopWuxRefresher() //停止下拉刷新
             var data = res.data.data;
             for (let i = 0; i < data.length; i++) {
               data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
@@ -647,6 +652,21 @@ Page({
 
   },
 
+  onReady: function() {
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function(res) {
+              console.log(res.userInfo.avatarUrl)
+              wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
+            }
+          })
+        }
+      }
+    });
+  },
   /**
    * 页面上拉触底事件的处理函数
    */

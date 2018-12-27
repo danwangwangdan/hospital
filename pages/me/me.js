@@ -45,7 +45,7 @@ Page({
       url: '/pages/me/suggestion/suggestion'
     })
   },
-  toContact: function () {
+  toContact: function() {
     wx.navigateTo({
       url: '/pages/me/contact/contact'
     })
@@ -86,6 +86,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
     var that = this;
     var userInfo = wx.getStorageSync("userInfo");
     var _imgSrc = wx.getStorageSync("imgSrc");
@@ -100,13 +107,6 @@ Page({
       isAdmin: wx.getStorageSync("userInfo").isAdmin,
       imgSrc: _imgSrc
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
   },
 
   /**
