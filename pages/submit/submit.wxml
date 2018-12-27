@@ -1,3 +1,4 @@
+<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="故障类型" options="{{ options1 }}" bind:close="onClose1" bind:change="onChange1" />
 <wux-refresher id="wux-refresher" bind:refresh="onRefresh">
   <view wx:if="{{isAdmin==1}}">
     <i-tabs current="{{currentTab}}" bindchange="handleChange">
@@ -40,23 +41,10 @@
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <!-- <view class="mod t-name">
-        <text class="key">一级类型</text>
-        <picker bindchange="firTypeChange" value="{{firTypeIndex}}" listData="{{firTypes}}">
-          <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
-            <image class="arrow-r" src="/pics/arrow_right.png"></image>
-          </view>
-        </picker>
-      </view>
-      <view class="mod t-name">
-        <text class="key">二级类型</text>
-        <picker bindchange="secTypeChange" disabled="{{secTypeDis}}" value="{{secTypeIndex}}" listData="{{secTypes}}">
-          <view class="value" name="secTypes">{{secTypes[secTypeIndex]}}
-            <image class="arrow-r" src="/pics/arrow_right.png"></image>
-          </view>
-        </picker>
-      </view>
-    </view> -->
-
+        <text class="key">故障类型</text>
+        <wux-cell class="picker_c" title="请选择故障类型" extra="{{ title2 }}" bind:click="onOpen2"></wux-cell>
+        <image class="arrow-r" src="/pics/arrow_right.png"></image>
+      </view> -->
       <view class="mod t-name">
         <text class="key">一级类型</text>
         <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}">
@@ -73,6 +61,7 @@
           </view>
         </picker>
       </view>
+
     </view>
 
     <view class="mod-a mt20">

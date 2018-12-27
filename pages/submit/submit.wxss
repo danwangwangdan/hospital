@@ -224,6 +224,11 @@ form button::after {
   height: 44rpx;
 }
 
+.picker_c {
+  margin-right: -260rpx;
+  color: #b2b2b2;
+}
+
 .t-address, .t-sign-time, .t-time {
   border-bottom: 1px solid #f0f0f0;
 }
