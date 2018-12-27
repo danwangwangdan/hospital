@@ -225,7 +225,7 @@ form button::after {
 }
 
 .picker_c {
-  margin-right: -260rpx;
+  margin-right: -200rpx;
   color: #b2b2b2;
 }
 
