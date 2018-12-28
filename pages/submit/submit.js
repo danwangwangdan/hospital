@@ -1,6 +1,8 @@
 //获取应用实例
 var app = getApp()
-import { $stopWuxRefresher } from '../../plugins/wux/index'
+import {
+  $stopWuxRefresher
+} from '../../plugins/wux/index'
 
 Page({
   /**
@@ -90,7 +92,7 @@ Page({
             title: '网络请求失败，请稍后重试！',
             icon: 'none',
             duration: 2000
-          })  
+          })
         }
       });
     } else {
@@ -137,6 +139,33 @@ Page({
     wx.showLoading({
       title: "请求中...",
       mask: true
+    });
+    //获取公告
+    wx.request({
+      url: app.globalData.localApiUrl + '/common/notice',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        wx.hideLoading();
+        if (res.data.code == 1) {
+          var data = res.data.data;
+          console.log(data);
+          that.setData({
+            noticeText: data.noticeText,
+            isLoop: true
+          })
+        }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络请求失败，请稍后重试！',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     });
     // 判断是否登录
     wx.checkSession({
@@ -231,51 +260,23 @@ Page({
             })
           }
         });
-        //获取公告
-        wx.request({
-          url: app.globalData.localApiUrl + '/common/notice',
-          method: 'GET',
-          header: {
-            'content-type': 'application/json'
-          },
-          success(res) {
-            console.log(res.data);
-            wx.hideLoading();
-            if (res.data.code == 1) {
-              var data = res.data.data;
-              console.log(data);
-              that.setData({
-                noticeText: data.noticeText,
-                isLoop: true
-              })
-            }
-          },
-          fail() {
-            wx.showToast({
-              title: '网络请求失败，请稍后重试！',
-              icon: 'none',
-              duration: 2000
-            })
-          }
-        });
       };
-      wx.getSetting({
-        success(res) {
-          if (res.authSetting['scope.userInfo']) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-            wx.getUserInfo({
-              success: function(res) {
-                console.log(res.userInfo.avatarUrl)
-                wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
-              }
-            })
-          }
-        }
-      });
     }
   },
-  onShow: function() {
-
+  onReady: function() {
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function(res) {
+              console.log(res.userInfo.avatarUrl)
+              wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
+            }
+          })
+        }
+      }
+    });
   },
 
   toDetail: function(e) {
@@ -427,7 +428,7 @@ Page({
         success(res) {
           console.log(res.data);
           if (res.data.code == 1) {
-            $stopWuxRefresher()//停止下拉刷新
+            $stopWuxRefresher() //停止下拉刷新
             var data = res.data.data;
             for (let i = 0; i < data.length; i++) {
               data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");

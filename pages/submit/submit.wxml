@@ -40,12 +40,12 @@
         <input name="office" class="input" maxlength="100" value="{{office}}" bindinput="bindOfficeChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
-      <!-- <view class="mod t-name">
+      <view class="mod t-name">
         <text class="key">故障类型</text>
         <wux-cell class="picker_c" title="请选择故障类型" extra="{{ title2 }}" bind:click="onOpen2"></wux-cell>
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
-      </view> -->
-      <view class="mod t-name">
+      </view>
+      <!-- <view class="mod t-name">
         <text class="key">一级类型</text>
         <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}">
           <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
@@ -60,7 +60,7 @@
             <image class="arrow-r" src="/pics/arrow_right.png"></image>
           </view>
         </picker>
-      </view>
+      </view> -->
 
     </view>
 
