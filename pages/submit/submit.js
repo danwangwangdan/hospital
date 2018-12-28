@@ -138,6 +138,31 @@ Page({
       title: "请求中...",
       mask: true
     });
+    //获取公告
+    wx.request({
+      url: app.globalData.localApiUrl + '/common/notice',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.code == 1) {
+          var data = res.data.data;
+          console.log(data);
+          that.setData({
+            noticeText: data.noticeText
+          })
+        }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络请求失败，请稍后重试！',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    });
     // 判断是否登录
     wx.checkSession({
       fail() {
@@ -201,6 +226,7 @@ Page({
           }
         });
       } else {
+        
         //获取一级类型
         wx.request({
           url: app.globalData.localApiUrl + '/common/firTypes',
@@ -231,33 +257,7 @@ Page({
             })
           }
         });
-        //获取公告
-        wx.request({
-          url: app.globalData.localApiUrl + '/common/notice',
-          method: 'GET',
-          header: {
-            'content-type': 'application/json'
-          },
-          success(res) {
-            console.log(res.data);
-            wx.hideLoading();
-            if (res.data.code == 1) {
-              var data = res.data.data;
-              console.log(data);
-              that.setData({
-                noticeText: data.noticeText,
-                isLoop: true
-              })
-            }
-          },
-          fail() {
-            wx.showToast({
-              title: '网络请求失败，请稍后重试！',
-              icon: 'none',
-              duration: 2000
-            })
-          }
-        });
+        
       };
       wx.getSetting({
         success(res) {
