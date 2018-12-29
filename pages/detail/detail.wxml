@@ -90,10 +90,10 @@
         </button>
         <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
       </view>
-      <view wx:if="{{isActiveShow}}" style='margin-top:10px;margin-bottom:10px'>
+      <view wx:if="{{isActiveShow}}" style='margin-top:10px'>
         <button bindtap='toActive' class="active_btn">重新激活</button>
       </view>
-      <view wx:if="{{isHomeShow}}" style='margin-bottom:10px'>
+      <view wx:if="{{isHomeShow}}" style='margin-top:10px;margin-bottom:10px'>
         <button bindtap='toHome' class="solve_btn">回到首页</button>
         <!-- <button bindtap='toHome '>
           <view class='solve_btn '>回到首页</view>

@@ -4,6 +4,7 @@ import { $stopWuxRefresher } from '../../plugins/wux/index'
 
 Page({
   data: {
+    clickCount: 0, //确认button点击次数
     height: '',
     troubleId: 0,
     isCommitted: "",
@@ -135,6 +136,11 @@ Page({
               isCommentShow: true,
               solveContent: trouble.solver + " 于" + new Date(trouble.solveTime).format("yyyy-MM-dd HH:mm") + "解决"
             });
+            if (isAdmin) {
+              that.setData({
+                isActiveShow: false
+              });
+            }
           } else { // 已撤回
             that.setData({
               isRevokeShow: false,
@@ -150,6 +156,11 @@ Page({
               isCommentShow: false,
               solveContent: trouble.solver + " 于" + new Date(trouble.solveTime).format("yyyy-MM-dd HH:mm") + "撤回"
             });
+            if (isAdmin) {
+              that.setData({
+                isActiveShow: false
+              });
+            }
           }
         }
       },
@@ -203,6 +214,11 @@ Page({
     let formId = e.detail.formId;
     console.log("formId:" + formId);
     that.data.formIds.push(formId);
+    if (that.data.clickCount > 0) {
+      return;
+    }
+    that.data.clickCount++;
+    console.log("clickCount:" + that.data.clickCount);
     wx.request({
       url: app.globalData.localApiUrl + '/trouble/confirm',
       method: 'POST',

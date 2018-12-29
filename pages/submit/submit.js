@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    clickCount: 0, //button点击次数
+    clickCount: 0, //提交button点击次数
     currentTab: 'tab1',
     isAdmin: 0,
     troubleList: [],
