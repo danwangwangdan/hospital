@@ -25,7 +25,7 @@
     "navigationBarTextStyle": "black"
   },
   "networkTimeout": {
-    "request": 10000,
+    "request": 15000,
     "uploadFile": 15000
   },
   "tabBar": {
