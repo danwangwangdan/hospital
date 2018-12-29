@@ -59,6 +59,9 @@ Page({
     });
     console.log("切换至" + detail.key);
     if (detail.key == 'tab1') { //待确认
+      that.setData({
+        confirmCount: 0
+      });
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/submitted',
         method: 'GET',
@@ -96,6 +99,9 @@ Page({
         }
       });
     } else {
+      that.setData({
+        submitCount: 0
+      });
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/confirmed',
         method: 'GET',
