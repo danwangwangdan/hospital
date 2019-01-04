@@ -4,6 +4,6 @@
     "i-button": "../../plugins/iview/button/index",
     "i-input": "../../plugins/iview/input/index",
     "i-load-more": "../../plugins/iview/load-more/index",
-    "i-divider": "../../plugins/iview//divider/index"
+    "i-divider": "../../plugins/iview/divider/index"
   }
 }

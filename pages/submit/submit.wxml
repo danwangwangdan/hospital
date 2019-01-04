@@ -32,11 +32,13 @@
         <input name="user" class="input" maxlength="100" value="{{username}}" bindinput="bindUserChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
+      <view class="divLine"></view>
       <view class="mod t-name">
         <text class="key">所属科室</text>
         <input name="office" class="input" maxlength="100" value="{{office}}" bindinput="bindOfficeChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
+      <view class="divLine"></view>
       <!-- <view class="mod t-name">
         <text class="key">故障类型</text>
         <wux-cell class="picker_c" title="请选择故障类型" extra="{{ title2 }}" bind:click="onOpen2"></wux-cell>
@@ -50,6 +52,7 @@
           </view>
         </picker>
       </view>
+      <view class="divLine"></view>
       <view class="mod t-name">
         <text class="key">二级类型</text>
         <picker bindchange="secTypeChange" disabled="{{secTypeDis}}" value="{{secTypeIndex}}" range="{{secTypes}}">

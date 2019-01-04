@@ -5,7 +5,7 @@
     </view>
     <i-divider></i-divider>
     <view>
-      <image style='margin-top:10px;margin-left:-10px' src="../../pics/login_welcome.png" mode="widthFix">
+      <image style='margin-top:10px;margin-left:-10px;height:240rpx;width:600rpx' src="https://www.daliandaxue.cn/img/login_welcome.png" mode="">
       </image>
     </view>
     <view style='margin-top:35px'>

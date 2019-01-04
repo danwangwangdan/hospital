@@ -1,7 +1,11 @@
 form button {
   padding: 0;
 }
-
+.divLine {
+  background: #e0e3da;
+  width: 100%;
+  height: 2rpx;
+}
 form button::after {
   content: '';
   display: none;
