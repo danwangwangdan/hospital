@@ -1,3 +1,4 @@
+@import '../../plugins/wux/styles/index.wxss';
 form button {
   padding: 0;
 }
@@ -47,7 +48,7 @@ form button::after {
 .centerView {
   text-align: center;
   border-radius: 20px;
-  width: 300px;
+  width: 750rpx;
   height: 350px;
   position: absolute;
   left: 50%;

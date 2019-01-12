@@ -140,7 +140,7 @@ Page({
       });
     }
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     var startLoad = new Date();
     wx.showLoading({
@@ -221,6 +221,7 @@ Page({
                   confirmCount: 0
                 });
               } else {
+                console.log("这里什么也没有")
                 that.setData({
                   troubleList: data,
                   isNull: true,
@@ -274,23 +275,23 @@ Page({
       }
     }
   },
-  onShow: function () {
+  onShow: function() {
 
   },
 
-  toDetail: function (e) {
+  toDetail: function(e) {
     let troubleId = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/detail/detail?troubleId=' + troubleId
     });
   },
-  submitSuc: function () {
+  submitSuc: function() {
     wx.navigateTo({
       url: '/pages/home/submit_suc/submit_suc'
     })
   },
   //字数改变触发事件
-  bindTextAreaChange: function (e) {
+  bindTextAreaChange: function(e) {
     var that = this
     var value = e.detail.value,
       len = parseInt(value.length);
@@ -301,14 +302,14 @@ Page({
       noteNowLen: len
     })
   },
-  bindUserChange: function (e) {
+  bindUserChange: function(e) {
     var that = this;
     var value = e.detail.value;
     that.setData({
       username: value,
     })
   },
-  bindOfficeChange: function (e) {
+  bindOfficeChange: function(e) {
     var that = this;
     var value = e.detail.value;
     that.setData({
@@ -317,7 +318,7 @@ Page({
   },
 
   //改变故障类别
-  firTypeChange: function (e) {
+  firTypeChange: function(e) {
     var that = this;
     wx.showLoading({
       title: "请求中...",
@@ -365,7 +366,7 @@ Page({
     });
 
   },
-  secTypeChange: function (e) {
+  secTypeChange: function(e) {
     this.setData({
       secTypeIndex: e.detail.value,
       secTypeValue: this.data.secTypes[e.detail.value]
@@ -373,13 +374,13 @@ Page({
   },
 
   //上传活动图片
-  uploadPic: function () { //选择图标
+  uploadPic: function() { //选择图标
     var that = this;
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], //压缩图
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         that.setData({
@@ -391,7 +392,7 @@ Page({
     })
   },
   //预览图片
-  previewImage: function () {
+  previewImage: function() {
     wx.previewImage({
       current: this.data.src, // 当前显示图片的http链接
       urls: this.data.srcArray // 需要预览的图片http链接列表
@@ -399,7 +400,7 @@ Page({
   },
 
   //删除图片
-  clearPic: function () { //删除图片
+  clearPic: function() { //删除图片
     this.setData({
       isSrc: false,
       src: "",
@@ -429,10 +430,10 @@ Page({
           if (res.data.code == 1) {
             $stopWuxRefresher() //停止下拉刷新
             var data = res.data.data;
-            for (let i = 0; i < data.length; i++) {
-              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-            }
-            if (data.length != 0) {
+            if (data != null && data.length != 0) {
+              for (let i = 0; i < data.length; i++) {
+                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+              }
               that.setData({
                 troubleList: data,
                 isNull: false,
@@ -467,10 +468,10 @@ Page({
           if (res.data.code == 1) {
             $stopWuxRefresher() //停止下拉刷新
             var data = res.data.data;
-            for (let i = 0; i < data.length; i++) {
-              data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-            }
-            if (data.length != 0) {
+            if (data != null && data.length != 0) {
+              for (let i = 0; i < data.length; i++) {
+                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+              }
               that.setData({
                 troubleList: data,
                 isNull: false,
@@ -500,7 +501,7 @@ Page({
   },
 
   //提交表单
-  submitTrouble: function (e) {
+  submitTrouble: function(e) {
     var that = this;
     // 收集formId
     let formId = e.detail.formId;
@@ -599,7 +600,7 @@ Page({
               }
             });
             // 设置定时发送formIds
-            setTimeout(function () {
+            setTimeout(function() {
               console.log("formIds:" + that.data.formIds);
               wx.request({
                 url: app.globalData.localApiUrl + '/common/collectFormIds',
@@ -647,13 +648,13 @@ Page({
 
   },
 
-  onReady: function () {
+  onReady: function() {
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
-            success: function (res) {
+            success: function(res) {
               console.log(res.userInfo.avatarUrl)
               wx.setStorageSync("imgSrc", res.userInfo.avatarUrl);
             }
@@ -665,14 +666,14 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 
@@ -691,7 +692,7 @@ function upload(page, path) {
     header: {
       "Content-Type": "multipart/form-data"
     },
-    success: function (res) {
+    success: function(res) {
       console.log(res.data)
       var imageList = JSON.parse(res.data);
       console.log(imageList.data);

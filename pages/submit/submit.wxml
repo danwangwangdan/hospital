@@ -1,4 +1,3 @@
-<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="故障类型" options="{{ options1 }}" bind:close="onClose1" bind:change="onChange1" />
 <wux-refresher id="wux-refresher" bind:refresh="onRefresh">
   <view wx:if="{{isAdmin==1}}">
     <i-tabs current="{{currentTab}}" bindchange="handleChange">
@@ -18,7 +17,7 @@
         </i-cell-group>
       </view>
     </scroll-view>
-    <view wx:if="{{isNull}}" class='centerView'>
+    <view class="wux-text--center" style="margin-top:60%"wx:if="{{isNull}}">
       <text style='color:#80848f'>{{initialText}}</text>
     </view>
   </view>

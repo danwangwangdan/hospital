@@ -40,6 +40,11 @@ Page({
       url: '/pages/me/notsolved/notsolved'
     })
   },
+  toDutyPlan: function () {
+    wx.navigateTo({
+      url: '/pages/me/dutyplan/dutyplan'
+    })
+  },
   toSuggest: function() {
     wx.navigateTo({
       url: '/pages/me/suggestion/suggestion'

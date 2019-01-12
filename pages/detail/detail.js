@@ -1,6 +1,8 @@
 //获取应用实例
 const app = getApp();
-import { $stopWuxRefresher } from '../../plugins/wux/index'
+import {
+  $stopWuxRefresher
+} from '../../plugins/wux/index'
 
 Page({
   data: {
@@ -29,6 +31,7 @@ Page({
     captureUrls: [],
     detail: "",
     troubleType: "",
+    responser: "",
     office: "",
     comment: "",
     submitTime: "",
@@ -46,7 +49,7 @@ Page({
       method: 'GET',
       success(res) {
         wx.hideNavigationBarLoading(); //完成停止加载
-        $stopWuxRefresher()//停止下拉刷新
+        $stopWuxRefresher() //停止下拉刷新
         console.log(res.data);
         wx.hideLoading();
         if (res.data.code == 1) {
@@ -56,6 +59,7 @@ Page({
             troubleOwner: trouble.troublePersonName,
             submitTime: new Date(trouble.submitTime).format("yyyy-MM-dd HH:mm"),
             office: trouble.office,
+            responser: trouble.defalutResponser,
             troubleType: trouble.secType == '其他问题' ? trouble.secType : trouble.firType + "-" + trouble.secType,
             detail: trouble.detail,
             comment: trouble.solutionComment,
@@ -104,7 +108,7 @@ Page({
               isRevokeShow: false,
               isHomeShow: true,
               isSolved: "",
-              isCommitted:'finish',
+              isCommitted: 'finish',
               isConfirmed: 'process',
               isCommitContent: false,
               isConfirmContent: true,
@@ -184,7 +188,7 @@ Page({
     }
 
   },
-  onReady: function () {
+  onReady: function() {
     var that = this;
     console.log("onReady")
     var res = wx.getSystemInfoSync();
@@ -295,12 +299,12 @@ Page({
       url: '/pages/submit/submit'
     });
   },
-  toActive: function () {
+  toActive: function() {
     var that = this;
     wx.showModal({
       title: '你确定重新激活该故障吗？',
       content: '激活将通知技术员重新来处理该故障',
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           wx.request({
             url: app.globalData.localApiUrl + '/trouble/active',
