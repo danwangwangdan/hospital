@@ -1,7 +1,7 @@
 {
   "pages": [
-        "pages/me/dutyplan/dutyplan",
     "pages/submit/submit",
+    "pages/me/dutyplan/dutyplan",
     "pages/detail/detail",
     "pages/me/suggestion/suggest_suc/suggest_suc",
     "pages/solve_suc/solve_suc",
@@ -13,7 +13,6 @@
     "pages/solve/solve",
     "pages/me/confirmed/confirmed",
     "pages/me/notsolved/notsolved",
-
     "pages/me/suggestion/suggestion",
     "pages/home/home",
     "pages/me/solved/solved",
