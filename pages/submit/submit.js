@@ -91,6 +91,7 @@ Page({
           }
         },
         fail() {
+          $stopWuxRefresher() //停止下拉刷新
           wx.showToast({
             title: '网络请求失败，请稍后重试！',
             icon: 'none',
@@ -131,6 +132,7 @@ Page({
           }
         },
         fail() {
+          $stopWuxRefresher() //停止下拉刷新
           wx.showToast({
             title: '网络请求失败，请稍后重试！',
             icon: 'none',
@@ -165,6 +167,7 @@ Page({
         }
       },
       fail() {
+        $stopWuxRefresher() //停止下拉刷新
         wx.showToast({
           title: '网络请求失败，请稍后重试！',
           icon: 'none',
@@ -233,6 +236,7 @@ Page({
             }
           },
           fail() {
+            $stopWuxRefresher() //停止下拉刷新
             wx.showToast({
               title: '网络请求失败，请稍后重试！',
               icon: 'none',
@@ -265,6 +269,7 @@ Page({
             }
           },
           fail() {
+            $stopWuxRefresher() //停止下拉刷新
             wx.showToast({
               title: '网络请求失败，请稍后重试！',
               icon: 'none',
@@ -357,6 +362,7 @@ Page({
         }
       },
       fail() {
+        $stopWuxRefresher() //停止下拉刷新
         wx.showToast({
           title: '网络请求失败，请稍后重试！',
           icon: 'none',
@@ -452,6 +458,7 @@ Page({
           }
         },
         fail() {
+          $stopWuxRefresher() //停止下拉刷新
           wx.showToast({
             title: '网络请求失败，请稍后重试！',
             icon: 'none',
@@ -490,6 +497,7 @@ Page({
           }
         },
         fail() {
+          $stopWuxRefresher() //停止下拉刷新
           wx.showToast({
             title: '网络请求失败，请稍后重试！',
             icon: 'none',
@@ -589,6 +597,7 @@ Page({
 
                     },
                     fail() {
+                      $stopWuxRefresher() //停止下拉刷新
                       wx.showToast({
                         title: '网络请求失败，请稍后重试！',
                         icon: 'none',
@@ -616,6 +625,7 @@ Page({
                   console.log(res.data);
                 },
                 fail() {
+                  $stopWuxRefresher() //停止下拉刷新
                   wx.showToast({
                     title: '网络请求失败，请稍后重试！',
                     icon: 'none',
@@ -637,6 +647,7 @@ Page({
           }
         },
         fail() {
+          $stopWuxRefresher() //停止下拉刷新
           wx.showToast({
             title: '网络请求失败，请稍后重试！',
             icon: 'none',
@@ -718,6 +729,7 @@ function upload(page, path) {
       })
     },
     fail() {
+      $stopWuxRefresher() //停止下拉刷新
       wx.showToast({
         title: '网络请求失败，请稍后重试！',
         icon: 'none',

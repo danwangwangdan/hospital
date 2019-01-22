@@ -5,6 +5,7 @@
     </view>
     <view class="user-info flex-item">
       <text class="userinfo-nickname">{{nickname}}</text>
+      <wux-tag wx:if="{{isAdmin==1}}" style="margin-left:10rpx" color="#2D8CF0">今日解决{{solveCount}}个</wux-tag>
       <text class="edit">{{office}}  {{tel}}</text>
     </view>
   </view>
@@ -18,7 +19,7 @@
         <text>全部问题</text>
       </view>
     </view>
-    <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp" style="">
+    <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp">
       <view class="myitem-icon2 flex-item">
         <image src="../../pics/processing.png" style="height:52rpx;width:52rpx"></image>
       </view>
@@ -58,12 +59,29 @@
         <text>排班与公告</text>
       </view>
     </view>
+    <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp">
+      <view class="myitem-icon5 flex-item">
+        <image src="../../pics/new.png" style="height:55rpx;weight:100rpx"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="toNew">
+        <text>登记问题</text>
+      </view>
+    </view>
+    
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon6 flex-item">
         <image src="../../pics/contact.png"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toContact">
         <text>医院通讯录</text>
+      </view>
+    </view>
+     <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp">
+      <view class="myitem-icon6 flex-item">
+        <image src="../../pics/report.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="toReport">
+        <text>报表中心</text>
       </view>
     </view>
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">

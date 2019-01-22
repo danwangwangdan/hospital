@@ -1,7 +1,13 @@
-<view class="centerView">
-  <textarea placeholder="在这里畅言吧..." value="{{content}}"  bindinput="bindContentChange"/>
-  <input placeholder="联系方式   选填" value="{{mobile}}" bindinput="bindMobileChange" />
-  <view style='margin-top:60px'>
-    <i-button bind:click="toSubmit" type="primary" shape="circle">提交</i-button>
+<view class="page">
+  <view class="page__bd">
+    <wux-cell-group title="建议">
+      <wux-cell hover-class="none">
+        <wux-textarea value="{{content}}" adjust-position bind:change="bindContentChange" hasCount rows="3" cursorSpacing="80" placeholder="在这里畅言吧..." />
+      </wux-cell>
+    </wux-cell-group>
+    <view style='margin-top:40rpx'>
+      <button style='width:60%;margin-top:50rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toSubmit">提交</button>
+    </view>
   </view>
+
 </view>

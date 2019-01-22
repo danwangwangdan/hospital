@@ -6,7 +6,10 @@ Page({
    */
   data: {
     content: '',
-    mobile: ''
+    mobile: '',
+    isLoading: false,
+    logoutText: "提交",
+    isDisabled: false
   },
 
   toSubmit: function() {
@@ -19,6 +22,12 @@ Page({
         duration: 2000
       })
     } else {
+  
+      that.setData({
+        isDisabled: true,
+        isLoading: true,
+        loginText: "提交中..."
+      })
       wx.request({
         url: app.globalData.localApiUrl + '/common/submitSug',
         method: 'POST',

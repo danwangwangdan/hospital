@@ -61,17 +61,7 @@
           <view class="detail_linev"></view>
         </view>
       </view>
-       <view class="detail_input" style="padding-bottom:15rpx;">
-        <text class="des_txt detail_txt">负责人员</text>
-        <view class="detail_row_right actAddress">
-          <view class="txt-overflow">{{responser}}</view>
-        </view>
-        <view class="detail_lineh"></view>
-        <view style="display:flex;justify-content:flex-end">
-          <!--分割线-->
-          <view class="detail_linev"></view>
-        </view>
-      </view>
+       
       <view class="detail_input">
         <text class="des_txt detail_txt">详细描述</text>
         <view class="detail_right">

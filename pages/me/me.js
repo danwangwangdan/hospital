@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    solveCount: 0,
     isAdmin: 0,
     nickname: '',
     office: '',
@@ -40,7 +41,7 @@ Page({
       url: '/pages/me/notsolved/notsolved'
     })
   },
-  toDutyPlan: function () {
+  toDutyPlan: function() {
     wx.navigateTo({
       url: '/pages/me/dutyplan/dutyplan'
     })
@@ -53,6 +54,11 @@ Page({
   toContact: function() {
     wx.navigateTo({
       url: '/pages/me/contact/contact'
+    })
+  },
+  toReport: function () {
+    wx.navigateTo({
+      url: '/pages/me/report/report'
     })
   },
   toLogout: function() {
@@ -91,7 +97,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
   },
 
   /**
@@ -118,7 +124,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this;
+    wx.request({
+      url: app.globalData.localApiUrl + '/trouble/mySolveCount',
+      method: 'GET',
+      data: {
+        "solver": wx.getStorageSync("userInfo").nickname
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.code == 1) {
+          that.setData({
+            solveCount: res.data.data == null ? 0 : res.data.data.count
+          });
+        }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络请求失败，请稍后重试！',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    });
   },
 
   /**
