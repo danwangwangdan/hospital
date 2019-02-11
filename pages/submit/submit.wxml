@@ -44,7 +44,7 @@
           <image class="arrow-r" src="/pics/arrow_right.png"></image>
         </view>
       </view>
-      <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack"scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="选择一级故障类型"></picker>
+      <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="选择一级故障类型"></picker>
       <view class="divLine"></view>
       <view class="mod t-name">
         <text class="key">二级类型</text>
@@ -79,7 +79,7 @@
         <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
       </view>
     </view>
-    <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
+    <!-- <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
       <view>添加截图（可选）</view>
     </view>
     <view wx:if="{{isSrc}}" class="image_box">
@@ -87,6 +87,13 @@
         <image class="photo" src="{{src}}" mode="aspectFit" bindtap="previewImage"></image>
         <view bindtap="clearPic"></view>
       </view>
+    </view> -->
+    <view class="mod-a mt20">
+    <view style="margin-top:15rpx;margin-bottom:15rpx;">
+      <wux-upload listType="picture-card"  max="3" header="{'Content-Type':'multipart/form-data'}" url="https://www.daliandaxue.cn/hishelp/common/uploadPic" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
+        <text>添加故障图片</text>
+      </wux-upload>
+       </view>
     </view>
     <view style="display:block;margin:0 auto">
       <button formType="submit">

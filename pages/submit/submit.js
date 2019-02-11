@@ -39,6 +39,7 @@ Page({
     secTypeIndex: 0,
     src: "",
     uploadSrc: "",
+    captureUrls: "",
     srcArray: [],
     isAllOther: true, //是否选择了 其他类型的故障
     isSrc: false,
@@ -403,6 +404,44 @@ Page({
     });
   },
 
+  onPreview(e) {
+    console.log('onPreview', e)
+    const {
+      file,
+      fileList
+    } = e.detail
+    wx.previewImage({
+      current: file.url,
+      urls: fileList.map((n) => n.url),
+    })
+  },
+  onChange(e) {
+    console.log('onChange', e)
+    const {
+      file
+    } = e.detail
+    if (file.status === 'uploading') {
+      this.setData({
+        progress: 0,
+      })
+      wx.showLoading()
+    } else if (file.status === 'done') {
+      this.setData({
+        imageUrl: file.url,
+      })
+    }
+  },
+  onFail(e) {
+    console.log('onFail', e)
+  },
+  onComplete(e) {
+    var that = this;
+    console.log('onComplete', e)
+    that.setData({
+      "captureUrls": e.detail.data.url + ','
+    })
+    wx.hideLoading()
+  },
   //上传活动图片
   uploadPic: function() { //选择图标
     var that = this;
@@ -762,4 +801,5 @@ function upload(page, path) {
     }
 
   })
+
 }

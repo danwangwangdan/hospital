@@ -13,6 +13,7 @@
     "wux-cell-group": "../../plugins/wux/cell-group/index",
     "wux-cell": "../../plugins/wux/cell/index",
     "wux-cascader": "../../plugins/wux/cascader/index",
+    "wux-upload": "../../plugins/wux/upload/index",
     "picker": "../../plugins/picker/picker"
   },
   "navigationBarTitleText": "首页"
