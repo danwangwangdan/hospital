@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wux-cell-group": "../../../plugins/wux/cell-group/index",
+    "wux-cell": "../../../plugins/wux/cell/index",
+    "wux-refresher": "../../../plugins/wux/refresher/index"
+  },
+  "navigationBarTitleText": "报表中心"
+}

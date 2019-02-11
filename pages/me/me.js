@@ -21,6 +21,11 @@ Page({
       url: '/pages/me/all/all'
     })
   },
+  toNew: function () {
+    wx.navigateTo({
+      url: '/pages/me/new/new'
+    })
+  },
   toSubmitted: function() {
     wx.navigateTo({
       url: '/pages/me/submited/submited'

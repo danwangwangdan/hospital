@@ -46,7 +46,20 @@ Page({
     autoFocus: true,
     isLoading: false,
     loading: true,
-    isdisabled: false
+    isdisabled: false,
+
+    isShowPicker: false,
+    isShowPicker2: false,
+  },
+  showPicker: function() {
+    this.setData({
+      isShowPicker: true
+    })
+  },
+  showPicker2: function() {
+    this.setData({
+      isShowPicker2: true
+    })
   },
   handleChange({
     detail
@@ -264,7 +277,7 @@ Page({
               }
               console.log(firTypes);
               that.setData({
-                firTypes: firTypes,
+                firTypes: [firTypes],
               })
             }
           },
@@ -321,7 +334,16 @@ Page({
       office: value,
     })
   },
-
+  cancleCallBack2() {
+    this.setData({
+      isShowPicker2: false,
+    })
+  },
+  cancleCallBack() {
+    this.setData({
+      isShowPicker: false,
+    })
+  },
   //改变故障类别
   firTypeChange: function(e) {
     var that = this;
@@ -330,8 +352,9 @@ Page({
       mask: true
     });
     this.setData({
-      firTypeIndex: e.detail.value,
-      firTypeValue: this.data.firTypes[e.detail.value]
+      isShowPicker: false,
+      firTypeValue: e.detail.choosedData[0],
+      firTypeIndex: JSON.stringify(e.detail.choosedIndexArr)[1]
     });
     if (this.data.firTypes[e.detail.value] != '其他问题') {
       this.setData({
@@ -356,7 +379,7 @@ Page({
           }
           console.log(secTypes);
           that.setData({
-            secTypes: secTypes,
+            secTypes: [secTypes],
             secTypeValue: secTypes[0]
           })
         }
@@ -374,9 +397,10 @@ Page({
   },
   secTypeChange: function(e) {
     this.setData({
-      secTypeIndex: e.detail.value,
-      secTypeValue: this.data.secTypes[e.detail.value]
-    })
+      isShowPicker2: false,
+      secTypeValue: e.detail.choosedData[0],
+      secTypeIndex: JSON.stringify(e.detail.choosedIndexArr)[1]
+    });
   },
 
   //上传活动图片

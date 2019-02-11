@@ -17,7 +17,7 @@
         </i-cell-group>
       </view>
     </scroll-view>
-    <view class="wux-text--center" style="margin-top:60%"wx:if="{{isNull}}">
+    <view class="wux-text--center" style="margin-top:60%" wx:if="{{isNull}}">
       <text style='color:#80848f'>{{initialText}}</text>
     </view>
   </view>
@@ -38,12 +38,22 @@
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="divLine"></view>
-      <!-- <view class="mod t-name">
-        <text class="key">故障类型</text>
-        <wux-cell class="picker_c" title="请选择故障类型" extra="{{ title2 }}" bind:click="onOpen2"></wux-cell>
-        <image class="arrow-r" src="/pics/arrow_right.png"></image>
-      </view> -->
       <view class="mod t-name">
+        <text class="key">一级类型</text>
+        <view class="value" bindtap="showPicker">{{firTypeValue}}
+          <image class="arrow-r" src="/pics/arrow_right.png"></image>
+        </view>
+      </view>
+      <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack"scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="选择一级故障类型"></picker>
+      <view class="divLine"></view>
+      <view class="mod t-name">
+        <text class="key">二级类型</text>
+        <view class="value" bindtap="showPicker2">{{secTypeValue}}
+          <image class="arrow-r" src="/pics/arrow_right.png"></image>
+        </view>
+      </view>
+      <picker isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
+      <!-- <view class="mod t-name">
         <text class="key">一级类型</text>
         <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}">
           <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
@@ -59,7 +69,7 @@
             <image class="arrow-r" src="/pics/arrow_right.png"></image>
           </view>
         </picker>
-      </view>
+      </view> -->
 
     </view>
 

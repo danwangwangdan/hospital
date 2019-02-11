@@ -12,7 +12,8 @@
     "wux-refresher": "../../plugins/wux/refresher/index",
     "wux-cell-group": "../../plugins/wux/cell-group/index",
     "wux-cell": "../../plugins/wux/cell/index",
-    "wux-cascader": "../../plugins/wux/cascader/index"
+    "wux-cascader": "../../plugins/wux/cascader/index",
+    "picker": "../../plugins/picker/picker"
   },
   "navigationBarTitleText": "首页"
 }

@@ -1,4 +1,6 @@
-@import '../../plugins/wux/styles/index.wxss';
+@import '../../../styles/weui.wxss';
+@import '../../../styles/skyvow.wxss';
+@import '../../../plugins/wux/styles/index.wxss';
 form button {
   padding: 0;
 }
@@ -413,3 +415,4 @@ form button::after {
 .notice-a text {
   word-break: break-all;
 }
+

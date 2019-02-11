@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "i-radio-group": "../../../plugins/iview/radio-group/index",
+    "i-radio": "../../../plugins/iview/radio/index",
+    "i-button": "../../../plugins/iview/button/index",
+    "i-input": "../../../plugins/iview/input/index",
+    "wux-refresher": "../../../plugins/wux/refresher/index"
+  },
+  "navigationBarTitleText": "排班与公告"
+}
