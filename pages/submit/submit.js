@@ -40,7 +40,24 @@ Page({
     src: "",
     uploadSrc: "",
     captureUrls: "",
-    srcArray: [],
+    srcArray: [], //需要预览的图片http链接列表 
+    fileList: [{
+      uid: 0,
+      status: 'done',
+      url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+    },
+    {
+      uid: 1,
+      status: 'done',
+      url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+    },
+    {
+      uid: 2,
+      status: 'done',
+      url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+    }
+    ],
+    // fileList: [],  //上传文件的数组
     isAllOther: true, //是否选择了 其他类型的故障
     isSrc: false,
     ishide: "0",
@@ -424,25 +441,60 @@ Page({
       this.setData({
         progress: 0,
       })
-      wx.showLoading()
+      wx.showLoading({
+        title: "上传中...",
+        mask: true
+      });
     } else if (file.status === 'done') {
       this.setData({
         imageUrl: file.url,
       })
     }
   },
+  // onProgress(e){
+  //   console.log('onProgress', e);
+  //   this.setData({
+  //     progress: e.detail.file.progress,
+  //   })
+  // },
   onFail(e) {
     console.log('onFail', e)
   },
   onComplete(e) {
     var that = this;
-    console.log('onComplete', e)
-    that.setData({
-      "captureUrls": e.detail.data.url + ','
-    })
-    wx.hideLoading()
+    var realUrls;
+    console.log(e);
+    // if (typeof that.data.captureUrls == "undefined" || that.data.captureUrls == null || that.data.captureUrls == "") {
+    //   realUrls = that.data.captureUrls + (JSON.parse(e.detail.data)).data[0].url;
+    // } else {
+    //   realUrls = that.data.captureUrls + ',' + (JSON.parse(e.detail.data)).data[0].url;
+    // }
+    // that.setData({
+    //   "captureUrls": realUrls
+    // })
+    // console.log("captureUrls:" + that.data.captureUrls);
+    console.log("fileList",that.data.fileList);
+    wx.hideLoading();
   },
-  //上传活动图片
+  onRemove(e) {
+    const { file, fileList } = e.detail;
+    this.setData({
+      fileList: fileList.filter((n) => n.uid !== file.uid),
+    })
+    // wx.showModal({
+    //   content: '确定删除？',
+    //   success: (res) => {
+    //     if (res.confirm) {
+    //       this.setData({
+    //         fileList: fileList.filter((n) => n.uid !== file.uid),
+    //       })
+    //     }
+    //   },
+    // })
+    console.log("fileList", this.data.fileList);
+  },
+
+  //上传图片
   uploadPic: function() { //选择图标
     var that = this;
     wx.chooseImage({
@@ -671,7 +723,7 @@ Page({
                 }
               }
             });
-            // 设置定时发送formIds
+            // 设置100ms后发送formIds
             setTimeout(function() {
               console.log("formIds:" + that.data.formIds);
               wx.request({
