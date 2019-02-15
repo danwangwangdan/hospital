@@ -41,23 +41,23 @@ Page({
     uploadSrc: "",
     captureUrls: "",
     srcArray: [], //需要预览的图片http链接列表 
-    fileList: [{
-      uid: 0,
-      status: 'done',
-      url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
-    },
-    {
-      uid: 1,
-      status: 'done',
-      url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
-    },
-    {
-      uid: 2,
-      status: 'done',
-      url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
-    }
-    ],
-    // fileList: [],  //上传文件的数组
+    // fileList: [{
+    //   uid: 0,
+    //   status: 'done',
+    //   url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+    // },
+    // {
+    //   uid: 1,
+    //   status: 'done',
+    //   url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+    // },
+    // {
+    //   uid: 2,
+    //   status: 'done',
+    //   url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+    // }
+    // ],
+    fileList: [], //上传文件的数组
     isAllOther: true, //是否选择了 其他类型的故障
     isSrc: false,
     ishide: "0",
@@ -434,22 +434,28 @@ Page({
   },
   onChange(e) {
     console.log('onChange', e)
+    var fileArray = this.data.fileList;
     const {
       file
-    } = e.detail
+    } = e.detail;
     if (file.status === 'uploading') {
       this.setData({
         progress: 0,
       })
       wx.showLoading({
-        title: "上传中...",
+        title: '上传中...',
         mask: true
       });
+
     } else if (file.status === 'done') {
+      console.log("done");
+      fileArray.push(file);
       this.setData({
         imageUrl: file.url,
+        fileList: fileArray
       })
     }
+    console.log("fileList", this.data.fileList);
   },
   // onProgress(e){
   //   console.log('onProgress', e);
@@ -473,25 +479,17 @@ Page({
     //   "captureUrls": realUrls
     // })
     // console.log("captureUrls:" + that.data.captureUrls);
-    console.log("fileList",that.data.fileList);
+    console.log("fileList", that.data.fileList);
     wx.hideLoading();
   },
   onRemove(e) {
-    const { file, fileList } = e.detail;
+    const {
+      file,
+      fileList
+    } = e.detail;
     this.setData({
       fileList: fileList.filter((n) => n.uid !== file.uid),
     })
-    // wx.showModal({
-    //   content: '确定删除？',
-    //   success: (res) => {
-    //     if (res.confirm) {
-    //       this.setData({
-    //         fileList: fileList.filter((n) => n.uid !== file.uid),
-    //       })
-    //     }
-    //   },
-    // })
-    console.log("fileList", this.data.fileList);
   },
 
   //上传图片
@@ -637,7 +635,7 @@ Page({
     var content = this.data.content;
     var firType = this.data.firTypeValue;
     var secType = this.data.secTypeValue;
-    var captureUrls = this.data.uploadSrc;
+
     //先进行表单非空验证
     var isBlankContent = true;
     if (content != "" || captureUrls != "") {
@@ -665,10 +663,19 @@ Page({
     } else {
       that.data.clickCount++;
       console.log("clickCount2:" + that.data.clickCount);
+      // 处理图片地址
+      var captureArray = this.data.fileList;
+      var captureUrls = "";
+      for (var j = 0, len = captureArray.length; j < len; j++) {
+        console.log(captureArray[j]);
+        captureUrls = captureUrls + JSON.parse(captureArray[j].res.data).data[0].url + ",";
+      }
+      console.log("待上传的图片地址：" + captureUrls)
       wx.showLoading({
         title: "提交中...",
         mask: true
       });
+
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/submit',
         method: 'POST',

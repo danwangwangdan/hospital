@@ -18,8 +18,8 @@ form button::after {
 
 .publish_btn {
   /* position: fixed; */
-  margin-top: 60rpx;
-  left: 20%;
+  margin-top: 40rpx;
+  /* left: 20%; */
   /* transform: translateX(-50%); */
   width: 280rpx;
   height: 20rpx;

@@ -11,12 +11,13 @@
 .photo {
   height: 380rpx;
 }
+
 .revoke_btn {
-  position: fixed;
+  /* position: fixed;
   margin-top: 2%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 350rpx;
+  transform: translateX(-50%); */
+  width: 84%;
   line-height: 27rpx;
   color: rgb(255, 255, 255);
   font-size: 14px;
@@ -32,11 +33,11 @@
 }
 
 .confirm_btn {
-  position: fixed;
+  /* position: fixed;
   margin-top: 2%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 350rpx;
+  transform: translateX(-50%); */
+  width: 84%;
   line-height: 27rpx;
   color: rgb(255, 255, 255);
   font-size: 14px;
@@ -50,6 +51,7 @@
   border-radius: 41px;
   background-color: #19be6b;
 }
+
 .active_btn {
   /* position: fixed;
   margin-top: 2%;
@@ -69,6 +71,7 @@
   border-radius: 41px;
   background-color: #19be6b;
 }
+
 .solve_btn {
   /* position: fixed;
   margin-top: 2%;

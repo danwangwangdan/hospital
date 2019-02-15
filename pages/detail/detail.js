@@ -53,19 +53,28 @@ Page({
         wx.hideLoading();
         if (res.data.code == 1) {
           var trouble = res.data.data;
-          that.data.captureUrls.push(trouble.captureUrls);
+         
           that.setData({
             troubleOwner: trouble.troublePersonName,
             submitTime: new Date(trouble.submitTime).format("yyyy-MM-dd HH:mm"),
             office: trouble.office,
             troubleType: trouble.secType == '其他问题' ? trouble.secType : trouble.firType + "-" + trouble.secType,
             detail: trouble.detail,
-            comment: trouble.solutionComment,
-            captureUrl: trouble.captureUrls
+            comment: trouble.solutionComment
           })
+          
           if (trouble.captureUrls == "") {
             that.setData({
               isPicTextShow: false
+            });
+          }else {
+            var crudeCaptureList = trouble.captureUrls;
+            // crudeCaptureList = crudeCaptureList.substr(1, crudeCaptureList.length - 1);
+            console.log("crudeCaptureList:" + crudeCaptureList);
+            var captureArray = crudeCaptureList.split(",");
+            captureArray.pop();
+            that.setData({
+              captureUrls: captureArray
             });
           }
           if (trouble.solutionComment == "") {

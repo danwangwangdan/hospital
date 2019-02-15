@@ -61,7 +61,7 @@
           <view class="detail_linev"></view>
         </view>
       </view>
-       
+
       <view class="detail_input">
         <text class="des_txt detail_txt">详细描述</text>
         <view class="detail_right">
@@ -81,74 +81,56 @@
           <text class="des_txt detail_txt">故障截图</text>
         </view>
         <view style='text-align:center'>
-          <image class="photo" src="{{captureUrl}}" bindtap='previewImage' mode='aspectFit'></image>
+          <block wx:key="id" wx:for="{{captureUrls}}">
+            <image class="photo" src="{{item}}" bindtap='previewImage' mode='aspectFit'></image>
+          </block>
         </view>
 
       </view>
-      <view wx:if="{{isRevokeShow}}" style='margin-top:10px'>
-        <button bindtap='toRevoke'>
-          <view class='revoke_btn'>撤回故障</view>
+      <view wx:if="{{isRevokeShow}}" style='margin-top:30rpx;margin-bottom:15rpx'>
+        <button class='revoke_btn' bindtap='toRevoke'>
+          撤回故障
         </button>
         <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
       </view>
-      <view wx:if="{{isActiveShow}}" style='margin-top:10px'>
+      <view wx:if="{{isActiveShow}}" style='margin-top:30rpx;margin-bottom:15rpx'>
         <button bindtap='toActive' class="active_btn">重新激活</button>
       </view>
-      <view wx:if="{{isHomeShow}}" style='margin-top:10px;margin-bottom:10px'>
+      <view wx:if="{{isHomeShow}}" style='margin-top:15rpx;margin-bottom:15rpx'>
         <button bindtap='toHome' class="solve_btn">回到首页</button>
         <!-- <button bindtap='toHome '>
           <view class='solve_btn '>回到首页</view>
         </button> -->
         <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
       </view>
-
-      <view wx:if="{{isConfirmShow}}" style='margin-top:10px '>
+      <view wx:if="{{isConfirmShow}}" style="margin-top:30rpx;margin-bottom:15rpx;">
+        <button bindtap='toConfirm' class="confirm_btn">
+          确认故障
+        </button>
+      </view>
+      <!-- <view wx:if="{{isConfirmShow}}" style="display:block;margin:0 auto">
+        <button formType="submit">
+          <form report-submit="true" bindsubmit='toConfirm'>
+            <button style="background:none;border:none;display:block;margin:0 auto;width:85%;height:50%;" formType="submit">
+              <form report-submit="true" bindsubmit='toConfirm'>
+                <button style="display:block;margin-left:70rpx;" formType="submit">
+                  <view class='confirm_btn'>确认故障</view>
+                </button>
+              </form>
+            </button>
+          </form>
+        </button>
+      </view> -->
+      <!-- <view wx:if="{{isConfirmShow}}" style='margin-top:10px'>
         <form report-submit="true" bindsubmit='toConfirm'>
           <button formType="submit" type="primary">
-            <form report-submit="true" bindsubmit='toConfirm'>
-              <button formType="submit" type="primary">
-                <form report-submit="true" bindsubmit='toConfirm'>
-                  <button formType="submit" type="primary">
-                    <form report-submit="true" bindsubmit='toConfirm'>
-                      <button formType="submit" type="primary">
-                        <form report-submit="true" bindsubmit='toConfirm'>
-                          <button formType="submit" type="primary">
-                            <form report-submit="true" bindsubmit='toConfirm'>
-                              <button formType="submit" type="primary">
-                                <form report-submit="true" bindsubmit='toConfirm'>
-                                  <button formType="submit" type="primary">
-                                    <form report-submit="true" bindsubmit='toConfirm'>
-                                      <button formType="submit" type="primary">
-                                        <form report-submit="true" bindsubmit='toConfirm'>
-                                          <button formType="submit" type="primary">
-                                            <view class='confirm_btn '>确认故障</view>
-                                          </button>
-                                        </form>
-                                      </button>
-                                    </form>
-                                  </button>
-                                </form>
-                              </button>
-                            </form>
-                          </button>
-                        </form>
-                      </button>
-                    </form>
-                  </button>
-                </form>
-              </button>
-            </form>
+            <view class='confirm_btn'>确认故障</view>
           </button>
-          <!-- <button formType="submit" class="circleGreen" wx:if="{{isConfirmShow}}">确认故障</button> -->
         </form>
+      </view> -->
 
-      </view>
-      <view wx:if="{{isSolveShow}}" style='margin-top:10px;margin-bottom:10px'>
+      <view wx:if="{{isSolveShow}}" style='margin-top:30rpx;margin-bottom:15rpx'>
         <button bindtap='toSolve' class="solve_btn">解决故障</button>
-        <!-- <button bindtap='toSolve '>
-          <view class='solve_btn '>解决故障</view>
-        </button> -->
-        <!-- <button formType="submit" bindtap='toSolve ' class="circleBlue" wx:if="{{isSolveShow}}">解决故障</button> -->
       </view>
     </view>
 
