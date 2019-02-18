@@ -701,7 +701,13 @@ label {
   margin-right: 30rpx;
   border-top: 1rpx solid #e6e6e6;
 }
-
+.mobile-overflow {
+  color:#2d8cf0; 
+  text-decoration:underline;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .txt-overflow {
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -32,6 +32,7 @@ Page({
     detail: "",
     troubleType: "",
     office: "",
+    mobile: wx.getStorageSync("userInfo").mobile,
     comment: "",
     submitTime: "",
     troubleOwner: ""
@@ -220,7 +221,35 @@ Page({
   onReachBottom: function() {
 
   },
-
+  clickNumber:function(e){
+    var that = this;
+    wx.showActionSheet({
+      itemList: ['呼叫' ,'添加联系人'],
+      success: function (res) {
+        console.log("点击电话 res：", res)
+        if (res.tapIndex == 0) {//直接呼叫
+          wx.makePhoneCall({
+            phoneNumber: that.data.mobile,
+            success: function (res_makephone) {
+              console.log("呼叫电话返回：", res_makephone)
+            }
+          })
+        } else if (res.tapIndex == 1) {//添加联系人
+          wx.addPhoneContact({
+            firstName: that.data.troubleOwner,
+            mobilePhoneNumber: that.data.mobile,
+            success: function (res_addphone) {
+              wx.showToast({
+                title: '添加联系人成功！',
+                icon: 'success',
+                duration: 2000
+              })
+            }
+          })
+        }
+      }
+    });
+  },
   toConfirm: function(e) {
     var that = this;
     // 收集formId

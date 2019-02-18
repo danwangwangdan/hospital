@@ -219,48 +219,48 @@ Page({
       })
       // 分用户和管理员两种情况
       if (that.data.isAdmin == 1) {
-        var startRquest = new Date();
-        wx.request({
-          url: app.globalData.localApiUrl + '/trouble/submitted',
-          method: 'GET',
-          success(res) {
-            console.log(res.data);
-            wx.hideLoading();
-            if (res.data.code == 1) {
-              var data = res.data.data;
-              var endLoad = new Date();
-              console.log('加载耗时：总' + (endLoad - startLoad) + 'ms，checkSession:' + (checkSession - startLoad) + 'ms，request:' + (endLoad - startRquest) + 'ms');
-              if (data != null && data.length != 0) {
-                for (let i = 0; i < data.length; i++) {
-                  data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-                }
-                that.setData({
-                  troubleList: data,
-                  isNull: false,
-                  submitCount: data.length,
-                  confirmCount: 0
-                });
-              } else {
-                console.log("这里什么也没有")
-                that.setData({
-                  troubleList: data,
-                  isNull: true,
-                  initialText: "这里什么也没有...",
-                  submitCount: 0,
-                  confirmCount: 0
-                });
-              }
-            }
-          },
-          fail() {
-            $stopWuxRefresher() //停止下拉刷新
-            wx.showToast({
-              title: '网络请求失败，请稍后重试！',
-              icon: 'none',
-              duration: 2000
-            })
-          }
-        });
+        // var startRquest = new Date();
+        // wx.request({
+        //   url: app.globalData.localApiUrl + '/trouble/submitted',
+        //   method: 'GET',
+        //   success(res) {
+        //     console.log(res.data);
+        //     wx.hideLoading();
+        //     if (res.data.code == 1) {
+        //       var data = res.data.data;
+        //       var endLoad = new Date();
+        //       console.log('加载耗时：总' + (endLoad - startLoad) + 'ms，checkSession:' + (checkSession - startLoad) + 'ms，request:' + (endLoad - startRquest) + 'ms');
+        //       if (data != null && data.length != 0) {
+        //         for (let i = 0; i < data.length; i++) {
+        //           data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+        //         }
+        //         that.setData({
+        //           troubleList: data,
+        //           isNull: false,
+        //           submitCount: data.length,
+        //           confirmCount: 0
+        //         });
+        //       } else {
+        //         console.log("这里什么也没有")
+        //         that.setData({
+        //           troubleList: data,
+        //           isNull: true,
+        //           initialText: "这里什么也没有...",
+        //           submitCount: 0,
+        //           confirmCount: 0
+        //         });
+        //       }
+        //     }
+        //   },
+        //   fail() {
+        //     $stopWuxRefresher() //停止下拉刷新
+        //     wx.showToast({
+        //       title: '网络请求失败，请稍后重试！',
+        //       icon: 'none',
+        //       duration: 2000
+        //     })
+        //   }
+        // });
       } else {
         var startRquest = new Date();
         //获取一级类型
@@ -298,7 +298,222 @@ Page({
     }
   },
   onShow: function() {
-
+    var that = this;
+    that.setData({
+      isNull: true,
+      submitCount: 0,
+      confirCount: 0,
+      initialText: "加载中...",
+      troubleList: []
+    });
+    var startLoad = new Date();
+    wx.showLoading({
+      title: "请求中...",
+      mask: true
+    });
+    // 判断是否登录
+    wx.checkSession({
+      fail() {
+        that.setData({
+          isLogin: false
+        });
+      },
+    });
+    var checkSession = new Date();
+    if (wx.getStorageSync("userInfo") == undefined || wx.getStorageSync("userInfo") == "") {
+      that.setData({
+        isLogin: false
+      })
+    }
+    if (!that.data.isLogin) {
+      wx.hideLoading();
+      wx.reLaunch({
+        url: '/pages/login/login'
+      })
+    } else {
+      that.setData({ //初始化数据
+        username: wx.getStorageSync("userInfo").nickname,
+        office: wx.getStorageSync("userInfo").office,
+        isAdmin: wx.getStorageSync("userInfo").isAdmin,
+      })
+      // 分用户和管理员两种情况
+      if (that.data.isAdmin == 1) {
+        if (that.data.currentTab == 'tab1') { //待确认
+          wx.request({
+            url: app.globalData.localApiUrl + '/trouble/submitted',
+            method: 'GET',
+            success(res) {
+              console.log(res.data);
+              wx.hideLoading();
+              if (res.data.code == 1) {
+                $stopWuxRefresher() //停止下拉刷新
+                var data = res.data.data;
+                if (data != null && data.length != 0) {
+                  for (let i = 0; i < data.length; i++) {
+                    data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+                  }
+                  that.setData({
+                    troubleList: data,
+                    isNull: false,
+                    submitCount: data.length,
+                    confirmCount: 0
+                  });
+                } else {
+                  that.setData({
+                    troubleList: data,
+                    isNull: true,
+                    initialText: "这里什么也没有...",
+                    submitCount: 0,
+                    confirmCount: 0
+                  });
+                }
+              }
+            },
+            fail() {
+              $stopWuxRefresher() //停止下拉刷新
+              wx.showToast({
+                title: '网络请求失败，请稍后重试！',
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          });
+        } else {
+          wx.request({
+            url: app.globalData.localApiUrl + '/trouble/confirmed',
+            method: 'GET',
+            success(res) {
+              wx.hideLoading();
+              console.log(res.data);
+              if (res.data.code == 1) {
+                $stopWuxRefresher() //停止下拉刷新
+                var data = res.data.data;
+                if (data != null && data.length != 0) {
+                  for (let i = 0; i < data.length; i++) {
+                    data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+                  }
+                  that.setData({
+                    troubleList: data,
+                    isNull: false,
+                    submitCount: 0,
+                    confirmCount: data.length
+                  });
+                } else {
+                  that.setData({
+                    troubleList: data,
+                    isNull: true,
+                    initialText: "这里什么也没有...",
+                    submitCount: 0,
+                    confirmCount: 0
+                  });
+                }
+              }
+            },
+            fail() {
+              $stopWuxRefresher() //停止下拉刷新
+              wx.showToast({
+                title: '网络请求失败，请稍后重试！',
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          });
+        }
+      }
+    }
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onRefresh() {
+    console.log("onRefresh")
+    var that = this;
+    that.setData({
+      isNull: true,
+      submitCount: 0,
+      confirCount: 0,
+      initialText: "加载中...",
+      troubleList: []
+    });
+    if (that.data.currentTab == 'tab1') { //待确认
+      wx.request({
+        url: app.globalData.localApiUrl + '/trouble/submitted',
+        method: 'GET',
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            $stopWuxRefresher() //停止下拉刷新
+            var data = res.data.data;
+            if (data != null && data.length != 0) {
+              for (let i = 0; i < data.length; i++) {
+                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+              }
+              that.setData({
+                troubleList: data,
+                isNull: false,
+                submitCount: data.length,
+                confirmCount: 0
+              });
+            } else {
+              that.setData({
+                troubleList: data,
+                isNull: true,
+                initialText: "这里什么也没有...",
+                submitCount: 0,
+                confirmCount: 0
+              });
+            }
+          }
+        },
+        fail() {
+          $stopWuxRefresher() //停止下拉刷新
+          wx.showToast({
+            title: '网络请求失败，请稍后重试！',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      });
+    } else {
+      wx.request({
+        url: app.globalData.localApiUrl + '/trouble/confirmed',
+        method: 'GET',
+        success(res) {
+          console.log(res.data);
+          if (res.data.code == 1) {
+            $stopWuxRefresher() //停止下拉刷新
+            var data = res.data.data;
+            if (data != null && data.length != 0) {
+              for (let i = 0; i < data.length; i++) {
+                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+              }
+              that.setData({
+                troubleList: data,
+                isNull: false,
+                submitCount: 0,
+                confirmCount: data.length
+              });
+            } else {
+              that.setData({
+                troubleList: data,
+                isNull: true,
+                initialText: "这里什么也没有...",
+                submitCount: 0,
+                confirmCount: 0
+              });
+            }
+          }
+        },
+        fail() {
+          $stopWuxRefresher() //停止下拉刷新
+          wx.showToast({
+            title: '网络请求失败，请稍后重试！',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      });
+    }
   },
 
   toDetail: function(e) {
@@ -361,9 +576,13 @@ Page({
       firTypeValue: e.detail.choosedData[0],
       firTypeIndex: JSON.stringify(e.detail.choosedIndexArr)[1]
     });
-    if (this.data.firTypes[e.detail.value] != '其他问题') {
+    if (this.data.firTypes[e.detail.choosedData[0]] != '其他问题') {
       this.setData({
         isAllOther: false
+      });
+    }else{
+      this.setData({
+        isAllOther: true
       });
     }
     //获取二级类型
@@ -514,99 +733,7 @@ Page({
     })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onRefresh() {
-    console.log("onRefresh")
-    var that = this;
-    that.setData({
-      isNull: true,
-      submitCount: 0,
-      confirCount: 0,
-      initialText: "加载中...",
-      troubleList: []
-    });
-    if (that.data.currentTab == 'tab1') { //待确认
-      wx.request({
-        url: app.globalData.localApiUrl + '/trouble/submitted',
-        method: 'GET',
-        success(res) {
-          console.log(res.data);
-          if (res.data.code == 1) {
-            $stopWuxRefresher() //停止下拉刷新
-            var data = res.data.data;
-            if (data != null && data.length != 0) {
-              for (let i = 0; i < data.length; i++) {
-                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-              }
-              that.setData({
-                troubleList: data,
-                isNull: false,
-                submitCount: data.length,
-                confirmCount: 0
-              });
-            } else {
-              that.setData({
-                troubleList: data,
-                isNull: true,
-                initialText: "这里什么也没有...",
-                submitCount: 0,
-                confirmCount: 0
-              });
-            }
-          }
-        },
-        fail() {
-          $stopWuxRefresher() //停止下拉刷新
-          wx.showToast({
-            title: '网络请求失败，请稍后重试！',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      });
-    } else {
-      wx.request({
-        url: app.globalData.localApiUrl + '/trouble/confirmed',
-        method: 'GET',
-        success(res) {
-          console.log(res.data);
-          if (res.data.code == 1) {
-            $stopWuxRefresher() //停止下拉刷新
-            var data = res.data.data;
-            if (data != null && data.length != 0) {
-              for (let i = 0; i < data.length; i++) {
-                data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-              }
-              that.setData({
-                troubleList: data,
-                isNull: false,
-                submitCount: 0,
-                confirmCount: data.length
-              });
-            } else {
-              that.setData({
-                troubleList: data,
-                isNull: true,
-                initialText: "这里什么也没有...",
-                submitCount: 0,
-                confirmCount: 0
-              });
-            }
-          }
-        },
-        fail() {
-          $stopWuxRefresher() //停止下拉刷新
-          wx.showToast({
-            title: '网络请求失败，请稍后重试！',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      });
-    }
-  },
+  
 
   //提交表单
   submitTrouble: function(e) {
@@ -625,10 +752,12 @@ Page({
 
     //先进行表单非空验证
     var isBlankContent = true;
-    if (content != "" || captureUrls != "") {
+    if (content != "" || that.data.fileList.length != 0) {
       isBlankContent = false;
-
     }
+    // console.log("fileList:" + (that.data.fileList.length != 0));
+    // console.log("content:" + content);
+    // console.log("true:" + that.data.isAllOther && isBlankContent);
     if (troubleOwner == "") {
       wx.showToast({
         title: '故障人不能为空',
