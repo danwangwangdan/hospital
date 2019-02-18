@@ -30,33 +30,19 @@ Page({
     noteMaxLen: 200, //备注最多字数
     content: "",
     noteNowLen: 0, //备注当前字数
-    firTypes: ['其他问题'],
+    firTypes: [['其他问题']],
     firTypeValue: '其他问题',
     firTypeIndex: 0,
-    secTypes: ['其他问题'],
+    secTypes: [['其他问题']],
     secTypeValue: '其他问题',
     secTypeDis: false,
     secTypeIndex: 0,
+    secDis: true,
     src: "",
     uploadSrc: "",
     captureUrls: "",
     srcArray: [], //需要预览的图片http链接列表 
-    // fileList: [{
-    //   uid: 0,
-    //   status: 'done',
-    //   url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
-    // },
-    // {
-    //   uid: 1,
-    //   status: 'done',
-    //   url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
-    // },
-    // {
-    //   uid: 2,
-    //   status: 'done',
-    //   url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
-    // }
-    // ],
+
     fileList: [], //上传文件的数组
     isAllOther: true, //是否选择了 其他类型的故障
     isSrc: false,
@@ -370,6 +356,7 @@ Page({
       mask: true
     });
     this.setData({
+      secDis: false,
       isShowPicker: false,
       firTypeValue: e.detail.choosedData[0],
       firTypeIndex: JSON.stringify(e.detail.choosedIndexArr)[1]

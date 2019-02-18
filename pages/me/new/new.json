@@ -4,7 +4,8 @@
     "i-radio": "../../../plugins/iview/radio/index",
     "i-button": "../../../plugins/iview/button/index",
     "i-input": "../../../plugins/iview/input/index",
-    "wux-refresher": "../../../plugins/wux/refresher/index"
+    "wux-refresher": "../../../plugins/wux/refresher/index",
+    "picker": "../../../plugins/picker/picker"
   },
   "navigationBarTitleText": "登记问题"
 }

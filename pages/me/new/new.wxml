@@ -1,7 +1,7 @@
 <view class="page">
   <view class="page__hd">
     <view class="page__title">登记问题</view>
-    <!-- <view class="page__desc">日历</view> -->
+    <view class="page__desc">好记性不如烂笔头</view>
   </view>
   <view class="add-page">
     <form report-submit="true" bindsubmit='submitTrouble'>
@@ -9,36 +9,36 @@
       <view class="mod-a mt20">
         <view class="mod t-name">
           <text class="key">问题科室</text>
-          <input name="office" class="input" maxlength="100" value="{{office}}" bindinput="bindOfficeChange" />
+          <input name="office" class="input" maxlength="100" placeholder= "轻触以输入问题科室" value="{{office}}" bindinput="bindOfficeChange" />
           <image class="arrow-r" src="/pics/arrow_right.png"></image>
         </view>
         <view class="divLine"></view>
-        <view class="mod t-name">
-          <text class="key">一级类型</text>
-          <view class="value" bindtap="showPicker">{{firTypeValue}}
-            <image class="arrow-r" src="/pics/arrow_right.png"></image>
-          </view>
+      <view class="mod t-name">
+        <text class="key">一级类型</text>
+        <view class="value" bindtap="showPicker">{{firTypeValue}}
+          <image class="arrow-r" src="/pics/arrow_right.png"></image>
         </view>
-        <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="选择一级故障类型"></picker>
-        <view class="divLine"></view>
-        <view class="mod t-name">
-          <text class="key">二级类型</text>
-          <view class="value" bindtap="showPicker2">{{secTypeValue}}
-            <image class="arrow-r" src="/pics/arrow_right.png"></image>
-          </view>
+      </view>
+      <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="选择一级故障类型"></picker>
+      <view class="divLine"></view>
+      <view class="mod t-name">
+        <text class="key">二级类型</text>
+        <view class="value" bindtap="showPicker2">{{secTypeValue}}
+          <image class="arrow-r" src="/pics/arrow_right.png"></image>
         </view>
-        <picker isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
+      </view>
+      <picker isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
         <view class="divLine"></view>
         <view class="mod t-name">
           <text class="key">问题状态</text>
-          <view class="value" bindtap="showPicker2">{{secTypeValue}}
+          <view class="value" bindtap="showPicker3">{{statusValue}}
             <image class="arrow-r" src="/pics/arrow_right.png"></image>
           </view>
         </view>
-        <picker isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择问题状态"></picker>
+        <picker isShowPicker="{{isShowPicker3}}" bindsure="statusChange" bindcancle="cancleCallBack3" scrollType="normal" listData="{{status}}" titleStyle="color:green;" titleText="选择问题状态"></picker>
       </view>
       <view style='margin-top:35rpx'>
-        <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:70rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toSave" open-type='getUserInfo'>登记</button>
+        <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:70rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toNew">登记</button>
       </view>
     </form>
   </view>

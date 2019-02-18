@@ -53,7 +53,7 @@ Page({
         wx.hideLoading();
         if (res.data.code == 1) {
           var trouble = res.data.data;
-         
+
           that.setData({
             troubleOwner: trouble.troublePersonName,
             submitTime: new Date(trouble.submitTime).format("yyyy-MM-dd HH:mm"),
@@ -62,20 +62,22 @@ Page({
             detail: trouble.detail,
             comment: trouble.solutionComment
           })
-          
+
           if (trouble.captureUrls == "") {
             that.setData({
               isPicTextShow: false
             });
-          }else {
+          } else {
             var crudeCaptureList = trouble.captureUrls;
             // crudeCaptureList = crudeCaptureList.substr(1, crudeCaptureList.length - 1);
             console.log("crudeCaptureList:" + crudeCaptureList);
-            var captureArray = crudeCaptureList.split(",");
-            captureArray.pop();
-            that.setData({
-              captureUrls: captureArray
-            });
+            if (crudeCaptureList != null) {
+              var captureArray = crudeCaptureList.split(",");
+              captureArray.pop();
+              that.setData({
+                captureUrls: captureArray
+              });
+            }
           }
           if (trouble.solutionComment == "") {
             that.setData({

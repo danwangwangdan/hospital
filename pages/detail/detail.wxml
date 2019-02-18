@@ -82,7 +82,7 @@
         </view>
         <view style='text-align:center'>
           <block wx:key="id" wx:for="{{captureUrls}}">
-            <image class="photo" src="{{item}}" bindtap='previewImage' mode='aspectFit'></image>
+            <image class="photo" src="{{item}}" bindtap='previewImage' mode='aspectFill'></image>
           </block>
         </view>
 

@@ -52,27 +52,8 @@
           <image class="arrow-r" src="/pics/arrow_right.png"></image>
         </view>
       </view>
-      <picker isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
-      <!-- <view class="mod t-name">
-        <text class="key">一级类型</text>
-        <picker bindchange="firTypeChange" value="{{firTypeIndex}}" range="{{firTypes}}">
-          <view class="value" name="firTypes">{{firTypes[firTypeIndex]}}
-            <image class="arrow-r" src="/pics/arrow_right.png"></image>
-          </view>
-        </picker>
-      </view>
-      <view class="divLine"></view>
-      <view class="mod t-name">
-        <text class="key">二级类型</text>
-        <picker bindchange="secTypeChange" disabled="{{secTypeDis}}" value="{{secTypeIndex}}" range="{{secTypes}}">
-          <view class="value" name="secTypes">{{secTypes[secTypeIndex]}}
-            <image class="arrow-r" src="/pics/arrow_right.png"></image>
-          </view>
-        </picker>
-      </view> -->
-
+      <picker disabled="{{secDis}}" isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
     </view>
-
     <view class="mod-a mt20">
       <view class="mod-big my-nick">
         <textarea name="content" class="weui-textarea" placeholder="请输入问题详细信息。注意附带病人住院号或床位号等关键信息..." value="{{content}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
