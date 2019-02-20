@@ -1,0 +1,18 @@
+<!-- <view class="centerView">
+  <view>
+    <image style="height:128px;width:128px" src="../../../../pics/oper_success.png"/>
+  </view>
+<view style="margin-top:25px">
+    <text style="font-size:20px">感谢您的建议！</text>
+  </view>
+  <view style="margin-top:25px">
+    <i-button style="margin-top:15px" bind:click="toHome" type="success" shape="circle">回首页</i-button>
+  </view>
+</view> -->
+<wux-result
+    title="登记成功"
+    label="您可以"
+    buttons="{{ buttons }}" 
+    fixed
+    bind:click="onClick"
+/>
