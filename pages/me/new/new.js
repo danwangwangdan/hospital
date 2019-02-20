@@ -23,6 +23,10 @@ Page({
     ],
     statusValue: '未解决',
     office: "",
+    detail: "",
+    isDisabled: false,
+    isLoading: false,
+    buttonText: '登记',
     isShowPicker: false,
     isShowPicker2: false,
     isShowPicker3: false,
@@ -49,6 +53,14 @@ Page({
       office: value,
     })
   },
+  bindDetailValue: function(e) {
+    var that = this;
+    var value = e.detail.value;
+    that.setData({
+      detail: value,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -172,8 +184,9 @@ Page({
     var office = this.data.office;
     var firType = this.data.firTypeValue;
     var secType = this.data.secTypeValue;
+    var detail = this.data.detail;
     var status = (this.data.statusValue == '未解决') ? 1 : 3;
-    console.log(this.data.statusValue+","+status)
+    console.log(this.data.statusValue + "," + status)
     //先进行表单非空验证
     if (office == '') {
       wx.showToast({
@@ -182,6 +195,11 @@ Page({
         duration: 3000
       });
     } else {
+      that.setData({
+        isDisabled: true,
+        isLoading: true,
+        buttonText: "登记中..."
+      })
       wx.showLoading({
         title: "提交中...",
         mask: true
@@ -199,7 +217,8 @@ Page({
           'office': office,
           'firType': firType,
           'secType': secType,
-          'status': status
+          'status': status,
+          'detail': detail
         },
         success(res) {
           console.log(res.data);

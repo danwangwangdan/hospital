@@ -5,6 +5,9 @@
     "i-button": "../../../plugins/iview/button/index",
     "i-input": "../../../plugins/iview/input/index",
     "wux-refresher": "../../../plugins/wux/refresher/index",
+    "wux-cell-group": "../../../plugins/wux/cell-group/index",
+    "wux-cell": "../../../plugins/wux/cell/index",
+    "wux-textarea": "../../../plugins/wux/textarea/index",
     "picker": "../../../plugins/picker/picker"
   },
   "navigationBarTitleText": "登记问题"

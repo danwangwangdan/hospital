@@ -37,8 +37,13 @@
         </view>
         <picker isShowPicker="{{isShowPicker3}}" bindsure="statusChange" bindcancle="cancleCallBack3" scrollType="normal" listData="{{status}}" titleStyle="color:green;" titleText="选择问题状态"></picker>
       </view>
+      <wux-cell-group title="问题详情">
+            <wux-cell hover-class="none">
+                <wux-textarea autoHeight controlled placeholder="请输入问题详情，选填" bind:change="bindDetailValue" value="{{detail}}"/>
+            </wux-cell>
+        </wux-cell-group>
       <view style='margin-top:35rpx'>
-        <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:70rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toNew">登记</button>
+        <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:70rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toNew">{{buttonText}}</button>
       </view>
     </form>
   </view>
