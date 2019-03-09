@@ -11,6 +11,7 @@
     "wux-notice-bar": "../../plugins/wux/notice-bar/index",
     "wux-refresher": "../../plugins/wux/refresher/index",
     "wux-cell-group": "../../plugins/wux/cell-group/index",
+    "wux-textarea": "../../../plugins/wux/textarea/index",
     "wux-cell": "../../plugins/wux/cell/index",
     "wux-cascader": "../../plugins/wux/cascader/index",
     "wux-upload": "../../plugins/wux/upload/index",

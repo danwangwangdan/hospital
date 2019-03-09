@@ -26,6 +26,7 @@ Page({
     isLoop: false,
     username: "",
     office: "",
+    mobile: "",
     imageUrl: "",
     noteMaxLen: 200, //备注最多字数
     content: "",
@@ -220,6 +221,7 @@ Page({
         username: wx.getStorageSync("userInfo").nickname,
         office: wx.getStorageSync("userInfo").office,
         isAdmin: wx.getStorageSync("userInfo").isAdmin,
+        mobile: wx.getStorageSync("userInfo").mobile,
       })
       var startRquest = new Date();
       //获取一级类型
@@ -485,13 +487,9 @@ Page({
   //字数改变触发事件
   bindTextAreaChange: function(e) {
     var that = this
-    var value = e.detail.value,
-      len = parseInt(value.length);
-    if (len > that.data.noteMaxLen)
-      return;
+    var value = e.detail.value;
     that.setData({
-      content: value,
-      noteNowLen: len
+      content: value
     })
   },
   bindUserChange: function(e) {
@@ -702,6 +700,7 @@ Page({
     var troubleOwner = this.data.username;
     var office = this.data.office;
     var content = this.data.content;
+    var mobile = this.data.mobile;
     var firType = this.data.firTypeValue;
     var secType = this.data.secTypeValue;
 
@@ -757,6 +756,7 @@ Page({
           'userId': wx.getStorageSync('userInfo').id,
           'troublePersonName': troubleOwner,
           'office': office,
+          'mobile': mobile,
           'detail': content,
           'firType': firType,
           'secType': secType,

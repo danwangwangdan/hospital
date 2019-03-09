@@ -117,9 +117,11 @@
         <!-- <button formType="submit" wx:if="{{isRevokeShow}}" class="circleGreen">撤回故障</button> -->
       </view>
       <view wx:if="{{isConfirmShow}}" style="margin-top:30rpx;margin-bottom:15rpx;">
-        <button bindtap='toConfirm' class="confirm_btn">
-          确认故障
-        </button>
+        <form report-submit="true" bindsubmit='toConfirm'>
+          <button formType="submit" class="confirm_btn">
+            确认故障
+          </button>
+        </form>
       </view>
       <!-- <view wx:if="{{isConfirmShow}}" style="display:block;margin:0 auto">
         <button formType="submit">

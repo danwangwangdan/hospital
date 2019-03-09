@@ -39,6 +39,12 @@
       </view>
       <view class="divLine"></view>
       <view class="mod t-name">
+        <text class="key">联系电话</text>
+        <input name="mobile" class="input" maxlength="100" value="{{mobile}}" bindinput="bindMobileChange" />
+        <image class="arrow-r" src="/pics/arrow_right.png"></image>
+      </view>
+      <view class="divLine"></view>
+      <view class="mod t-name">
         <text class="key">一级类型</text>
         <view class="value" bindtap="showPicker">{{firTypeValue}}
           <image class="arrow-r" src="/pics/arrow_right.png"></image>
@@ -55,11 +61,18 @@
       <picker disabled="{{secDis}}" isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
     </view>
     <view class="mod-a mt20">
+        <wux-cell-group>
+          <wux-cell hover-class="none">
+            <wux-textarea autoHeight controlled placeholder="请输入问题详情，选填" bind:change="bindTextAreaChange" value="{{content}}" />
+          </wux-cell>
+        </wux-cell-group> 
+    </view>
+    <!-- <view class="mod-a mt20">
       <view class="mod-big my-nick">
         <textarea name="content" class="weui-textarea" placeholder="请输入问题详细信息。注意附带病人住院号或床位号等关键信息..." value="{{content}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
         <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
       </view>
-    </view>
+    </view> -->
     <!-- <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
       <view>添加截图（可选）</view>
     </view>
@@ -86,9 +99,9 @@
                 <form report-submit="true" bindsubmit='submitTrouble'>
                   <button formType="submit">
                     <form report-submit="true" bindsubmit='submitTrouble'>
-                      <button  formType="submit">
+                      <button formType="submit">
                         <form report-submit="true" bindsubmit='submitTrouble'>
-                          <button  formType="submit">
+                          <button formType="submit">
                             <view class='publish_btn'>提交</view>
                           </button>
                         </form>
