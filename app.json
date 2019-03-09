@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/me/tools/copycat/copycat",
+    "pages/me/tools/tools",
+    
     "pages/submit/submit",
     "pages/me/dutyplan/dutyplan",
     "pages/detail/detail",

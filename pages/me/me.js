@@ -51,6 +51,11 @@ Page({
       url: '/pages/me/dutyplan/dutyplan'
     })
   },
+  toTools: function () {
+    wx.navigateTo({
+      url: '/pages/me/tools/tools'
+    })
+  },
   toSuggest: function() {
     wx.navigateTo({
       url: '/pages/me/suggestion/suggestion'

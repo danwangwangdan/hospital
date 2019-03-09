@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">设备维护</view>
+    <view class="page__desc">记录与查看各种设备的维修更换信息</view>
+  </view>
+  <view class="add-page">
+    <wux-cell-group>
+      <wux-cell thumb="../../../pics/复印机.png" title="文印室复印机" is-link></wux-cell>    
+      <wux-cell thumb="../../../pics/服务器.png" title="服务器管理" is-link></wux-cell> 
+      <wux-cell thumb="../../../pics/网络.png" title="各科室网络" is-link url="/pages/me/tools/copycat/copycat" open-type="navigateTo"></wux-cell>   
+    </wux-cell-group>
+  </view>
+</view>

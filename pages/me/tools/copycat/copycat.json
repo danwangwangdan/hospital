@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "i-button": "../../../../plugins/iview/button/index",
+    "wux-icon": "../../../../plugins/wux/icon/index",
+    "wux-timeline": "../../../../plugins/wux/timeline/index",
+    "wux-timeline-item": "../../../../plugins/wux/timeline-item/index",
+    "wux-cell-group": "../../../../plugins/wux/cell-group/index",
+    "wux-cell": "../../../../plugins/wux/cell/index",
+    "wux-calendar": "../../../../plugins/wux/calendar/index",
+    "wux-input": "../../../../plugins/wux/input/index",
+      "i-divider": "../../../../plugins/iview/divider/index"
+  },
+  "navigationBarTitleText": "复印机"
+}

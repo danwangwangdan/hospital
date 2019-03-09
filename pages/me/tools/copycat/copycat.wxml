@@ -1,0 +1,26 @@
+<wux-calendar id="wux-calendar" />
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">复印机</view>
+        <view class="page__desc">记录复印机的加粉纸张数</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-cell-group  title="新增记录">
+            <wux-cell hover-class="none">
+                <wux-input clear label="当前纸张数" placeholder='请输入当前纸张数' extra="张" />
+            </wux-cell>
+            <wux-cell title="记录时间" extra="{{ value }}" bind:click="openCalendar"></wux-cell>
+             <view style="display:block;margin:0 auto;width:85%;height:50%">
+  <button style='width:80%;margin-top:20rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0' type="primary"bindtap="toNew">新增</button>
+</view>
+        </wux-cell-group>
+         <i-divider></i-divider>
+        <view class="sub-title">历史记录</view>
+        <wux-timeline position="alternate">
+            <wux-timeline-item content="2018-10-24 1200张" />
+            <wux-timeline-item content="2018-08-24 1000张" />
+            <wux-timeline-item content="2018-06-24 800张" />
+            <wux-timeline-item content="2018-05-24 600张" />
+        </wux-timeline> 
+    </view>
+</view>
