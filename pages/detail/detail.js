@@ -32,7 +32,7 @@ Page({
     detail: "",
     troubleType: "",
     office: "",
-    mobile: wx.getStorageSync("userInfo").mobile,
+    mobile: "",
     comment: "",
     submitTime: "",
     troubleOwner: ""
@@ -61,6 +61,7 @@ Page({
             office: trouble.office,
             troubleType: trouble.secType == '其他问题' ? trouble.secType : trouble.firType + "-" + trouble.secType,
             detail: trouble.detail,
+            mobile: trouble.mobile,
             comment: trouble.solutionComment
           })
 
