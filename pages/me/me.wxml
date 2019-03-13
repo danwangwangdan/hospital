@@ -67,7 +67,7 @@
         <text>登记问题</text>
       </view>
     </view>
-    
+
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon6 flex-item">
         <image src="../../pics/contact.png"></image>
@@ -76,7 +76,15 @@
         <text>医院通讯录</text>
       </view>
     </view>
-     <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp">
+    <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp">
+      <view class="myitem-icon6 flex-item">
+        <image src="../../pics/工具.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="toTools">
+        <text>设备维护</text>
+      </view>
+    </view>
+    <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp">
       <view class="myitem-icon6 flex-item">
         <image src="../../pics/report.png"></image>
       </view>
@@ -84,6 +92,7 @@
         <text>报表中心</text>
       </view>
     </view>
+
     <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
       <view class="myitem-icon5 flex-item">
         <image src="../../pics/advice.png" style="height:50rpx;weight:50rpx"></image>
@@ -93,8 +102,14 @@
       </view>
     </view>
   </view>
-
 </view>
 <view style="display:block;margin:0 auto;width:85%;height:50%">
-  <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toLogout">{{logoutText}}</button>
+  <form report-submit="true" bindsubmit='toCollect'>
+    <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0'>
+      收集模板消息ID
+    </button>
+  </form>
+</view>
+<view style="display:block;margin:0 auto;width:85%;height:50%">
+  <button style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toLogout">{{logoutText}}</button>
 </view>

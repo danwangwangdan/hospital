@@ -14,6 +14,7 @@ Page({
     imgSrc: "",
     logoutText: "退出登录",
     isLoading: false,
+    formIds: [],
     isDisabled: false
   },
   toAll: function() {
@@ -70,6 +71,39 @@ Page({
     wx.navigateTo({
       url: '/pages/me/report/report'
     })
+  },
+  toCollect: function (e) {
+    var that = this;
+    let formId = e.detail.formId;
+    console.log(formId);
+    this.data.formIds.push(formId);
+    wx.request({
+      url: app.globalData.localApiUrl + '/common/collectFormIds',
+      method: 'POST',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        'formIds': that.data.formIds,
+        'userId': wx.getStorageSync('userInfo').id
+      },
+      success(res) {
+        console.log(res.data);
+        wx.showToast({
+          title: '收集ID成功，你又获得了一次推送消息的机会！',
+          icon: 'none',
+          duration: 2000
+        })
+      },
+      fail() {
+        $stopWuxRefresher() //停止下拉刷新
+        wx.showToast({
+          title: '网络请求失败，请稍后重试！',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    });
   },
   toLogout: function() {
     var that = this;

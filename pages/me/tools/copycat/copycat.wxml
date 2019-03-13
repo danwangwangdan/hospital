@@ -11,10 +11,12 @@
             </wux-cell>
             <wux-cell title="记录时间" extra="{{ value }}" bind:click="openCalendar"></wux-cell>
              <view style="display:block;margin:0 auto;width:85%;height:50%">
-  <button style='width:80%;margin-top:20rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0' type="primary"bindtap="toNew">新增</button>
+  <button style='width:80%;margin-top:20rpx;margin-bottom:20rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0' type="primary"bindtap="toNew">新增</button>
 </view>
         </wux-cell-group>
+        <view style="margin-top:30rpx">
          <i-divider></i-divider>
+         </view>
         <view class="sub-title">历史记录</view>
         <wux-timeline position="alternate">
             <wux-timeline-item content="2018-10-24 1200张" />

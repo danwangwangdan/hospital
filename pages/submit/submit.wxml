@@ -61,11 +61,11 @@
       <picker disabled="{{secDis}}" isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
     </view>
     <view class="mod-a mt20">
-        <wux-cell-group>
-          <wux-cell hover-class="none">
-            <wux-textarea autoHeight controlled placeholder="请输入问题详情，选填" bind:change="bindTextAreaChange" value="{{content}}" />
-          </wux-cell>
-        </wux-cell-group> 
+      <wux-cell-group>
+        <wux-cell hover-class="none">
+          <wux-textarea autoHeight controlled placeholder="请输入问题详情，选填" bind:change="bindTextAreaChange" value="{{content}}" />
+        </wux-cell>
+      </wux-cell-group>
     </view>
     <!-- <view class="mod-a mt20">
       <view class="mod-big my-nick">
@@ -90,30 +90,28 @@
         </wux-upload>
       </view>
     </view>
-    <view style="display:block;margin:0 auto">
+    <!-- <view style="display:block;margin:0 auto;width:85%;height:50%">
       <button formType="submit">
         <form report-submit="true" bindsubmit='submitTrouble'>
           <button style="background:none;border:none;display:block;margin:0 auto;width:85%;height:50%;" formType="submit">
-            <form report-submit="true" bindsubmit='submitTrouble'>
-              <button style="display:block;margin-left:70rpx;" formType="submit">
-                <form report-submit="true" bindsubmit='submitTrouble'>
-                  <button formType="submit">
-                    <form report-submit="true" bindsubmit='submitTrouble'>
-                      <button formType="submit">
-                        <form report-submit="true" bindsubmit='submitTrouble'>
-                          <button formType="submit">
-                            <view class='publish_btn'>提交</view>
-                          </button>
-                        </form>
-                      </button>
-                    </form>
-                  </button>
-                </form>
-              </button>
-            </form>
+            <view class='publish_btn'>提交</view>
           </button>
         </form>
       </button>
+    </view> -->
+    <view style="display:block;margin:0 auto;width:85%;height:50%">
+      <form report-submit="true" bindsubmit='submitTrouble'>
+        <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0'>
+          提交
+        </button>
+      </form>
+    </view>
+    <view style="display:block;margin:0 auto;width:85%;height:50%">
+      <form report-submit="true" bindsubmit='toCollect'>
+        <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0'>
+          收集模板消息ID
+        </button>
+      </form>
     </view>
   </form>
 </view>

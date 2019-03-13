@@ -17,91 +17,11 @@
       </view>
     </view>
     <view style='margin-top:15px'>
-      <button formType="submit" type="primary">
-        <form report-submit="true" bindsubmit='toSolve'>
-          <button formType="submit" type="primary">
-            <form report-submit="true" bindsubmit='toSolve'>
-              <button formType="submit" type="primary">
-                <form report-submit="true" bindsubmit='toSolve'>
-                  <button formType="submit" type="primary">
-                    <form report-submit="true" bindsubmit='toSolve'>
-                      <button formType="submit" type="primary">
-                        <form report-submit="true" bindsubmit='toSolve'>
-                          <button formType="submit" type="primary">
-                            <form report-submit="true" bindsubmit='toSolve'>
-                              <button formType="submit" type="primary">
-                                <form report-submit="true" bindsubmit='toSolve'>
-                                  <button formType="submit" type="primary">
-                                    <form report-submit="true" bindsubmit='toSolve'>
-                                      <button formType="submit" type="primary">
-                                        <form report-submit="true" bindsubmit='toSolve'>
-                                          <button formType="submit" type="primary">
-                                            <form report-submit="true" bindsubmit='toSolve'>
-                                              <button formType="submit" type="primary">
-                                                <button formType="submit" type="primary">
-                                                  <form report-submit="true" bindsubmit='toSolve'>
-                                                    <button formType="submit" type="primary">
-                                                      <form report-submit="true" bindsubmit='toSolve'>
-                                                        <button formType="submit" type="primary">
-                                                          <form report-submit="true" bindsubmit='toSolve'>
-                                                            <button formType="submit" type="primary">
-                                                              <form report-submit="true" bindsubmit='toSolve'>
-                                                                <button formType="submit" type="primary">
-                                                                  <form report-submit="true" bindsubmit='toSolve'>
-                                                                    <button formType="submit" type="primary">
-                                                                      <form report-submit="true" bindsubmit='toSolve'>
-                                                                        <button formType="submit" type="primary">
-                                                                          <form report-submit="true" bindsubmit='toSolve'>
-                                                                            <button formType="submit" type="primary">
-                                                                              <form report-submit="true" bindsubmit='toSolve'>
-                                                                                <button formType="submit" type="primary">
-                                                                                  <form report-submit="true" bindsubmit='toSolve'>
-                                                                                    <button formType="submit" type="primary">
-                                                                                      <form report-submit="true" bindsubmit='toSolve'>
-                                                                                        <button formType="submit" type="primary">
-                                                                                          <view class='solve_btn'>确认解决</view>
-                                                                                        </button>
-                                                                                      </form>
-                                                                                    </button>
-                                                                                  </form>
-                                                                                </button>
-                                                                              </form>
-                                                                            </button>
-                                                                          </form>
-                                                                        </button>
-                                                                      </form>
-                                                                    </button>
-                                                                  </form>
-                                                                </button>
-                                                              </form>
-                                                            </button>
-                                                          </form>
-                                                        </button>
-                                                      </form>
-                                                    </button>
-                                                  </form>
-                                                </button>
-                                              </button>
-                                            </form>
-                                          </button>
-                                        </form>
-                                      </button>
-                                    </form>
-                                  </button>
-                                </form>
-                              </button>
-                            </form>
-                          </button>
-                        </form>
-                      </button>
-                    </form>
-                  </button>
-                </form>
-              </button>
-            </form>
-          </button>
-        </form>
-      </button>
+      <form report-submit="true" bindsubmit='toSolve'>
+        <button formType="submit" type="primary">
+          <view class='solve_btn'>确认解决</view>
+        </button>
+      </form>
     </view>
   </form>
 </scroll-view>

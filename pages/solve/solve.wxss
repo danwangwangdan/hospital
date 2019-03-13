@@ -3,6 +3,7 @@
 
 .solve_btn {
   position: fixed;
+  margin-top: 10%;
   margin-bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
