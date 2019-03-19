@@ -56,18 +56,20 @@ Page({
     isLoading: false,
     loading: true,
     isdisabled: false,
-
+    isShowTextarea: "",
     isShowPicker: false,
     isShowPicker2: false,
   },
   showPicker: function() {
     this.setData({
-      isShowPicker: true
+      isShowPicker: true,
+      isShowTextarea: 'none'
     })
   },
   showPicker2: function() {
     this.setData({
-      isShowPicker2: true
+      isShowPicker2: true,
+      isShowTextarea: 'none'
     })
   },
   handleChange({
@@ -509,11 +511,13 @@ Page({
   cancleCallBack2() {
     this.setData({
       isShowPicker2: false,
+      isShowTextarea:""
     })
   },
   cancleCallBack() {
     this.setData({
       isShowPicker: false,
+      isShowTextarea: ""
     })
   },
   //改变故障类别
@@ -526,6 +530,7 @@ Page({
     this.setData({
       secDis: false,
       isShowPicker: false,
+      isShowTextarea:'',
       firTypeValue: e.detail.choosedData[0],
       firTypeIndex: JSON.stringify(e.detail.choosedIndexArr)[1]
     });
@@ -574,7 +579,8 @@ Page({
   },
   secTypeChange: function(e) {
     this.setData({
-      isShowPicker2: false,
+      isShowPicker2: false, 
+      isShowTextarea: '',
       secTypeValue: e.detail.choosedData[0],
       secTypeIndex: JSON.stringify(e.detail.choosedIndexArr)[1]
     });

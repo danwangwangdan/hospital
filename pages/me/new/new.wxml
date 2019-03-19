@@ -9,25 +9,25 @@
       <view class="mod-a mt20">
         <view class="mod t-name">
           <text class="key">问题科室</text>
-          <input name="office" class="input" maxlength="100" placeholder= "轻触以输入问题科室" value="{{office}}" bindinput="bindOfficeChange" />
+          <input name="office" class="input" maxlength="100" placeholder="轻触以输入问题科室" value="{{office}}" bindinput="bindOfficeChange" />
           <image class="arrow-r" src="/pics/arrow_right.png"></image>
         </view>
         <view class="divLine"></view>
-      <view class="mod t-name">
-        <text class="key">一级类型</text>
-        <view class="value" bindtap="showPicker">{{firTypeValue}}
-          <image class="arrow-r" src="/pics/arrow_right.png"></image>
+        <view class="mod t-name">
+          <text class="key">一级类型</text>
+          <view class="value" bindtap="showPicker">{{firTypeValue}}
+            <image class="arrow-r" src="/pics/arrow_right.png"></image>
+          </view>
         </view>
-      </view>
-      <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="选择一级故障类型"></picker>
-      <view class="divLine"></view>
-      <view class="mod t-name">
-        <text class="key">二级类型</text>
-        <view class="value" bindtap="showPicker2">{{secTypeValue}}
-          <image class="arrow-r" src="/pics/arrow_right.png"></image>
+        <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="选择一级故障类型"></picker>
+        <view class="divLine"></view>
+        <view class="mod t-name">
+          <text class="key">二级类型</text>
+          <view class="value" bindtap="showPicker2">{{secTypeValue}}
+            <image class="arrow-r" src="/pics/arrow_right.png"></image>
+          </view>
         </view>
-      </view>
-      <picker isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
+        <picker isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
         <view class="divLine"></view>
         <view class="mod t-name">
           <text class="key">问题状态</text>
@@ -37,11 +37,13 @@
         </view>
         <picker isShowPicker="{{isShowPicker3}}" bindsure="statusChange" bindcancle="cancleCallBack3" scrollType="normal" listData="{{status}}" titleStyle="color:green;" titleText="选择问题状态"></picker>
       </view>
-      <wux-cell-group title="问题详情">
-            <wux-cell hover-class="none">
-                <wux-textarea autoHeight controlled placeholder="请输入问题详情，选填" bind:change="bindDetailValue" value="{{detail}}"/>
-            </wux-cell>
+      <view style="display:{{isShowTextarea}}">
+        <wux-cell-group title="问题详情">
+          <wux-cell hover-class="none">
+            <wux-textarea autoHeight controlled placeholder="请输入问题详情，选填" bind:change="bindDetailValue" value="{{detail}}" />
+          </wux-cell>
         </wux-cell-group>
+      </view>
       <view style='margin-top:35rpx'>
         <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:70rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toNew">{{buttonText}}</button>
       </view>

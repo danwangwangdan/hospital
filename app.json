@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/submit/submit",
     "pages/me/tools/copycat/copycat",
     "pages/me/tools/tools",
     
-    "pages/submit/submit",
+   
     "pages/me/dutyplan/dutyplan",
     "pages/detail/detail",
     "pages/me/suggestion/suggest_suc/suggest_suc",
