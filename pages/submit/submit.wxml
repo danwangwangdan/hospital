@@ -70,7 +70,7 @@
       </view>
       <picker disabled="{{secDis}}" isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
     </view>
-    <view class="mod-a mt20">
+    <view style = "display:{{isShowTextarea}}" class="mod-a mt20">
       <wux-cell-group>
         <wux-cell hover-class="none">
           <wux-textarea autoHeight controlled placeholder="请输入问题详情，选填" bind:change="bindTextAreaChange" value="{{content}}" />

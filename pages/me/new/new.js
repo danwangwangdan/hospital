@@ -30,20 +30,24 @@ Page({
     isShowPicker: false,
     isShowPicker2: false,
     isShowPicker3: false,
+    isShowTextarea: ""
   },
   showPicker: function() {
     this.setData({
-      isShowPicker: true
+      isShowPicker: true,
+      isShowTextarea: 'none'
     })
   },
   showPicker2: function() {
     this.setData({
-      isShowPicker2: true
+      isShowPicker2: true,
+      isShowTextarea: 'none'
     })
   },
   showPicker3: function() {
     this.setData({
-      isShowPicker3: true
+      isShowPicker3: true,
+      isShowTextarea: 'none'
     })
   },
   bindOfficeChange: function(e) {
@@ -107,6 +111,7 @@ Page({
     });
     this.setData({
       isShowPicker: false,
+      isShowTextarea: '',
       firTypeValue: e.detail.choosedData[0],
       firTypeIndex: JSON.stringify(e.detail.choosedIndexArr)[1]
     });
@@ -152,6 +157,7 @@ Page({
   secTypeChange: function(e) {
     this.setData({
       isShowPicker2: false,
+      isShowTextarea: '',
       secTypeValue: e.detail.choosedData[0],
       secTypeIndex: JSON.stringify(e.detail.choosedIndexArr)[1]
     });
@@ -159,6 +165,7 @@ Page({
   statusChange: function(e) {
     this.setData({
       isShowPicker3: false,
+      isShowTextarea: '',
       statusValue: e.detail.choosedData[0],
       statusIndex: JSON.stringify(e.detail.choosedIndexArr)[1]
     });
@@ -166,16 +173,19 @@ Page({
   cancleCallBack3() {
     this.setData({
       isShowPicker3: false,
+      isShowTextarea: '',
     })
   },
   cancleCallBack2() {
     this.setData({
       isShowPicker2: false,
+      isShowTextarea: '',
     })
   },
   cancleCallBack() {
     this.setData({
       isShowPicker: false,
+      isShowTextarea: '',
     })
   },
   //提交表单
