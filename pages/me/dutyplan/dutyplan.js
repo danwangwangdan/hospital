@@ -5,6 +5,7 @@ import {
 Page({
   data: {
     notice: "",
+    current1: wx.getStorageSync("userInfo").office,
     items: [{
       id: 1,
       name: '是',
@@ -35,6 +36,22 @@ Page({
       {
         id: 4,
         name: '黄士明',
+      },
+    ],
+    items4: [{
+      id: 1,
+      name: '屈文'
+    }, {
+      id: 2,
+      name: '曾叙铭'
+    },
+    {
+      id: 3,
+      name: '杨仕林',
+    },
+      {
+        id: 4,
+        name: '田道君',
       },
     ],
     dutyUser: '',
@@ -76,7 +93,7 @@ Page({
       }
     });
     wx.request({
-      url: app.globalData.localApiUrl + '/common/getDutyPlan',
+      url: app.globalData.localApiUrl + '/common/getDutyPlan?office=' + wx.getStorageSync("userInfo").office,
       method: 'GET',
       success(res) {
         console.log(res.data);
@@ -204,7 +221,7 @@ Page({
       dutyPerson: detail.value,
     });
     wx.request({
-      url: app.globalData.localApiUrl + '/common/setDutyPerson?dutyPerson=' + that.data.dutyPerson,
+      url: app.globalData.localApiUrl + '/common/setDutyPerson?dutyPerson=' + that.data.dutyPerson + '&office=' + wx.getStorageSync("userInfo").office,
       method: 'GET',
       success(res) {
         console.log(res.data);

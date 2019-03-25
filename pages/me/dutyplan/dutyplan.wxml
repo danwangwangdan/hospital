@@ -13,11 +13,20 @@
         <i-radio wx:for="{{items2}}" position="right" wx:key="{{item.id}}" value="{{item.name}}">
         </i-radio>
       </i-radio-group>
-      <view class="sub-title">设置节假日/周末值班人</view>
-      <i-radio-group current="{{dutyPerson}}" bindchange="handleChange3">
-        <i-radio wx:for="{{items3}}" position="right" wx:key="{{item.id}}" value="{{item.name}}">
-        </i-radio>
-      </i-radio-group>
+      <view wx:if="{{current1=='网络中心'}}">
+        <view class="sub-title">设置节假日/周末值班人</view>
+        <i-radio-group current="{{dutyPerson}}" bindchange="handleChange3">
+          <i-radio wx:for="{{items3}}" position="right" wx:key="{{item.id}}" value="{{item.name}}">
+          </i-radio>
+        </i-radio-group>
+      </view>
+       <view wx:if="{{current1=='设备科'}}">
+        <view class="sub-title">设置节假日/周末值班人</view>
+        <i-radio-group current="{{dutyPerson}}" bindchange="handleChange4">
+          <i-radio wx:for="{{items4}}" position="right" wx:key="{{item.id}}" value="{{item.name}}">
+          </i-radio>
+        </i-radio-group>
+      </view>
       <view style='margin-top:35rpx'>
         <button style='width:80%;margin-top:50rpx;font-size:30rpx; line-height:70rpx;border-radius:41px;background-color: #2D8CF0' type="primary" loading="{{isLoading}}" disabled="{{isDisabled}}" bindtap="toSave" open-type='getUserInfo'>保存</button>
       </view>

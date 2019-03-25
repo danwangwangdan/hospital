@@ -27,13 +27,13 @@
     <wux-notice-bar loop speed="100" content="{{noticeText}}" />
     <view class="mod-a mt20">
       <view class="mod t-name">
-        <text decode="{{true}}" class="key">&nbsp;&nbsp;&nbsp;申报人</text>
+        <text decode="{{true}}" class="key">申报人员</text>
         <input name="user" class="input" maxlength="100" value="{{username}}" bindinput="bindUserChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="divLine"></view>
       <view class="mod t-name">
-        <text class="key">所属科室</text>
+        <text class="key">申报科室</text>
         <input name="office" class="input" maxlength="100" value="{{office}}" bindinput="bindOfficeChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
@@ -45,35 +45,25 @@
       </view>
       <view class="divLine"></view>
       <view class="mod t-name">
-        <text  decode="{{true}}" class="key">&nbsp;&nbsp;&nbsp;提交至</text>
-        <view class="value" bindtap="showPicker3">{{officeValue}}
-          <image class="arrow-r" src="/pics/arrow_right.png"></image>
-        </view>
-      </view>
-      <picker isShowPicker="{{isShowPicker3}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{offices}}" titleStyle="color:green;" titleText="选择提交至的科室"></picker>
-
-      <view class="divLine"></view>
-      
-      <view class="mod t-name">
-        <text class="key">一级类型</text>
+        <text class="key">处理科室</text>
         <view class="value" bindtap="showPicker">{{firTypeValue}}
           <image class="arrow-r" src="/pics/arrow_right.png"></image>
         </view>
       </view>
-      <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="选择一级故障类型"></picker>
+      <picker isShowPicker="{{isShowPicker}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{firTypes}}" titleStyle="color:green;" titleText="请选择处理科室"></picker>
       <view class="divLine"></view>
       <view class="mod t-name">
-        <text class="key">二级类型</text>
+        <text class="key">问题类型</text>
         <view class="value" bindtap="showPicker2">{{secTypeValue}}
           <image class="arrow-r" src="/pics/arrow_right.png"></image>
         </view>
       </view>
-      <picker disabled="{{secDis}}" isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="选择二级故障类型"></picker>
+      <picker disabled="{{secDis}}" isShowPicker="{{isShowPicker2}}" bindsure="secTypeChange" bindcancle="cancleCallBack2" scrollType="normal" listData="{{secTypes}}" titleStyle="color:green;" titleText="请选择问题类型"></picker>
     </view>
     <view style = "display:{{isShowTextarea}}" class="mod-a mt20">
       <wux-cell-group>
         <wux-cell hover-class="none">
-          <wux-textarea autoHeight controlled placeholder="请输入问题详情，选填" bind:change="bindTextAreaChange" value="{{content}}" />
+          <wux-textarea autoHeight controlled placeholder="简单描述一下遇到的问题，选填" bind:change="bindTextAreaChange" value="{{content}}" />
         </wux-cell>
       </wux-cell-group>
     </view>
@@ -95,7 +85,7 @@
     <view class="mod-a mt20">
       <view style="margin-top:15rpx;margin-bottom:15rpx;">
         <wux-upload listType="picture-card" fileList="{{ fileList }}" max="3" header="{'Content-Type':'multipart/form-data'}" url="https://www.daliandaxue.cn/hishelp/common/uploadPic" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete"
-          bind:preview="onPreview" bind:remove="onRemove">
+                    bind:preview="onPreview" bind:remove="onRemove">
           <text>添加故障图片</text>
         </wux-upload>
       </view>
@@ -111,7 +101,7 @@
     </view> -->
     <view style="display:block;margin:0 auto;width:85%;height:50%">
       <form report-submit="true" bindsubmit='toCollect'>
-        <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0'>
+        <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:70rpx;border-radius:41px;background-color: #2D8CF0'>
           问题解决时通知我
         </button>
       </form>
