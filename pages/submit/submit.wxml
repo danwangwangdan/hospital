@@ -27,7 +27,7 @@
     <wux-notice-bar loop speed="100" content="{{noticeText}}" />
     <view class="mod-a mt20">
       <view class="mod t-name">
-        <text decode="{{true}}" class="key">申报人&nbsp;&nbsp;&nbsp;</text>
+        <text decode="{{true}}" class="key">&nbsp;&nbsp;&nbsp;申报人</text>
         <input name="user" class="input" maxlength="100" value="{{username}}" bindinput="bindUserChange" />
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
@@ -44,6 +44,16 @@
         <image class="arrow-r" src="/pics/arrow_right.png"></image>
       </view>
       <view class="divLine"></view>
+      <view class="mod t-name">
+        <text  decode="{{true}}" class="key">&nbsp;&nbsp;&nbsp;提交至</text>
+        <view class="value" bindtap="showPicker3">{{officeValue}}
+          <image class="arrow-r" src="/pics/arrow_right.png"></image>
+        </view>
+      </view>
+      <picker isShowPicker="{{isShowPicker3}}" bindsure="firTypeChange" bindcancle="cancleCallBack" scrollType="normal" listData="{{offices}}" titleStyle="color:green;" titleText="选择提交至的科室"></picker>
+
+      <view class="divLine"></view>
+      
       <view class="mod t-name">
         <text class="key">一级类型</text>
         <view class="value" bindtap="showPicker">{{firTypeValue}}
@@ -100,18 +110,19 @@
       </button>
     </view> -->
     <view style="display:block;margin:0 auto;width:85%;height:50%">
+      <form report-submit="true" bindsubmit='toCollect'>
+        <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0'>
+          问题解决时通知我
+        </button>
+      </form>
+    </view>
+    <view style="display:block;margin:0 auto;width:85%;height:50%">
       <form report-submit="true" bindsubmit='submitTrouble'>
         <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0'>
           提交
         </button>
       </form>
     </view>
-    <view style="display:block;margin:0 auto;width:85%;height:50%">
-      <form report-submit="true" bindsubmit='toCollect'>
-        <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0'>
-          收集模板消息ID
-        </button>
-      </form>
-    </view>
+    
   </form>
 </view>

@@ -39,6 +39,10 @@ Page({
     secTypes: [
       ['其他问题']
     ],
+    officeValue: '网络中心',
+    offices: [
+      ['网络中心', '设备科', '总务科']
+    ],
     secTypeValue: '其他问题',
     secTypeDis: false,
     secTypeIndex: 0,
@@ -59,6 +63,7 @@ Page({
 
     isShowPicker: false,
     isShowPicker2: false,
+    isShowPicker3: false,
   },
   showPicker: function() {
     this.setData({
@@ -68,6 +73,11 @@ Page({
   showPicker2: function() {
     this.setData({
       isShowPicker2: true
+    })
+  },
+  showPicker3: function () {
+    this.setData({
+      isShowPicker3: true
     })
   },
   handleChange({
@@ -869,9 +879,9 @@ Page({
       success(res) {
         console.log(res.data);
         wx.showToast({
-          title: '收集ID成功，你又获得了一次推送消息的机会！',
+          title: '获取成功，问题解决时将会给您发送通知！',
           icon: 'none',
-          duration: 2000
+          duration: 2500
         })
       },
       fail() {

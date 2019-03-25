@@ -106,7 +106,7 @@
 <view style="display:block;margin:0 auto;width:85%;height:50%">
   <form report-submit="true" bindsubmit='toCollect'>
     <button type="primary" formType="submit" style='width:80%;margin-top:30rpx;font-size:30rpx; line-height:65rpx;border-radius:41px;background-color: #2D8CF0'>
-      收集模板消息ID
+      获取推送消息机会
     </button>
   </form>
 </view>
