@@ -13,7 +13,7 @@ Page({
     troubleList: [],
     isNull: true,
     isAdmin: wx.getStorageSync("userInfo").isAdmin,
-    currentTab: 'tab1',
+    currentTab: '',
     initialText: "加载中..."
   },
   //事件处理函数
@@ -22,6 +22,17 @@ Page({
     wx.navigateTo({
       url: '/pages/detail/detail?troubleId=' + troubleId
     })
+  },
+  onload: function() {
+    if (this.data.isAdmin == 1) {
+      this.setData({
+        currentTab: 'tab5'
+      });
+    } else {
+      this.setData({
+        currentTab: 'tab1'
+      });
+    }
   },
   onChange(e) {
     var that = this;
@@ -32,6 +43,7 @@ Page({
     let current = e.detail.key;
     switch (current) {
       case 'tab1':
+        console.log('tab1')
         wx.request({
           url: app.globalData.localApiUrl + '/trouble/myAll?userId=' + wx.getStorageSync("userInfo").id,
           method: 'GET',
@@ -68,6 +80,7 @@ Page({
         });
         break;
       case 'tab2':
+        console.log('tab2')
         wx.request({
           url: app.globalData.localApiUrl + '/trouble/byStatus?status=1&userId=' + wx.getStorageSync("userInfo").id,
           method: 'GET',
@@ -104,6 +117,7 @@ Page({
         });
         break;
       case 'tab3':
+        console.log('tab3')
         wx.request({
           url: app.globalData.localApiUrl + '/trouble/byStatus?status=2&userId=' + wx.getStorageSync("userInfo").id,
           method: 'GET',
@@ -140,11 +154,53 @@ Page({
         });
         break;
       case 'tab4':
-
+        console.log('tab4')
+        var that = this;
+        var status, userId;
+        if (wx.getStorageSync("userInfo").isAdmin == 1) {
+          status = 6;
+        } else {
+          status = 3;
+        }
+        wx.request({
+          url: app.globalData.localApiUrl + '/trouble/byStatus?status=' + status + '&userId=' + wx.getStorageSync("userInfo").id,
+          method: 'GET',
+          success(res) {
+            wx.hideNavigationBarLoading() //完成停止加载
+            $stopWuxRefresher() //停止下拉刷新
+            console.log(res.data);
+            if (res.data.code == 1) {
+              var data = res.data.data;
+              if (data != null && data.length != 0) {
+                for (let i = 0; i < data.length; i++) {
+                  data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
+                }
+                that.setData({
+                  troubleList: data,
+                  isNull: false
+                });
+              } else {
+                that.setData({
+                  troubleList: data,
+                  isNull: true,
+                  initialText: "这里什么也没有..."
+                });
+              }
+            }
+          },
+          fail() {
+            wx.showToast({
+              title: '网络请求失败，请稍后重试！',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        });
         break;
       case 'tab5':
+        console.log('tab5')
         wx.request({
-          url: app.globalData.localApiUrl + '/trouble/all',
+          url: app.globalData.localApiUrl + '/trouble/all?office=' + wx.getStorageSync("userInfo").office,
           method: 'GET',
           success(res) {
             console.log(res.data);
@@ -179,22 +235,20 @@ Page({
         });
         break;
       case 'tab6':
-
-        break;
-      case 'tab7':
-
-        break;
-
-    }
-    if (current == 'tab1') {
-      if (isAdmin == 1) {
+        var that = this;
+        var status, userId;
+        if (wx.getStorageSync("userInfo").isAdmin == 1) {
+          status = 6;
+        } else {
+          status = 3;
+        }
         wx.request({
-          url: app.globalData.localApiUrl + '/trouble/all',
+          url: app.globalData.localApiUrl + '/trouble/byStatus?status=' + status + '&userId=' + wx.getStorageSync("userInfo").id,
           method: 'GET',
           success(res) {
-            console.log(res.data);
             wx.hideNavigationBarLoading() //完成停止加载
             $stopWuxRefresher() //停止下拉刷新
+            console.log(res.data);
             if (res.data.code == 1) {
               var data = res.data.data;
               if (data != null && data.length != 0) {
@@ -222,45 +276,10 @@ Page({
             })
           }
         });
-      } else {
-        wx.request({
-          url: app.globalData.localApiUrl + '/trouble/myAll?userId=' + wx.getStorageSync("userInfo").id,
-          method: 'GET',
-          success(res) {
-            console.log(res.data);
-            wx.hideNavigationBarLoading() //完成停止加载
-            $stopWuxRefresher() //停止下拉刷新
-            if (res.data.code == 1) {
-              var data = res.data.data;
-              if (data != null && data.length != 0) {
-                for (let i = 0; i < data.length; i++) {
-                  data[i].submitTime = new Date(data[i].submitTime).format("yyyy-MM-dd HH:mm");
-                }
-                that.setData({
-                  troubleList: data,
-                  isNull: false
-                });
-              } else {
-                that.setData({
-                  troubleList: data,
-                  isNull: true,
-                  initialText: "这里什么也没有..."
-                });
-              }
-            }
-          },
-          fail() {
-            wx.showToast({
-              title: '网络请求失败，请稍后重试！',
-              icon: 'none',
-              duration: 2000
-            })
-          }
-        });
-      }
-    } else {
+        break;
 
     }
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -271,7 +290,7 @@ Page({
     var isAdmin = wx.getStorageSync('userInfo').isAdmin;
     if (isAdmin == 1) {
       wx.request({
-        url: app.globalData.localApiUrl + '/trouble/all',
+        url: app.globalData.localApiUrl + '/trouble/all?office=' + wx.getStorageSync("userInfo").office,
         method: 'GET',
         success(res) {
           console.log(res.data);
@@ -360,9 +379,7 @@ Page({
   onHide: function() {
 
   },
-  onload: function() {
 
-  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作

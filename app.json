@@ -1,8 +1,8 @@
 {
   "pages": [
-      "pages/submit/submit",
+    "pages/submit/submit",
+    "pages/me/me",
     "pages/me/all/all",
-  
     "pages/me/tools/copycat/copycat",
     "pages/me/tools/tools",
     "pages/me/dutyplan/dutyplan",
@@ -11,7 +11,6 @@
     "pages/solve_suc/solve_suc",
     "pages/home/submit_suc/submit_suc",
     "pages/me/contact/contact",
-    "pages/me/me",
     "pages/login/login",
     "pages/solve/solve",
     "pages/me/confirmed/confirmed",
