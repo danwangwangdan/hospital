@@ -22,7 +22,7 @@ Page({
         lastSubmitTime: new Date(),
         formIds: [],
 
-        noticeText: "",
+        noticeText: "这里是公告。。。这里是公告。。。这里是公告。。。这里是公告。。。",
         isLoop: false,
         username: "",
         office: "",
@@ -87,7 +87,7 @@ Page({
                 confirmCount: 0
             });
             wx.request({
-                url: app.globalData.localApiUrl + '/trouble/submitted',
+              url: app.globalData.localApiUrl + '/trouble/submitted?office=' + wx.getStorageSync("userInfo").office,
                 method: 'GET',
                 success(res) {
                     console.log(res.data);
@@ -128,7 +128,7 @@ Page({
                 submitCount: 0
             });
             wx.request({
-                url: app.globalData.localApiUrl + '/trouble/confirmed',
+              url: app.globalData.localApiUrl + '/trouble/confirmed?office=' + wx.getStorageSync("userInfo").office,
                 method: 'GET',
                 success(res) {
                     console.log(res.data);
@@ -332,7 +332,7 @@ Page({
             })
             if (that.data.currentTab == 'tab1') { //待确认
                 wx.request({
-                    url: app.globalData.localApiUrl + '/trouble/submitted',
+                  url: app.globalData.localApiUrl + '/trouble/submitted?office=' + wx.getStorageSync("userInfo").office,
                     method: 'GET',
                     success(res) {
                         console.log(res.data);
@@ -372,7 +372,7 @@ Page({
                 });
             } else {
                 wx.request({
-                    url: app.globalData.localApiUrl + '/trouble/confirmed',
+                  url: app.globalData.localApiUrl + '/trouble/confirmed?office=' + wx.getStorageSync("userInfo").office,
                     method: 'GET',
                     success(res) {
                         wx.hideLoading();
@@ -428,7 +428,7 @@ Page({
         });
         if (that.data.currentTab == 'tab1') { //待确认
             wx.request({
-                url: app.globalData.localApiUrl + '/trouble/submitted',
+              url: app.globalData.localApiUrl + '/trouble/submitted?office=' + wx.getStorageSync("userInfo").office,
                 method: 'GET',
                 success(res) {
                     console.log(res.data);
@@ -467,7 +467,7 @@ Page({
             });
         } else {
             wx.request({
-                url: app.globalData.localApiUrl + '/trouble/confirmed',
+              url: app.globalData.localApiUrl + '/trouble/confirmed?office=' + wx.getStorageSync("userInfo").office,
                 method: 'GET',
                 success(res) {
                     console.log(res.data);
@@ -794,6 +794,7 @@ Page({
                     'userId': wx.getStorageSync('userInfo').id,
                     'troublePersonName': troubleOwner,
                     'office': office,
+                    'toOffice': firType,
                     'mobile': mobile,
                     'detail': content,
                     'firType': firType,

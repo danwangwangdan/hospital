@@ -1,4 +1,15 @@
 <wux-refresher id="wux-refresher" bind:refresh="onRefresh">
+  <wux-tabs wx:if="{{isAdmin==0}}" controlled scroll current="{{ currentTab }}" bindchange="onChange">
+    <wux-tab key="tab1" title="全部问题"></wux-tab>
+    <wux-tab key="tab2" title="未确认问题"></wux-tab>
+    <wux-tab key="tab3" title="已确认问题"></wux-tab>
+    <wux-tab key="tab4" title="已解决问题"></wux-tab>
+  </wux-tabs>
+    <wux-tabs wx:if="{{isAdmin==1}}" controlled scroll current="{{ currentTab }}" bindchange="onChange">
+    <wux-tab key="tab5" title="全部问题"></wux-tab>
+    <wux-tab key="tab6" title="未解决问题"></wux-tab>
+    <wux-tab key="tab7" title="我已解决问题"></wux-tab>
+  </wux-tabs>
   <view style='{{height}}'>
     <scroll-view>
       <view style="margin-top:10px">

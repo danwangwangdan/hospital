@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/submit/submit",
+      "pages/submit/submit",
+    "pages/me/all/all",
+  
     "pages/me/tools/copycat/copycat",
     "pages/me/tools/tools",
-    
-   
     "pages/me/dutyplan/dutyplan",
     "pages/detail/detail",
     "pages/me/suggestion/suggest_suc/suggest_suc",
@@ -12,7 +12,6 @@
     "pages/home/submit_suc/submit_suc",
     "pages/me/contact/contact",
     "pages/me/me",
-    "pages/me/all/all",
     "pages/login/login",
     "pages/solve/solve",
     "pages/me/confirmed/confirmed",

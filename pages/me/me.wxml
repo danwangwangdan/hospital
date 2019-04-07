@@ -16,7 +16,7 @@
         <image src="../../pics/all.png" style="height:50rpx;width:50rpx"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="toAll">
-        <text>全部问题</text>
+        <text>问题查询</text>
       </view>
     </view>
     <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp">
@@ -25,30 +25,6 @@
       </view>
       <view class="myitem-name flex-item" bindtap="toNotSolved">
         <text>未解决问题</text>
-      </view>
-    </view>
-    <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp" style="">
-      <view class="myitem-icon2 flex-item">
-        <image src="../../pics/processing.png" style="height:52rpx;width:52rpx"></image>
-      </view>
-      <view class="myitem-name flex-item" bindtap="toSubmitted">
-        <text>待确认问题</text>
-      </view>
-    </view>
-    <view wx:if="{{isAdmin!=1}}" class="my-item flex-wrp">
-      <view class="myitem-icon3 flex-item">
-        <image src="../../pics/submitted.png" style="height:50rpx;width:50rpx"></image>
-      </view>
-      <view class="myitem-name flex-item" bindtap="toConfirmed">
-        <text>已确认问题</text>
-      </view>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon4 flex-item">
-        <image src="../../pics/solved.png" style="height:42rpx;width:42rpx"></image>
-      </view>
-      <view class="myitem-name flex-item" bindtap="toSolved">
-        <text>已解决问题</text>
       </view>
     </view>
     <view wx:if="{{isAdmin==1}}" class="my-item flex-wrp">
