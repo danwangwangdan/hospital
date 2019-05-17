@@ -24,7 +24,7 @@
 </wux-refresher>
 <view class="add-page" wx:if="{{isAdmin==0}}">
   <form report-submit="true" bindsubmit='submitTrouble'>
-    <wux-notice-bar  leading='10000' trailing='1000'  controlled content="{{noticeText}}" />
+    <wux-notice-bar controlled content="{{noticeText}}" />
     <view class="mod-a mt20">
       <view class="mod t-name">
         <text decode="{{true}}" class="key">申报人员</text>

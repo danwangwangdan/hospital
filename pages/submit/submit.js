@@ -22,7 +22,7 @@ Page({
         lastSubmitTime: new Date(),
         formIds: [],
 
-        noticeText: "这里是公告。。。这里是公告。。。这里是公告。。。这里是公告。。。",
+        noticeText: "这里是公告。。。",
         isLoop: false,
         username: "",
         office: "",
@@ -32,9 +32,9 @@ Page({
         content: "",
         noteNowLen: 0, //备注当前字数
         firTypes: [
-            ['设备科']
+          ['网络中心']
         ],
-        firTypeValue: '设备科',
+        firTypeValue: '网络中心',
         firTypeIndex: 0,
         secTypes: [
             ['其他问题']
