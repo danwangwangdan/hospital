@@ -90,7 +90,7 @@ Page({
       success(res) {
         console.log(res.data);
         wx.showToast({
-          title: '获取成功！',
+          title: '获取成功，您又获得了一次推送消息的机会！',
           icon: 'none',
           duration: 2000
         })
