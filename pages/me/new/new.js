@@ -13,15 +13,15 @@ Page({
     firTypeValue: '网络中心',
     firTypeIndex: 0,
     secTypes: [
-      ['其他问题']
+      ['导航台问题', '电脑问题', '打印机问题', '其他问题']
     ],
     secTypeValue: '其他问题',
     secTypeDis: false,
     secTypeIndex: 0,
     status: [
-      ['未解决', '已解决']
+      ['已解决', '未解决']
     ],
-    statusValue: '未解决',
+    statusValue: '已解决',
     office: "",
     detail: "",
     isDisabled: false,
@@ -223,7 +223,7 @@ Page({
         },
         data: {
           'userId': wx.getStorageSync('userInfo').id,
-          'troublePersonName': '管理员',
+          'troublePersonName': '，管理员登记',
           'office': office,
           'firType': firType,
           'secType': secType,
