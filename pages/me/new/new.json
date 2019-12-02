@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "登记问题",
   "usingComponents": {
     "i-radio-group": "../../../plugins/iview/radio-group/index",
     "i-radio": "../../../plugins/iview/radio/index",
@@ -9,6 +10,5 @@
     "wux-cell": "../../../plugins/wux/cell/index",
     "wux-textarea": "../../../plugins/wux/textarea/index",
     "picker": "../../../plugins/picker/picker"
-  },
-  "navigationBarTitleText": "登记问题"
+  }
 }

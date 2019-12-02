@@ -8,9 +8,9 @@ Page({
    */
   data: {
     firTypes: [
-      ['其他问题']
+      ['网络中心']
     ],
-    firTypeValue: '其他问题',
+    firTypeValue: '网络中心',
     firTypeIndex: 0,
     secTypes: [
       ['其他问题']

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "微协助",
+  "navigationBarTitleText": "微维修H+",
   "usingComponents": {
     "i-button": "../../plugins/iview/button/index",
     "i-input": "../../plugins/iview/input/index",
