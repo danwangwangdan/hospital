@@ -4,19 +4,28 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"nodeModules": false,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"uglifyFileName": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.3",
-	"appid": "wx6c54f40530b65ae8",
-	"projectname": "hospital_1.0",
+	"appid": "wxb1da36a2b92c820f",
+	"projectname": "%E5%BE%AE%E5%8D%8F%E5%8A%A9",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

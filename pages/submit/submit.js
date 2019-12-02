@@ -175,7 +175,7 @@ Page({
         });
         //获取公告
         wx.request({
-            url: app.globalData.localApiUrl + '/common/notice',
+          url: app.globalData.localApiUrl + '/common/notice',
             method: 'GET',
             header: {
                 'content-type': 'application/json'
@@ -186,7 +186,7 @@ Page({
                     var data = res.data.data;
                     console.log(data);
                     that.setData({
-                        noticeText: data.noticeText
+                      noticeText: data.noticeText
                     })
                 }
             },

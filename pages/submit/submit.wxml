@@ -84,7 +84,7 @@
     </view> -->
     <view class="mod-a mt20">
       <view style="margin-top:15rpx;margin-bottom:15rpx;">
-        <wux-upload listType="picture-card" fileList="{{ fileList }}" max="3" header="{'Content-Type':'multipart/form-data'}" url="https://www.daliandaxue.cn/hishelp/common/uploadPic" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete"
+        <wux-upload listType="picture-card" fileList="{{ fileList }}" max="3" header="{'Content-Type':'multipart/form-data'}" url="https://loveshiming.oicp.vip/hishelp/common/uploadPic" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete"
                     bind:preview="onPreview" bind:remove="onRemove">
           <text>添加故障图片</text>
         </wux-upload>
