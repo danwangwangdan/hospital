@@ -197,6 +197,9 @@ Page({
     var detail = this.data.detail;
     var status = (this.data.statusValue == '未解决') ? 1 : 3;
     console.log(this.data.statusValue + "," + status)
+    var solverId=null;
+    var solver=null;
+    var solverTime = null;
     //先进行表单非空验证
     if (office == '') {
       wx.showToast({
@@ -214,7 +217,11 @@ Page({
         title: "提交中...",
         mask: true
       });
-
+      if(status==3){
+        solverId = wx.getStorageSync("userInfo").id;
+        solver = wx.getStorageSync("userInfo").nickname;
+        solverTime = new Date();
+      }
       wx.request({
         url: app.globalData.localApiUrl + '/trouble/submit',
         method: 'POST',
@@ -228,7 +235,10 @@ Page({
           'firType': firType,
           'secType': secType,
           'status': status,
-          'detail': detail
+          'detail': detail,
+          'solverId': solverId,
+          'solver': solver,
+          'solveTime': solverTime
         },
         success(res) {
           console.log(res.data);
