@@ -23,7 +23,12 @@ Page({
       url: '/pages/detail/detail?troubleId=' + troubleId
     })
   },
-  onload: function() {
+  onLoad: function() {
+    console.log('onLoad')
+    this.setData({
+      isAdmin: wx.getStorageSync("userInfo").isAdmin,
+    });
+    console.log("isAdmin:" + this.data.isAdmin)
     if (this.data.isAdmin == 1) {
       this.setData({
         currentTab: 'tab5'
